@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23070C1A'/%3E%3Cpath d='M12 46 C24 46 26 18 38 18 S52 30 52 30' stroke='%233DD6FF' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='46' r='5' fill='%233D8BFF'/%3E%3Ccircle cx='52' cy='30' r='5' fill='%239C7BFF'/%3E%3C/svg%3E">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"Addani Labs","url":"https://www.addanilabs.org/","email":"addanilabs@outlook.com","areaServed":"Worldwide","address":{"@type":"PostalAddress","addressLocality":"Rochester","addressRegion":"MN","addressCountry":"US"},"founder":{"@type":"Person","name":"Mohamed Addani","honorificSuffix":"M.S., Ph.D.","jobTitle":"Principal Consultant","sameAs":["https://www.linkedin.com/in/mohamed-addani-phd-268676189"]},"knowsAbout":["Biostatistics","Study design","Clinical prediction models","Machine learning","Qualitative analysis","AI integration"]}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Addani Labs","url":"https://www.addanilabs.org/","email":"addanilabs@outlook.com","areaServed":"Worldwide","address":{"@type":"PostalAddress","addressLocality":"Rochester","addressRegion":"MN","addressCountry":"US"},"founder":{"@type":"Person","name":"Mohamed Addani","honorificSuffix":"M.S., Ph.D.","jobTitle":"Principal Consultant","sameAs":["https://orcid.org/0000-0003-0813-2078","https://www.linkedin.com/in/mohamed-addani-phd-268676189"]},"knowsAbout":["Biostatistics","Study design","Clinical prediction models","Machine learning","Qualitative analysis","AI integration"]}
 </script>
 <script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -266,7 +266,17 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .portrait::before{content:"";position:absolute;inset:-18px;border-radius:44px;background:conic-gradient(from 200deg,var(--cyan),var(--blue),var(--violet),var(--cyan));filter:blur(38px);opacity:.35;z-index:-1}
 .portrait .badge{position:absolute;left:-10px;bottom:22px;padding:12px 16px;border-radius:18px;background:rgba(11,20,40,.88);backdrop-filter:blur(10px);border:1px solid var(--line);font-size:.9rem}
 .portrait .badge b{display:block;font-family:var(--f-display);font-size:1.15rem}
-.about h3{font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:4px}
+.about h3{font-size:clamp(1.8rem,3vw,2.5rem)}
+.name-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-bottom:6px}
+.orcid-pill{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:7px 14px 7px 7px;border-radius:999px;background:rgba(166,206,57,.1);border:1.5px solid rgba(166,206,57,.45);text-decoration:none;color:var(--text);transition:transform .3s var(--spring),background .25s,border-color .25s,box-shadow .3s}
+.orcid-pill>svg:first-child{width:34px;height:34px;flex:none}
+.orcid-pill span{display:flex;flex-direction:column;line-height:1.15}
+.orcid-pill b{font-family:var(--f-display);font-size:1rem;letter-spacing:.04em}
+.orcid-pill small{font-size:.82rem;color:var(--text-2)}
+.orcid-pill .ext{width:18px;height:18px;color:#A6CE39;transition:transform .3s var(--spring)}
+.orcid-pill:hover{transform:translateY(-2px);background:rgba(166,206,57,.18);border-color:#A6CE39;box-shadow:0 14px 30px -14px rgba(166,206,57,.7)}
+.orcid-pill:hover .ext{transform:translate(2px,-2px)}
+.orcid-pill:focus-visible{outline-color:#A6CE39}
 .about .role{font-weight:700;color:var(--violet);margin-bottom:16px}
 .about p{color:var(--text-2)}
 .proof{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
@@ -647,7 +657,7 @@ footer{position:relative;background:var(--bg);border-top:1px solid var(--line);c
         <div class="badge"><b>10+ years</b>from the bench to predictive models</div>
       </div>
       <div data-reveal="right">
-        <h3>Mohamed Addani, M.S., Ph.D.</h3>
+        <div class="name-row"><h3>Mohamed Addani, M.S., Ph.D.</h3><a class="orcid-pill" href="https://orcid.org/0000-0003-0813-2078" target="_blank" rel="noopener" aria-label="ORCID iD 0000-0003-0813-2078, opens my ORCID record in a new tab"><svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"/></svg><span><b>ORCID</b><small class="num">0000-0003-0813-2078</small></span><svg class="ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
         <div class="role">Principal consultant, Addani Labs</div>
         <p>Dr. Addani is a biomedical scientist and AI researcher with over a decade of experience turning complex data into real-world impact. From molecular biology to predictive modeling, he helps research teams, clinics and biotech ventures make smarter decisions with their data.</p>
         <p>You work with him directly, from the first call to the final handoff.</p>
