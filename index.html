@@ -24,7 +24,7 @@
 <link rel="icon" type="image/png" href="assets/logo-blue.png">
 <link rel="apple-touch-icon" href="assets/logo-blue.png">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Addani Labs","alternateName":"مختبرات عداني","url":"https://www.addanilabs.org/","logo":"https://www.addanilabs.org/assets/logo-blue.png","email":"addanilabs@gmail.com","sameAs":["https://www.youtube.com/@addanilabs","https://www.youtube.com/@addanilabsarabic","https://www.instagram.com/addanilabs","https://www.tiktok.com/@addanilabs"],"founder":{"@type":"Person","name":"Mohamed Addani","honorificSuffix":"M.S., Ph.D.","sameAs":["https://orcid.org/0000-0003-0813-2078","https://www.linkedin.com/in/mohamed-addani-phd-268676189"]}}
+{"@context":"https://schema.org","@type":"Organization","name":"Addani Labs","alternateName":"مختبرات عداني","url":"https://www.addanilabs.org/","logo":"https://www.addanilabs.org/assets/logo-blue.png","email":"addanilabs@gmail.com","sameAs":["https://www.youtube.com/@addanilabs","https://www.instagram.com/addanilabs","https://www.tiktok.com/@addanilabs","https://x.com/AddaniLabs"],"founder":{"@type":"Person","name":"Mohamed Addani","honorificSuffix":"M.S., Ph.D.","sameAs":["https://orcid.org/0000-0003-0813-2078","https://www.linkedin.com/in/mohamed-addani-phd-268676189"]}}
 </script>
 <script>
 /* Language is decided before first paint so the page never flashes the wrong direction.
@@ -241,7 +241,7 @@ html[dir="rtl"] .orcid{padding:8px 10px 8px 18px}
 .icon-link svg{width:22px;height:22px}
 
 /* ---------- Follow ---------- */
-.follow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.follow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .soc{display:flex;flex-direction:column;gap:18px;padding:24px;border-radius:18px;background:var(--bg-2);border:1px solid var(--line);
   text-decoration:none;min-height:168px;transition:border-color .15s,background-color .15s,transform .15s}
 .soc:hover{border-color:rgba(255,255,255,.35);background:var(--bg-3);transform:translateY(-2px)}
@@ -318,7 +318,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
           <span><span data-i18n="hero.with">with</span> <b data-i18n="hero.name">Mohamed Addani, PhD</b></span>
         </p>
         <a class="btn" id="yt-btn" href="https://www.youtube.com/@addanilabs" target="_blank" rel="noopener"
-           data-href-en="https://www.youtube.com/@addanilabs" data-href-ar="https://www.youtube.com/@addanilabsarabic">
+           data-href-en="https://www.youtube.com/@addanilabs" data-href-ar="https://www.youtube.com/@addanilabs">
           <svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>
           <span data-i18n="hero.cta">Watch on YouTube</span>
         </a>
@@ -451,10 +451,13 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
           <span class="ic"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg></span>
           <span class="bottom"><span class="name" data-i18n="yt.en">YouTube · English</span><span class="handle ltr">@addanilabs</span></span>
         </a>
+        <!-- Arabic YouTube card hidden until the Arabic videos exist (Mo, 10-01-2026). To restore: uncomment, set
+             .follow back to repeat(5,...) and the hero button's data-href-ar to @addanilabsarabic.
         <a class="soc" href="https://www.youtube.com/@addanilabsarabic" target="_blank" rel="noopener">
           <span class="ic"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg></span>
           <span class="bottom"><span class="name" data-i18n="yt.ar">YouTube · العربية</span><span class="handle ltr">@addanilabsarabic</span></span>
         </a>
+        -->
         <a class="soc" href="https://www.instagram.com/addanilabs" target="_blank" rel="noopener">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F2F5FD" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="#F2F5FD" stroke="none"/></svg></span>
           <span class="bottom"><span class="name">Instagram</span><span class="handle ltr">@addanilabs</span></span>
