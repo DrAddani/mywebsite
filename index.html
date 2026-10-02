@@ -124,14 +124,16 @@ p{margin:0}
 }
 
 /* ---------- Hero ---------- */
-.hero{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(56px,9vw,120px) clamp(72px,10vw,140px)}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+.hero{position:relative;padding-block:clamp(72px,10vw,132px);border-top:1px solid var(--line)}
+/* Episodes come first on the page (Mo, 10-02-2026): the glow sits behind them */
+.first{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(36px,6vw,80px) clamp(64px,9vw,120px)}
+.first::before{content:"";position:absolute;inset:0;z-index:-1;
   background:
     radial-gradient(60% 70% at 85% 10%,rgba(1,93,172,.42),transparent 70%),
     radial-gradient(40% 50% at 8% 95%,rgba(1,93,172,.18),transparent 70%),
     radial-gradient(rgba(150,180,255,.10) 1px,transparent 1.4px) 0 0/26px 26px;
   -webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
-html[dir="rtl"] .hero::before{transform:scaleX(-1)}
+html[dir="rtl"] .first::before{transform:scaleX(-1)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:clamp(32px,6vw,88px);align-items:center}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-size:.95rem;
   color:var(--text-2);letter-spacing:.01em}
@@ -146,7 +148,7 @@ html[lang="ar"] .hero h1{font-size:clamp(3rem,9vw,7rem);letter-spacing:0;line-he
 .pitch{font-family:var(--f-display);font-weight:500;font-size:clamp(1.35rem,2.4vw,1.95rem);line-height:1.3;
   letter-spacing:-.01em;max-width:24ch;color:var(--text)}
 html[lang="ar"] .pitch{letter-spacing:0;line-height:1.6;font-weight:600;max-width:26ch}
-.host{display:flex;align-items:center;gap:12px;margin-block:26px 36px;color:var(--text-2);font-size:1.02rem}
+.host{display:flex;align-items:center;gap:12px;margin-block:26px 0;color:var(--text-2);font-size:1.02rem}
 .host .av{width:52px;height:52px;border-radius:50%;overflow:hidden;flex:none;border:2px solid rgba(255,255,255,.18);background:#d8dbe6}
 .host .av img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
 .host b{color:var(--text);font-weight:700}
@@ -177,10 +179,14 @@ section.block{padding-block:clamp(72px,10vw,132px);border-top:1px solid var(--li
 .kicker{font-family:var(--f-display);font-weight:700;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);margin-bottom:14px}
 html[lang="ar"] .kicker{letter-spacing:0;font-size:1rem}
 .block h2{font-size:clamp(2.4rem,5.6vw,4.2rem);margin-bottom:clamp(32px,5vw,56px)}
+.first h2{font-size:clamp(2rem,4.6vw,3.4rem);margin-bottom:clamp(20px,3vw,32px)}
 .lead{color:var(--text-2);font-size:clamp(1.08rem,1.6vw,1.25rem);margin-top:-28px;margin-bottom:clamp(32px,5vw,52px)}
 
 /* ---------- Episodes ---------- */
-.eps{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:22px}
+.eps{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:22px;align-items:start}
+/* "More discoveries on the way" placeholder removed (Mo, 10-02-2026): the next episode card goes in the second column */
+.ep-col{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.ep-col .ep{width:100%}
 .ep{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 28px;align-items:end;
   background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:clamp(24px,3.4vw,40px);
   text-decoration:none;min-height:340px;overflow:hidden;
@@ -206,11 +212,6 @@ html[lang="ar"] .ep h3{letter-spacing:0;line-height:1.25;font-weight:900}
 html[dir="rtl"] .ep .go svg{transform:scaleX(-1)}
 html[dir="rtl"] .ep:hover .go svg{transform:scaleX(-1) translateX(3px)}
 .ep .helix{width:clamp(88px,11vw,128px);height:auto;align-self:center}
-.more{display:grid;place-items:center;text-align:center;border:2px dashed rgba(174,187,218,.32);border-radius:var(--radius);
-  padding:32px;color:var(--text-3);min-height:200px}
-.more .plus{width:44px;height:44px;border-radius:50%;border:2px dashed rgba(174,187,218,.4);display:grid;place-items:center;margin:0 auto 14px}
-.more .plus svg{width:18px;height:18px}
-.more p{font-family:var(--f-display);font-weight:600;font-size:1.1rem;max-width:22ch}
 
 /* ---------- About ---------- */
 .about{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:center}
@@ -273,10 +274,9 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
   .paper-wrap{display:none}
   .ep{grid-template-columns:1fr;min-height:0}
   .ep .helix{display:none}
-  .more{min-height:150px}
   .soc{min-height:0;padding:18px;gap:14px}
   .follow{gap:12px}
-  .host{margin-block:22px 30px}
+  .host{margin-block:22px 0}
 }
 @media (max-width:380px){
   .follow{grid-template-columns:1fr}
@@ -288,7 +288,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
 
 <header class="bar">
   <div class="wrap bar-in">
-    <a class="logo" href="#top" aria-label="Addani Labs" data-i18n-attr="aria-label:brand">
+    <a class="logo" href="#main" aria-label="Addani Labs" data-i18n-attr="aria-label:brand">
       <img src="assets/logo-white.png" alt="Addani Labs" width="480" height="151" data-i18n-attr="alt:brand">
     </a>
     <nav class="nav" aria-label="Main" data-i18n-attr="aria-label:nav.label">
@@ -305,8 +305,51 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
 </header>
 
 <main id="main">
-  <!-- ========== HERO ========== -->
-  <section class="hero" id="top" aria-labelledby="hero-h">
+  <!-- ========== EPISODES (first on the page, Mo 10-02-2026) ========== -->
+  <section class="first" id="episodes" aria-labelledby="ep-h">
+    <div class="wrap">
+      <p class="kicker" data-i18n="ep.kicker">Season 1</p>
+      <h2 id="ep-h" data-i18n="ep.title">Episodes</h2>
+      <div class="eps">
+        <div class="ep-col">
+          <!-- Coming soon: not linked until the YouTube video is live (Mo, 10-01-2026). To publish, turn this div back into
+               <a class="ep" href="episodes/episode-01-crispr.html"> and restore the "Read the short story" link line. -->
+          <div class="ep is-soon">
+            <div class="ep-top">
+              <span class="ep-no" data-i18n="ep1.no">Episode 1</span>
+              <span class="soon" data-i18n="ep1.soon">Coming soon</span>
+            </div>
+            <div>
+              <h3 data-i18n="ep1.name">CRISPR</h3>
+              <p class="teaser" data-i18n="ep1.teaser">What if doctors could fix the mutation you were born with?</p>
+            </div>
+            <!-- DNA with one rung cut out: a quiet preview of Episode 1 -->
+            <svg class="helix" viewBox="0 0 120 220" aria-hidden="true">
+              <g fill="none" stroke-linecap="round">
+                <path d="M30 10 C 90 50, 90 70, 30 110 S 90 170, 30 210" stroke="#1E1A16" stroke-width="5"/>
+                <path d="M90 10 C 30 50, 30 70, 90 110 S 30 170, 90 210" stroke="#1E1A16" stroke-width="5" opacity=".35"/>
+                <g stroke="#1E1A16" stroke-width="3.5" opacity=".55">
+                  <path d="M46 26h28M58 60h4M46 94h28M46 126h28M58 160h4M46 194h28"/>
+                </g>
+                <path d="M40 43h12M68 43h12" stroke="#E4572E" stroke-width="4.5"/>
+                <path d="M40 177h40" stroke="#E4572E" stroke-width="4.5"/>
+              </g>
+              <circle cx="60" cy="43" r="3.5" fill="#E4572E"/>
+            </svg>
+          </div>
+          <!-- YouTube sits right under the episode (Mo, 10-02-2026) -->
+          <a class="btn" id="yt-btn" href="https://www.youtube.com/@addanilabs" target="_blank" rel="noopener"
+             data-href-en="https://www.youtube.com/@addanilabs" data-href-ar="https://www.youtube.com/@addanilabs">
+            <svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>
+            <span data-i18n="hero.cta">Watch on YouTube</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERIES INTRO ========== -->
+  <section class="hero" id="series" aria-labelledby="hero-h">
     <div class="wrap hero-grid">
       <div>
         <p class="eyebrow" data-i18n="hero.eyebrow">A science series by Addani Labs</p>
@@ -317,11 +360,6 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
           <span class="av"><img src="assets/mohamed-addani-avatar.jpg" alt="" width="300" height="300"></span>
           <span><span data-i18n="hero.with">with</span> <b data-i18n="hero.name">Mohamed Addani, PhD</b></span>
         </p>
-        <a class="btn" id="yt-btn" href="https://www.youtube.com/@addanilabs" target="_blank" rel="noopener"
-           data-href-en="https://www.youtube.com/@addanilabs" data-href-ar="https://www.youtube.com/@addanilabs">
-          <svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>
-          <span data-i18n="hero.cta">Watch on YouTube</span>
-        </a>
       </div>
 
       <div class="paper-wrap" aria-hidden="true">
@@ -361,47 +399,6 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
         <div class="callout">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
           <span data-i18n="hero.callout">What it really shows</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== EPISODES ========== -->
-  <section class="block" id="episodes" aria-labelledby="ep-h">
-    <div class="wrap">
-      <p class="kicker" data-i18n="ep.kicker">Season 1</p>
-      <h2 id="ep-h" data-i18n="ep.title">Episodes</h2>
-      <div class="eps">
-        <!-- Coming soon: not linked until the YouTube video is live (Mo, 10-01-2026). To publish, turn this div back into
-             <a class="ep" href="episodes/episode-01-crispr.html"> and restore the "Read the short story" link line. -->
-        <div class="ep is-soon">
-          <div class="ep-top">
-            <span class="ep-no" data-i18n="ep1.no">Episode 1</span>
-            <span class="soon" data-i18n="ep1.soon">Coming soon</span>
-          </div>
-          <div>
-            <h3 data-i18n="ep1.name">CRISPR</h3>
-            <p class="teaser" data-i18n="ep1.teaser">What if doctors could fix the mutation you were born with?</p>
-          </div>
-          <!-- DNA with one rung cut out: a quiet preview of Episode 1 -->
-          <svg class="helix" viewBox="0 0 120 220" aria-hidden="true">
-            <g fill="none" stroke-linecap="round">
-              <path d="M30 10 C 90 50, 90 70, 30 110 S 90 170, 30 210" stroke="#1E1A16" stroke-width="5"/>
-              <path d="M90 10 C 30 50, 30 70, 90 110 S 30 170, 90 210" stroke="#1E1A16" stroke-width="5" opacity=".35"/>
-              <g stroke="#1E1A16" stroke-width="3.5" opacity=".55">
-                <path d="M46 26h28M58 60h4M46 94h28M46 126h28M58 160h4M46 194h28"/>
-              </g>
-              <path d="M40 43h12M68 43h12" stroke="#E4572E" stroke-width="4.5"/>
-              <path d="M40 177h40" stroke="#E4572E" stroke-width="4.5"/>
-            </g>
-            <circle cx="60" cy="43" r="3.5" fill="#E4572E"/>
-          </svg>
-        </div>
-        <div class="more">
-          <div>
-            <span class="plus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
-            <p data-i18n="more">More discoveries on the way</p>
-          </div>
         </div>
       </div>
     </div>
@@ -507,7 +504,6 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
       'ep1.name': 'CRISPR',
       'ep1.teaser': 'What if doctors could fix the mutation you were born with?',
       'ep1.cta': 'Read the short story',
-      'more': 'More discoveries on the way',
       'about.kicker': 'Your host',
       'about.title': 'About Mohamed',
       'about.photoAlt': 'Portrait of Mohamed Addani in a white lab coat',
@@ -545,7 +541,6 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
       'ep1.name': 'كريسبر',
       'ep1.teaser': 'ماذا لو استطاع الأطباء إصلاح الطفرة التي وُلدتَ بها؟',
       'ep1.cta': 'اقرأ القصة باختصار',
-      'more': 'المزيد من الاكتشافات في الطريق',
       'about.kicker': 'مقدّم السلسلة',
       'about.title': 'عن محمد عداني',
       'about.photoAlt': 'صورة محمد عداني بمعطف المختبر الأبيض',
