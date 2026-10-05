@@ -75,8 +75,13 @@ html[dir="rtl"] .progress span{ transform-origin:right center; }
 .logo-crop{ display:block; position:relative; overflow:hidden; aspect-ratio:860/275; height:32px; }
 .logo-crop img{ position:absolute; width:125.58%; max-width:none; height:auto; inset-inline-start:-11.98%; top:-80.73%; }
 html[dir="rtl"] .logo-crop img{ inset-inline-start:auto; left:-11.98%; }
-.back-link{ display:inline-flex; align-items:center; gap:7px; font-weight:600; font-size:.92rem; text-decoration:none; color:var(--ink2); padding:6px 4px; }
-.back-link:hover{ color:var(--ink); }
+/* "Episodes" = a clear button, easy to tap at the top while scrolling (Mo, 10-05-2026) */
+.back-link{ display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 18px; border-radius:999px;
+  font-weight:700; font-size:1rem; text-decoration:none; color:var(--ink); background:var(--card);
+  border:1.5px solid rgba(var(--ink-rgb),.28); box-shadow:0 6px 16px -10px rgba(var(--ink-rgb),.55);
+  transition:border-color .15s, box-shadow .15s, transform .15s; }
+.back-link:hover{ border-color:var(--accent); transform:translateY(-1px); box-shadow:0 10px 22px -12px rgba(var(--ink-rgb),.6); }
+.back-link .arr{ color:var(--accent); font-size:1.1em; }
 .back-link .arr{ display:inline-block; transition:transform .2s; }
 .back-link:hover .arr{ transform:translateX(calc(var(--dir) * -3px)); }
 html[dir="rtl"] .arr-flip{ transform:scaleX(-1); }
@@ -444,7 +449,7 @@ html[dir="rtl"] .watch{ padding:9px 10px 9px 16px; }
   .topbar{ gap:12px; }
   .logo-crop{ height:26px; }
   .top-title, .topbar .sep{ display:none; }
-  .back-link{ margin-inline-end:auto; font-size:.88rem; }
+  .back-link{ margin-inline-end:auto; font-size:.95rem; padding:0 14px; }
   .rail, .watch{ display:none; }
   .scene{
     padding-block:calc(var(--top-h) + 12px) calc(var(--mbar-h) + 18px + env(safe-area-inset-bottom));
