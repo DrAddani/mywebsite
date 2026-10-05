@@ -161,6 +161,14 @@ html[lang="ar"] .pitch{letter-spacing:0;line-height:1.6;font-weight:600;max-widt
 html[dir="rtl"] .btn{padding:0 20px 0 26px}
 .btn:hover{transform:translateY(-1px);background:#F3F6FF;box-shadow:0 14px 34px -12px rgba(0,0,0,.7)}
 .btn svg{width:30px;height:21px;flex:none}
+.yt-bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.yt-pill{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 18px 0 14px;border-radius:999px;background:#fff;
+  color:var(--bg);text-decoration:none;font-family:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;font-weight:700;font-size:.98rem;
+  box-shadow:0 10px 30px -10px rgba(0,0,0,.6);transition:transform .15s,background-color .15s}
+.yt-pill[lang="ar"]{font-family:"Cairo",system-ui,sans-serif;font-size:1.02rem}
+.yt-pill svg{width:26px;height:18px;flex:none}
+.yt-pill:hover{transform:translateY(-1px);background:#F3F6FF}
+.yt-pill:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
 
 /* the paper: "explained from the paper" */
 .paper-wrap{position:relative;max-width:420px;justify-self:center;width:100%}
@@ -410,11 +418,12 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
             </span>
           </a>
           <!-- YouTube sits right under the episode (Mo, 10-02-2026) -->
-          <a class="btn" id="yt-btn" href="https://www.youtube.com/@addanilabs" target="_blank" rel="noopener"
-             data-href-en="https://www.youtube.com/@addanilabs" data-href-ar="https://www.youtube.com/@addanilabs">
-            <svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>
-            <span data-i18n="hero.cta">Watch on YouTube</span>
-          </a>
+          <!-- Compact YouTube bar: logo + both channels, same in either site language (Mo, 10-05-2026).
+               Swap the hrefs to the episode's video links once the videos are live. -->
+          <div class="yt-bar" dir="ltr" role="group" aria-label="Watch on YouTube">
+            <a class="yt-pill" href="https://www.youtube.com/@addanilabs" target="_blank" rel="noopener" lang="en" aria-label="Watch in English on YouTube"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>English</a>
+            <a class="yt-pill" href="https://www.youtube.com/@addanilabsarabic" target="_blank" rel="noopener" lang="ar" aria-label="شاهد بالعربية على يوتيوب"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>العربية</a>
+          </div>
         </div>
       </div>
     </div>
@@ -464,7 +473,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
           <span class="bottom"><span class="name" data-i18n="yt.en">YouTube</span><span class="handle ltr">@addanilabs</span></span>
         </a>
         <!-- Arabic YouTube card hidden until the Arabic videos exist (Mo, 10-01-2026). To restore: uncomment, set
-             .follow back to repeat(5,...) and the hero button's data-href-ar to @addanilabsarabic.
+             .follow back to repeat(5,...). (The YouTube bar under the episode card already links both channels.)
         <a class="soc" href="https://www.youtube.com/@addanilabsarabic" target="_blank" rel="noopener">
           <span class="ic"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg></span>
           <span class="bottom"><span class="name" data-i18n="yt.ar">YouTube · العربية</span><span class="handle ltr">@addanilabsarabic</span></span>
@@ -594,8 +603,6 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
     var echo = document.querySelector('[data-echo]');
     if (lang === 'ar') { echo.textContent = 'Discoveries'; echo.lang = 'en'; }
     else { echo.textContent = 'اكتشافات علمية'; echo.lang = 'ar'; }
-    var yt = document.getElementById('yt-btn');
-    yt.href = yt.getAttribute('data-href-' + lang);
     document.querySelectorAll('[data-set-lang]').forEach(function(b){
       b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === lang ? 'true' : 'false');
     });
