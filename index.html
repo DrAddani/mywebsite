@@ -231,7 +231,14 @@ html[lang="ar"] .pic-ar{display:block}
 .ep-strip .logo-ar{display:none}
 html[lang="ar"] .ep-strip .logo-en{display:none}
 html[lang="ar"] .ep-strip .logo-ar{display:block;height:24px}
-.ep-strip .ep-no{margin-inline-start:auto;color:rgba(244,238,223,.7)}
+.ep-strip .ep-no{color:rgba(244,238,223,.7)}
+.ep-click{margin-inline-start:auto;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;
+  background:var(--verm,#E4572E);color:#fff;font-family:var(--f-display);font-weight:700;font-size:.92rem;white-space:nowrap}
+.ep-click svg{width:16px;height:16px;transition:transform .15s}
+.ep-thumb:hover .ep-click svg{transform:translateX(3px)}
+html[dir="rtl"] .ep-click svg{transform:scaleX(-1)}
+html[dir="rtl"] .ep-thumb:hover .ep-click svg{transform:scaleX(-1) translateX(3px)}
+@media (max-width:480px){.ep-strip{flex-wrap:wrap}.ep-click{width:100%;justify-content:center;margin-inline-start:0}}
 .ep-strip .ep-name{font-family:var(--f-display);font-weight:800;font-size:1.05rem;letter-spacing:.02em}
 html[lang="ar"] .ep-strip .ep-name{letter-spacing:0}
 
@@ -398,6 +405,8 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
               <img class="logo-en" src="assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
               <span class="ep-no" data-i18n="ep1.no">Episode 1</span>
               <span class="ep-name" data-i18n="ep1.name">CRISPR</span>
+              <!-- "Click" cue so people know the card opens the story (Mo, 10-05-2026) -->
+              <span class="ep-click"><span data-i18n="ep1.click">Click to read</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </span>
           </a>
           <!-- YouTube sits right under the episode (Mo, 10-02-2026) -->
@@ -510,6 +519,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
       'ep1.name': 'CRISPR',
       'ep1.teaser': 'What if doctors could fix the mutation you were born with?',
       'ep1.cta': 'Read the short story',
+      'ep1.click': 'Click to read',
       'about.kicker': 'Your host',
       'about.title': 'About Mohamed',
       'about.photoAlt': 'Portrait of Mohamed Addani in a white lab coat',
@@ -547,6 +557,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
       'ep1.name': 'كريسبر',
       'ep1.teaser': 'ماذا لو استطاع الأطباء إصلاح الطفرة التي وُلدتَ بها؟',
       'ep1.cta': 'اقرأ القصة باختصار',
+      'ep1.click': 'اضغط للقراءة',
       'about.kicker': 'مقدّم السلسلة',
       'about.title': 'عن محمد عداني',
       'about.photoAlt': 'صورة محمد عداني بمعطف المختبر الأبيض',
