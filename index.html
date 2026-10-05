@@ -141,13 +141,10 @@ html[dir="rtl"] .hero::before{transform:scaleX(-1)}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-size:.95rem;
   color:var(--text-2);letter-spacing:.01em}
 .eyebrow::before{content:"";width:28px;height:2px;background:var(--warm);border-radius:2px}
-.hero h1{font-size:clamp(3.3rem,10.5vw,8.6rem);letter-spacing:-.035em;line-height:.92;margin-block:22px 4px;
+.hero h1{font-size:clamp(3.3rem,10.5vw,8.6rem);letter-spacing:-.035em;line-height:.92;margin-block:22px 28px;
   font-variation-settings:"opsz" 96}
 .hero h1 .dot{color:var(--warm)}
 html[lang="ar"] .hero h1{font-size:clamp(3rem,9vw,7rem);letter-spacing:0;line-height:1.15;font-weight:900}
-.echo{font-size:clamp(1.25rem,2.2vw,1.7rem);color:var(--text-3);font-weight:600;margin-bottom:28px}
-.echo[lang="ar"]{font-family:"Cairo",system-ui,sans-serif}
-.echo[lang="en"]{font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.01em}
 .pitch{font-family:var(--f-display);font-weight:500;font-size:clamp(1.35rem,2.4vw,1.95rem);line-height:1.3;
   letter-spacing:-.01em;max-width:24ch;color:var(--text)}
 html[lang="ar"] .pitch{letter-spacing:0;line-height:1.6;font-weight:600;max-width:26ch}
@@ -344,7 +341,6 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
       <div>
         <p class="eyebrow" data-i18n="hero.eyebrow">A science series by Addani Labs</p>
         <h1 id="hero-h"><span data-i18n="hero.title">Discoveries</span><span class="dot" aria-hidden="true">.</span></h1>
-        <p class="echo" lang="ar" data-echo>اكتشافات علمية</p>
         <p class="pitch" data-i18n="hero.pitch">Recent scientific breakthroughs, explained from the paper.</p>
         <p class="host">
           <span class="av"><img src="assets/mohamed-addani-avatar.jpg" alt="" width="300" height="300"></span>
@@ -599,10 +595,6 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
         var p = pair.split(':'); if (d[p[1]] != null) el.setAttribute(p[0], d[p[1]]);
       });
     });
-    /* the small echo under the big title shows the series name in the other language */
-    var echo = document.querySelector('[data-echo]');
-    if (lang === 'ar') { echo.textContent = 'Discoveries'; echo.lang = 'en'; }
-    else { echo.textContent = 'اكتشافات علمية'; echo.lang = 'ar'; }
     document.querySelectorAll('[data-set-lang]').forEach(function(b){
       b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === lang ? 'true' : 'false');
     });
