@@ -168,6 +168,9 @@ html[dir="rtl"] mark{ background-position:right center; }
 .cite small{ display:block; font-size:.68rem; font-weight:700; letter-spacing:var(--track); text-transform:uppercase; color:var(--hairline); }
 html[lang="ar"] .cite small{ font-size:.8rem; text-transform:none; }
 .cite span{ font-weight:600; }
+a.cite{ text-decoration:none; transition:transform .15s, box-shadow .15s; }
+a.cite:hover{ transform:rotate(-1deg) translateY(-2px); box-shadow:0 1px 0 rgba(var(--ink-rgb),.08), 0 12px 22px -10px rgba(var(--ink-rgb),.45); }
+a.cite .cite-arr{ color:var(--accent); font-weight:700; }
 
 /* ---------- picture column (cut-paper pieces) ---------- */
 .pic{ position:relative; min-width:0; height:min(66vh,640px); display:grid; place-items:center; }
@@ -752,7 +755,11 @@ html[dir="rtl"] .watch{ padding:9px 10px 9px 16px; }
   }
   function stampHTML(sc){ return sc.stamp ? '<div class="stamp' + (plain(t(sc.stamp)).length > 18 ? ' long' : '') + '" aria-label="' + esc(t(sc.stamp)) + '">' + esc(t(sc.stamp)) + '</div>' : ''; }
   function citeHTML(sc, d){
-    return sc.cite ? rise('div', 'cite', d, '<div><small>' + esc(u('source')) + '</small><span>' + esc(t(sc.cite)) + '</span></div>') : '';
+    if (!sc.cite) return '';
+    var inner = '<div><small>' + esc(u('source')) + '</small><span>' + esc(t(sc.cite)) + (sc.doi ? ' <b class="cite-arr" aria-hidden="true">↗</b>' : '') + '</span></div>';
+    // a scene with a DOI makes its source tag a one-tap link to the paper (quick-glance stories have no Papers screen)
+    if (sc.doi) return '<a class="cite a-rise" style="--d:' + d + '" href="https://doi.org/' + esc(sc.doi) + '" target="_blank" rel="noopener" aria-label="' + esc(u('openPaper') + ': ' + plain(t(sc.cite))) + '">' + inner + '</a>';
+    return rise('div', 'cite', d, inner);
   }
 
   var flipCount = 0;
