@@ -99,6 +99,10 @@ p{margin:0}
   gap:20px;min-height:var(--bar-h)}
 .logo{grid-area:logo;display:flex;align-items:center;border-radius:8px}
 .logo img{height:36px;width:auto}
+/* Arabic pages show the Arabic logo, مختبرات عداني (Mo, 10-05-2026) */
+.logo-ar{display:none}
+html[lang="ar"] .logo-en{display:none}
+html[lang="ar"] .logo-ar{display:block}
 .nav{grid-area:nav;display:flex;justify-content:flex-end;gap:6px}
 .nav a{font-family:var(--f-display);font-weight:600;font-size:1rem;text-decoration:none;color:var(--text-2);
   padding:10px 14px;border-radius:999px;transition:color .15s,background-color .15s}
@@ -283,7 +287,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
 <header class="bar">
   <div class="wrap bar-in">
     <a class="logo" href="#top" aria-label="Addani Labs" data-i18n-attr="aria-label:brand">
-      <img src="assets/logo-white.png" alt="Addani Labs" width="480" height="151" data-i18n-attr="alt:brand">
+      <img class="logo-en" src="assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
     </a>
     <nav class="nav" aria-label="Main" data-i18n-attr="aria-label:nav.label">
       <a href="#episodes" data-i18n="nav.episodes">Episodes</a>
@@ -466,7 +470,7 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
 
 <footer>
   <div class="wrap foot">
-    <img src="assets/logo-white.png" alt="Addani Labs" width="480" height="151" data-i18n-attr="alt:brand">
+    <img class="logo-en" src="assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
     <p><span class="ltr">© 2026 Addani Labs</span> · <a class="ltr" href="mailto:addanilabs@gmail.com">addanilabs@gmail.com</a></p>
   </div>
 </footer>

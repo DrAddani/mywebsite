@@ -75,6 +75,11 @@ html[dir="rtl"] .progress span{ transform-origin:right center; }
 .logo-crop{ display:block; position:relative; overflow:hidden; aspect-ratio:860/275; height:32px; }
 .logo-crop img{ position:absolute; width:125.58%; max-width:none; height:auto; inset-inline-start:-11.98%; top:-80.73%; }
 html[dir="rtl"] .logo-crop img{ inset-inline-start:auto; left:-11.98%; }
+/* Arabic pages show the Arabic logo, مختبرات عداني (Mo, 10-05-2026) */
+.logo-ar{ display:none; height:32px; width:auto; }
+html[lang="ar"] .logo-link .logo-crop, html[lang="ar"] .end-logo .logo-crop{ display:none; }
+html[lang="ar"] .logo-link .logo-ar{ display:block; }
+html[lang="ar"] .end-logo .logo-ar{ display:block; width:min(300px,58vw); height:auto; margin:0 auto; }
 /* "Episodes" = a clear button, easy to tap at the top while scrolling (Mo, 10-05-2026) */
 .back-link{ display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 18px; border-radius:999px;
   font-weight:700; font-size:1rem; text-decoration:none; color:var(--ink); background:var(--card);
@@ -450,7 +455,7 @@ html[dir="rtl"] .watch{ padding:9px 10px 9px 16px; }
 @media (max-width: 820px){
   :root{ --top-h:54px; --rail-w:0px; }
   .topbar{ gap:12px; }
-  .logo-crop{ height:26px; }
+  .logo-crop, .logo-link .logo-ar{ height:26px; }
   .top-title, .topbar .sep{ display:none; }
   .back-link{ margin-inline-end:auto; font-size:.95rem; padding:0 14px; }
   .rail, .watch{ display:none; }
@@ -601,7 +606,7 @@ html[dir="rtl"] .watch{ padding:9px 10px 9px 16px; }
 <div class="progress" aria-hidden="true"><span id="progress"></span></div>
 
 <header class="topbar">
-  <a class="logo-link" href="../index.html" id="homeLink"><span class="logo-crop"><img src="../assets/logo-blue.png" alt="Addani Labs" width="1080" height="751"></span></a>
+  <a class="logo-link" href="../index.html" id="homeLink"><span class="logo-crop"><img src="../assets/logo-blue.png" alt="Addani Labs" width="1080" height="751"></span><img class="logo-ar" src="../assets/logo-ar-blue.png" alt="مختبرات عداني" width="978" height="210"></a>
   <span class="sep" aria-hidden="true"></span>
   <a class="back-link" href="../index.html#episodes" id="backLink"><span class="arr arr-flip" aria-hidden="true">&larr;</span><span data-ui="episodes">Episodes</span></a>
   <div class="top-title" id="topTitle"></div>
@@ -876,7 +881,7 @@ html[dir="rtl"] .watch{ padding:9px 10px 9px 16px; }
       : '<span class="btn-yt soon" role="link" aria-disabled="true"><span class="play">' + SVG.play + '</span><span>' + esc(u('endSoon')) + '</span></span>';
     return '<section class="scene L-end" id="end" data-i="' + idx + '" aria-label="' + esc((idx + 1) + ' / ' + items.length + ' · ' + u('endChapter')) + '">' +
       '<div class="scene-inner">' +
-      '<div class="end-logo a-rise" style="--d:0"><span class="logo-crop"><img src="../assets/logo-blue.png" alt="Addani Labs" loading="lazy" width="1080" height="751"></span></div>' +
+      '<div class="end-logo a-rise" style="--d:0"><span class="logo-crop"><img src="../assets/logo-blue.png" alt="Addani Labs" loading="lazy" width="1080" height="751"></span><img class="logo-ar" src="../assets/logo-ar-blue-stacked.png" alt="مختبرات عداني" loading="lazy" width="753" height="484"></div>' +
       rise('p', 'end-series', 1, esc(t(S.series)) + ' · ' + esc(u('episode')) + ' ' + esc(S.number || '') + ' · <b>' + esc(plain(t(S.title))) + '</b>') +
       '<div class="end-cta a-rise" style="--d:2">' + btn +
       '<a class="back-all" href="../index.html#episodes"><span class="arr-flip" style="display:inline-block" aria-hidden="true">&larr;</span> ' + esc(u('backAll')) + '</a></div>' +
