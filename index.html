@@ -226,14 +226,10 @@ html[dir="rtl"] .portrait::before{transform:translate(-14px,14px)}
 .bio + .bio{margin-top:14px}
 .bio strong{color:var(--text);font-weight:700}
 .ids{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:30px}
-.orcid{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:8px 18px 8px 10px;border-radius:999px;
-  background:#fff;color:#2B2B2B;text-decoration:none;transition:transform .15s,box-shadow .15s}
-html[dir="rtl"] .orcid{padding:8px 10px 8px 18px}
+/* ORCID = the green iD logo only, no number (Mo, 10-05-2026) */
+.orcid{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;text-decoration:none;transition:transform .15s,box-shadow .15s}
 .orcid:hover{transform:translateY(-1px);box-shadow:0 10px 24px -12px rgba(0,0,0,.7)}
-.orcid svg{width:32px;height:32px;flex:none}
-.orcid .t{display:flex;flex-direction:column;line-height:1.15}
-.orcid b{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:.8rem;letter-spacing:.08em;color:#4E6B0B}
-.orcid .num{font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-weight:700;font-size:1.02rem;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+.orcid svg{width:52px;height:52px;display:block}
 .icon-link{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.22);
   color:var(--text);transition:background-color .15s,border-color .15s}
 .icon-link:hover{background:#0A66C2;border-color:#0A66C2}
@@ -422,7 +418,6 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
             <a class="orcid" href="https://orcid.org/0000-0003-0813-2078" target="_blank" rel="noopener"
                aria-label="ORCID iD 0000-0003-0813-2078 (opens in a new tab)" data-i18n-attr="aria-label:orcid.aria">
               <svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"/></svg>
-              <span class="t"><b>ORCID iD</b><span class="num ltr">0000-0003-0813-2078</span></span>
             </a>
             <a class="icon-link" href="https://www.linkedin.com/in/mohamed-addani-phd-268676189" target="_blank" rel="noopener"
                aria-label="LinkedIn (opens in a new tab)" data-i18n-attr="aria-label:linkedin.aria">
