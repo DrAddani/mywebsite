@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Discoveries · Addani Labs</title>
-<meta name="description" content="The Discoveries series by Addani Labs: a scientific breakthrough in 5 easy slides.">
-<meta name="theme-color" content="#F4EFE4">
+<title>One Mutated Letter in Your DNA Can Change Your Life · Addani Labs</title>
+<meta name="description" content="Discoveries, Episode 1. CRISPR in five short screens: your DNA, a mutation, the tool, how it works, and the hard questions.">
+<meta name="theme-color" content="#F1E7D2">
 <!-- Link preview = the approved Episode 1 YouTube thumbnail (Mo, 10-05-2026) -->
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Addani Labs">
@@ -19,226 +19,455 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://www.addanilabs.org/episodes/assets/ep01/thumb-en-share.jpg">
 <link rel="icon" href="../assets/logo-blue.png">
+<!--
+  Discoveries story engine, "Style A" (Mo, 10-06-2026: the website matches carousel Style A, "Tomorrow Poster").
+  Poster paper with the faint logo pattern, navy + tomato, Archivo condensed headlines (Arabic: Cairo), progress dashes,
+  one paper-cut picture per screen, the thumbnail's painted art on the hero and on the navy watch screen, logo
+  bottom-left. Side DNA helix (left in English, right in Arabic): its letter turns red at the mutation and back at
+  "how it works"; side progress dashes. No scroll pop-ins: every word is on the page; only the helix and the side
+  progress follow the scroll position. All text, pictures and the YouTube links come from window.STORY
+  (episode-NN-<slug>-story.js, same folder). Language: localStorage "al-lang" = en | ar (first visit = browser language).
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Cairo:wght@400;600;700;800;900&display=swap">
 <style>
-/* ===================================================================
-   Discoveries slide engine (Addani Labs), "easy read" (Mo, 10-05-2026)
-   One font per language, one picture + one big line + one short
-   sentence per slide. All text, colours and pictures come from
-   window.STORY (episode-NN-<slug>-story.js, same folder).
-   =================================================================== */
 :root{
-  --bg:#F4EFE4; --card:#FFFFFF; --ink:#1F1D1A; --ink2:#4A4640; --accent:#E4572E; --ink-rgb:31,29,26;
-  --font:"Atkinson Hyperlegible", "Helvetica Neue", Arial, sans-serif;
-  --top-h:64px;
+  /* Style A (carousel.html): poster paper, navy, tomato */
+  --paper:#F1E7D2; --navy:#15294A; --ink2:#3A4560; --tomato:#E4572E; --cream:#F6EEDC; --pink:#F2B8A6;
+  --font:"Archivo","Arial Narrow",Arial,sans-serif;
+  --bar:60px; --rail:34px; --dots:30px; --col:36rem; --wm:url("../assets/watermark-tile-en.png");
 }
-html[lang="ar"]{ --font:"Cairo", Tahoma, sans-serif; }
+html[lang="ar"]{ --font:"Cairo",Tahoma,sans-serif; --wm:url("../assets/watermark-tile-ar.png"); }
 *,*::before,*::after{ box-sizing:border-box; }
-html,body{ margin:0; height:100%; overflow:hidden; background:var(--bg); color:var(--ink); }
-body{ font-family:var(--font); -webkit-font-smoothing:antialiased; }
-button{ font:inherit; color:inherit; }
+html{ -webkit-text-size-adjust:100%; }
+body{ margin:0; background:var(--paper); color:var(--navy); font-family:var(--font); font-size:1.125rem; line-height:1.5;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+html[lang="ar"] body{ line-height:1.8; }
 a{ color:inherit; }
-img{ -webkit-user-drag:none; user-select:none; }
-:focus-visible{ outline:3px solid var(--accent); outline-offset:3px; border-radius:6px; }
+img{ max-width:100%; display:block; }
+button{ font:inherit; color:inherit; }
+:focus-visible{ outline:3px solid var(--tomato); outline-offset:3px; border-radius:6px; }
 
-/* ---------- top bar ---------- */
-.topbar{
-  position:fixed; top:0; inset-inline:0; height:var(--top-h); z-index:50;
-  display:flex; align-items:center; gap:16px; padding-inline:clamp(16px,3vw,36px);
-  background:var(--bg); border-bottom:1px solid rgba(var(--ink-rgb),.08);
-}
-.logo-link{ display:block; flex:none; }
-.logo-crop{ display:block; position:relative; overflow:hidden; aspect-ratio:860/275; height:32px; }
-.logo-crop img{ position:absolute; width:125.58%; max-width:none; height:auto; left:-11.98%; top:-80.73%; }
-/* Arabic pages show the Arabic logo, مختبرات عداني (Mo, 10-05-2026) */
-.logo-ar{ display:none; height:32px; width:auto; }
-html[lang="ar"] .logo-crop{ display:none; }
-html[lang="ar"] .logo-ar{ display:block; }
-/* "Episodes" = a clear pill button, easy to tap (Mo, 10-05-2026) */
-.back-link{ display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 18px; border-radius:999px;
-  font-weight:700; font-size:1rem; text-decoration:none; background:var(--card); border:1.5px solid rgba(var(--ink-rgb),.22); }
-.back-link:hover{ border-color:var(--accent); }
-.back-link .arr{ color:var(--accent); }
-html[dir="rtl"] .back-link .arr{ display:inline-block; transform:scaleX(-1); }
-.top-title{ flex:1; text-align:center; font-weight:700; font-size:1rem; color:var(--ink2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.lang{ display:inline-flex; border:1.5px solid rgba(var(--ink-rgb),.7); border-radius:999px; overflow:hidden; flex:none; background:var(--card); }
-.lang button{ border:0; background:transparent; cursor:pointer; padding:6px 13px; min-width:42px; font-weight:700; font-size:.9rem; line-height:1.2; color:var(--ink2); }
-.lang button[data-lang="en"]{ font-family:"Atkinson Hyperlegible",sans-serif; }
-.lang button[data-lang="ar"]{ font-family:"Cairo",sans-serif; font-size:1rem; line-height:1.1; }
-.lang button[aria-pressed="true"]{ background:var(--ink); color:#fff; }
+/* the poster paper: the faint, tilted logo pattern from the carousel */
+.wm{ position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
+.wm i{ position:absolute; inset:-60%; transform:rotate(-20deg); opacity:.05; background:var(--wm) center/170px auto repeat; }
+main{ position:relative; z-index:1; }
 
-/* ---------- slides ---------- */
-#story{ height:100vh; height:100dvh; overflow-y:auto; scroll-snap-type:y mandatory; overscroll-behavior-y:contain; outline:none; scrollbar-width:none; }
-#story::-webkit-scrollbar{ display:none; }
-.slide{
-  min-height:100vh; min-height:100dvh; scroll-snap-align:start; scroll-snap-stop:always;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
-  padding:calc(var(--top-h) + 20px) clamp(22px,6vw,80px) 96px;
-}
-.inner{ width:100%; max-width:780px; display:flex; flex-direction:column; align-items:center; }
-.step{ margin:0 0 14px; font-weight:700; font-size:1rem; color:var(--accent); }
-.pic{ height:clamp(150px, 32vh, 340px); width:100%; display:flex; justify-content:center; margin-bottom:clamp(14px,3vh,30px); }
-.pic img{ height:100%; width:100%; max-width:460px; object-fit:contain;
-  filter:drop-shadow(0 12px 14px rgba(var(--ink-rgb),.18)); }
-.big{ margin:0; font-weight:700; font-size:clamp(2rem, 1.2rem + 3vw, 3.6rem); line-height:1.12; letter-spacing:-.01em; text-wrap:balance; }
-html[lang="ar"] .big{ font-weight:800; line-height:1.4; letter-spacing:0; font-size:clamp(1.8rem, 1.1rem + 2.7vw, 3.2rem); }
-.small{ margin:18px 0 0; font-size:clamp(1.15rem, 1rem + .6vw, 1.5rem); line-height:1.55; color:var(--ink2); max-width:32em; text-wrap:pretty; }
+/* ---------- top bar: poster paper with the navy rule ---------- */
+.bar{ position:fixed; top:0; inset-inline:0; height:var(--bar); z-index:50; background:var(--paper); color:var(--navy);
+  border-bottom:3px solid var(--navy);
+  display:flex; align-items:center; gap:8px; padding-inline:max(14px, env(safe-area-inset-left)) max(14px, env(safe-area-inset-right)); }
+.brand{ flex:none; display:block; text-decoration:none; }
+.logo-en{ display:block; position:relative; overflow:hidden; width:94px; height:30px; }
+.logo-en img{ position:absolute; width:125.58%; height:auto; max-width:none; left:-11.98%; top:-80.73%; }
+.brand .logo-ar{ display:none; height:24px; width:auto; }
+html[lang="ar"] .brand .logo-en{ display:none; }
+html[lang="ar"] .brand .logo-ar{ display:block; }
+.back{ display:inline-flex; align-items:center; gap:6px; min-height:44px; padding:0 14px; border-radius:999px; text-decoration:none;
+  font-weight:700; font-size:.95rem; border:2px solid rgba(21,41,74,.22); margin-inline-end:auto; white-space:nowrap; }
+html[lang="en"] .back, html[lang="en"] .icon-btn{ font-stretch:88%; }
+.back:hover, .icon-btn:hover{ border-color:var(--tomato); }
+.back svg{ width:16px; height:16px; }
+html[dir="rtl"] .back svg{ transform:scaleX(-1); }
+.icon-btn{ flex:none; display:inline-grid; place-items:center; gap:6px; grid-auto-flow:column; min-width:44px; min-height:44px; padding:0 12px;
+  border-radius:999px; border:2px solid rgba(21,41,74,.22); background:transparent; cursor:pointer; font-weight:700; font-size:.95rem; }
+.icon-btn svg{ width:18px; height:18px; }
+.icon-btn .lbl{ display:none; }
+.lang{ flex:none; display:inline-flex; border:2px solid var(--navy); border-radius:999px; overflow:hidden; }
+.lang button{ border:0; background:transparent; cursor:pointer; min-width:40px; min-height:40px; padding:0 10px; font-weight:800; font-size:.92rem; color:var(--navy); }
+.lang button[data-lang="en"]{ font-family:"Archivo",sans-serif; }
+.lang button[data-lang="ar"]{ font-family:"Cairo",sans-serif; font-size:1.05rem; }
+.lang button[aria-pressed="true"]{ background:var(--navy); color:var(--paper); }
+
+/* ---------- progress dashes at the top of every screen (as on each carousel slide) ---------- */
+.top{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.dash{ display:flex; gap:5px; }
+.dash b{ width:18px; height:5px; border-radius:3px; background:rgba(21,41,74,.16); }
+.dash b.on{ background:var(--navy); }
+.dash b.now{ background:var(--tomato); width:30px; }
+.eplabel{ font-weight:700; font-size:.9rem; color:var(--ink2); white-space:nowrap; }
+html[lang="en"] .eplabel{ font-stretch:88%; }
+.on-art .dash b{ background:rgba(255,255,255,.55); }
+.on-art .dash b.on{ background:#fff; }
+.on-art .dash b.now{ background:var(--tomato); }
+.on-art .eplabel{ color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.5); }
+
+/* ---------- hero = slide A1: the painted art, the red ribbon, the big condensed line ---------- */
+.hero{ position:relative; padding-top:var(--bar); min-height:100svh; display:flex; flex-direction:column; }
+.hero-art{ position:relative; height:clamp(300px, 52svh, 520px); overflow:hidden; background:#2B4A73; }
+.hero-art img{ width:100%; height:100%; object-fit:cover; object-position:0% 50%; }
+.hero-art::after{ content:""; position:absolute; inset:auto 0 0 0; height:42%; background:linear-gradient(rgba(241,231,210,0), var(--paper)); }
+.hero-art .top{ position:absolute; top:16px; inset-inline:22px; z-index:1; }
+.hero-text{ position:relative; z-index:2; margin-top:-38px; padding:0 22px 52px; flex:1; display:flex; flex-direction:column; justify-content:center; }
+.ribbon{ align-self:flex-start; margin:0 0 18px; background:var(--tomato); color:#fff; font-weight:800; font-size:.95rem; line-height:1.3;
+  padding:5px 12px 6px; transform:rotate(-1.5deg); }
+html[lang="en"] .ribbon{ font-stretch:88%; }
+html[lang="ar"] .ribbon{ transform:rotate(1.5deg); }
+.title{ margin:0; font-weight:900; font-stretch:62%; text-transform:uppercase; font-size:clamp(2.75rem, 1.7rem + 4.6vw, 5.4rem);
+  line-height:.95; letter-spacing:-.005em; text-wrap:balance; }
+html[lang="ar"] .title{ text-transform:none; font-size:clamp(2rem, 1.4rem + 2.8vw, 3.6rem); line-height:1.4; letter-spacing:0; }
+.start{ align-self:flex-start; display:inline-flex; align-items:center; gap:10px; min-height:52px; margin-top:28px; padding:0 22px; border-radius:6px;
+  background:var(--navy); color:var(--cream); text-decoration:none; font-weight:800; font-size:1.05rem; }
+html[lang="en"] .start{ font-stretch:88%; }
+.start:hover{ background:var(--tomato); color:#fff; }
+.start svg{ width:18px; height:18px; }
+
+/* ---------- the five takeaway screens = slides A2-A5 ---------- */
+.scr{ min-height:calc(100svh - var(--bar)); display:flex; align-items:center;
+  padding:56px calc(var(--dots) + 14px) 56px calc(var(--rail) + 20px); }
+html[dir="rtl"] .scr{ padding:56px calc(var(--rail) + 20px) 56px calc(var(--dots) + 14px); }
+.scr > .in{ width:100%; max-width:var(--col); margin-inline:auto; }
+.scr .top{ margin-bottom:28px; }
+.pic{ height:clamp(150px, 25svh, 280px); display:flex; justify-content:flex-start; margin:0 0 28px; }
+.pic img{ height:100%; width:auto; max-width:100%; object-fit:contain; filter:drop-shadow(0 12px 12px rgba(21,41,74,.2)); }
+.big{ margin:0; font-weight:850; font-stretch:72%; font-size:clamp(2.6rem, 1.8rem + 3.4vw, 4.8rem); line-height:1; letter-spacing:-.005em; text-wrap:balance; }
+html[lang="ar"] .big{ font-weight:900; font-size:clamp(1.9rem, 1.4rem + 2.4vw, 3.4rem); line-height:1.4; letter-spacing:0; }
+.small{ margin:20px 0 0; font-size:1.15rem; line-height:1.45; color:var(--ink2); max-width:28em; text-wrap:pretty; }
 html[lang="ar"] .small{ line-height:1.8; }
-.small b{ color:var(--ink); }
-.src{ margin-top:22px; font-size:.95rem; color:var(--ink2); text-decoration:underline; text-decoration-color:rgba(var(--ink-rgb),.3); text-underline-offset:4px; }
-.src:hover{ color:var(--accent); text-decoration-color:var(--accent); }
-.next{
-  position:fixed; z-index:40; bottom:calc(22px + env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%);
-  display:inline-flex; align-items:center; gap:8px; min-height:48px; padding:0 22px; border-radius:999px; cursor:pointer;
-  border:0; background:var(--ink); color:#fff; font-weight:700; font-size:1rem; transition:opacity .25s;
-}
-.next svg{ width:18px; height:18px; }
-.next.away{ opacity:0; pointer-events:none; }
+.src{ display:inline-flex; align-items:center; min-height:44px; margin-top:8px; font-size:.95rem; color:var(--ink2);
+  text-underline-offset:4px; text-decoration-color:rgba(21,41,74,.35); }
+.src:hover{ color:var(--tomato); }
 
-/* first slide: episode name */
-.series{ margin:0 0 10px; font-weight:700; font-size:1.05rem; color:var(--ink2); }
+/* ethics = slide A5: smaller scale picture, three short question lines between rules */
+.pic.sm{ height:clamp(110px, 15svh, 180px); margin-bottom:22px; }
+.qa{ list-style:none; padding:0; margin:22px 0 0; }
+.qa li{ margin:0; padding:13px 0; border-top:2px solid rgba(21,41,74,.14); }
+.qa li:last-child{ border-bottom:2px solid rgba(21,41,74,.14); }
+.qa b{ display:block; font-weight:800; font-size:1.25rem; line-height:1.2; color:var(--tomato); }
+html[lang="en"] .qa b{ font-stretch:80%; }
+.qa span{ display:block; margin-top:4px; font-size:1.05rem; line-height:1.4; color:var(--ink2); }
+html[lang="ar"] .qa b{ line-height:1.5; }
+html[lang="ar"] .qa span{ line-height:1.7; margin-top:0; }
 
-/* last slide: watch on YouTube */
-.end-logo{ width:min(340px,64vw); margin-bottom:28px; }
-.end-logo .logo-crop{ height:auto; width:100%; }
-.end-logo .logo-ar{ width:100%; height:auto; }
-.yt-bar{ display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:28px; }
-.yt-pill{ display:inline-flex; align-items:center; gap:10px; min-height:52px; padding:0 22px 0 16px; border-radius:999px;
-  background:var(--card); border:1.5px solid rgba(var(--ink-rgb),.2); text-decoration:none; font-weight:700; font-size:1.1rem; }
-.yt-pill[lang="en"]{ font-family:"Atkinson Hyperlegible",sans-serif; }
+/* ---------- watch = slide A6: navy poster, the art's sky, the question, the two buttons ---------- */
+.watch{ position:relative; overflow:hidden; background:var(--navy); color:var(--cream); }
+.watch .wm2{ position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none; }
+.watch .wm2 i{ position:absolute; inset:-60%; transform:rotate(-20deg); opacity:.06; filter:brightness(0) invert(1); background:var(--wm) center/170px auto repeat; }
+.watch-art{ position:relative; z-index:1; height:clamp(260px, 42svh, 460px); overflow:hidden; }
+.watch-art img{ width:100%; height:100%; object-fit:cover; object-position:100% 40%; }
+.watch-art::after{ content:""; position:absolute; inset:auto 0 0 0; height:60%; background:linear-gradient(rgba(21,41,74,0), var(--navy)); }
+.watch-art .top{ position:absolute; top:16px; inset-inline:22px; z-index:1; }
+.watch .in{ position:relative; z-index:2; max-width:40rem; margin:-56px auto 0; padding:0 22px 28px; }
+.watch .big{ color:#fff; font-stretch:68%; font-size:clamp(3.1rem, 2rem + 4.6vw, 6rem); line-height:.95; }
+html[lang="ar"] .watch .big{ font-size:clamp(2.3rem, 1.6rem + 3vw, 4rem); line-height:1.35; }
+.wcta{ margin:22px 0 0; font-weight:800; font-size:1.2rem; line-height:1.3; color:#fff; }
+html[lang="en"] .wcta{ font-stretch:82%; }
+.yt{ display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
+.yt-pill{ display:inline-flex; align-items:center; gap:12px; min-height:58px; padding:0 20px 0 14px; border-radius:12px; background:var(--cream);
+  text-decoration:none; font-weight:800; font-size:1.1rem; color:var(--navy); }
+.yt-pill[lang="en"]{ font-family:"Archivo",sans-serif; font-stretch:88%; }
 .yt-pill[lang="ar"]{ font-family:"Cairo",sans-serif; }
-.yt-pill svg{ width:30px; height:21px; flex:none; }
-.yt-pill:hover{ border-color:var(--accent); }
-.yt-pill.soon{ opacity:.6; cursor:default; border-style:dashed; }
-.yt-pill.soon:hover{ border-color:rgba(var(--ink-rgb),.2); }
-.yt-pill em{ font-style:normal; font-weight:400; font-size:.9rem; color:var(--ink2); }
-.back-all{ margin-top:26px; font-weight:700; font-size:1rem; color:var(--ink2); text-underline-offset:5px; }
+.yt-pill svg{ width:36px; height:26px; flex:none; }
+a.yt-pill:hover{ background:#fff; }
+.yt-pill.soon{ cursor:default; }
+.yt-pill em{ font-style:normal; font-weight:500; font-size:.88rem; color:var(--ink2); font-stretch:100%; }
+.chan{ display:inline-flex; align-items:center; min-height:44px; margin-top:12px; font-weight:700; color:var(--pink); text-underline-offset:5px; }
+.sources{ margin:26px 0 0; border-top:2px solid rgba(246,238,220,.22); }
+.sources summary{ cursor:pointer; list-style:none; display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:52px; font-weight:700; font-size:1rem; color:rgba(246,238,220,.85); }
+.sources summary::-webkit-details-marker{ display:none; }
+.sources summary svg{ width:20px; height:20px; transition:transform .2s; }
+.sources[open] summary svg{ transform:rotate(180deg); }
+.sources ol{ direction:ltr; text-align:left; margin:0 0 20px; padding-left:1.4em; font-family:"Archivo",sans-serif; font-size:.92rem; line-height:1.5; color:rgba(246,238,220,.82); }
+.sources li{ margin:0 0 10px; overflow-wrap:anywhere; }
+.sources li a{ color:var(--pink); text-underline-offset:3px; }
+.sources .note{ margin:0 0 16px; font-size:.92rem; color:rgba(246,238,220,.82); }
+/* the carousel's foot: logo bottom-left (also in Arabic), the site on the right */
+.foot{ position:relative; z-index:2; max-width:40rem; margin:0 auto; padding:0 22px max(28px, env(safe-area-inset-bottom)); }
+.foot-row{ direction:ltr; display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:18px; border-top:3px solid rgba(255,255,255,.35); }
+.foot-home{ display:block; }
+.foot-row img{ height:34px; width:auto; }
+.foot-row .logo-ar{ display:none; height:30px; }
+html[lang="ar"] .foot-row .logo-en-w{ display:none; }
+html[lang="ar"] .foot-row .logo-ar{ display:block; }
+.site{ font-family:"Archivo",sans-serif; font-weight:800; font-size:1.1rem; color:#fff; text-decoration:none; }
+.tag{ margin:14px 0 0; font-size:.88rem; color:rgba(246,238,220,.65); }
 
-/* gentle fade-in when a slide arrives */
-.fade{ opacity:0; transform:translateY(16px); transition:opacity .3s, transform .3s; }
-.on .fade{ opacity:1; transform:none; transition:opacity .6s ease calc(var(--d,0) * 120ms), transform .6s ease calc(var(--d,0) * 120ms); }
-@media (prefers-reduced-motion: reduce){ .fade, .on .fade{ transform:none; transition:opacity .3s; } }
+.toast{ position:fixed; z-index:60; top:calc(var(--bar) + 14px); left:50%; transform:translateX(-50%); background:var(--navy); color:#fff; padding:10px 18px; border-radius:999px; font-weight:700; opacity:0; transition:opacity .2s; pointer-events:none; }
+.toast.on{ opacity:1; }
 
-@media (max-width:700px){
-  :root{ --top-h:56px; }
-  .topbar{ gap:10px; }
-  .top-title{ display:none; }
-  .back-link{ margin-inline-end:auto; padding:0 14px; }
-  .logo-crop, .logo-ar{ height:26px; }
-  .slide{ padding-bottom:100px; }
-  .pic{ height:clamp(130px, 28vh, 260px); }
+/* ---------- side helix (canvas) and side progress dashes ---------- */
+#helix{ position:fixed; top:0; z-index:5; pointer-events:none; }
+.prog{ position:fixed; z-index:20; top:50%; inset-inline-end:max(2px, env(safe-area-inset-right)); transform:translateY(-50%);
+  display:flex; flex-direction:column; align-items:center; margin:0; padding:0; list-style:none; transition:opacity .2s; }
+.prog.off{ opacity:0; pointer-events:none; }
+.prog a{ position:relative; display:grid; place-items:center; width:30px; height:40px; text-decoration:none; }
+.prog a i{ display:block; width:5px; height:16px; border-radius:3px; background:rgba(21,41,74,.18); transition:height .2s, background .2s; }
+.prog a.done i{ background:var(--navy); }
+.prog a.now i{ background:var(--tomato); height:30px; }
+
+@media (min-width:560px){ .icon-btn .lbl{ display:inline; } }
+@media (min-width:900px){
+  :root{ --bar:68px; --rail:0px; --dots:0px; }
+  .logo-en{ width:106px; height:34px; }
+  .brand .logo-ar{ height:28px; }
+  .wm i, .watch .wm2 i{ background-size:240px auto; }
+  /* hero: the art fills the far side and fades into the paper; the line sits on the near side */
+  .hero{ min-height:min(92vh, 900px); justify-content:center; }
+  .hero-art{ position:absolute; top:var(--bar); bottom:0; inset-inline-end:0; width:60%; height:auto; }
+  .hero-art::after{ inset:0; height:auto; background:linear-gradient(to right, var(--paper) 0%, rgba(241,231,210,.6) 18%, rgba(241,231,210,0) 42%),
+    linear-gradient(rgba(241,231,210,0) 78%, var(--paper)); }
+  html[dir="rtl"] .hero-art::after{ background:linear-gradient(to left, var(--paper) 0%, rgba(241,231,210,.6) 18%, rgba(241,231,210,0) 42%),
+    linear-gradient(rgba(241,231,210,0) 78%, var(--paper)); }
+  .hero-art .top{ top:24px; inset-inline:auto 32px; }
+  .hero-art .top .dash{ display:none; }
+  .hero-text{ margin:0; flex:none; width:41%; padding:56px 0 56px clamp(40px, 6vw, 110px); }
+  html[dir="rtl"] .hero-text{ padding:56px clamp(40px, 6vw, 110px) 56px 0; }
+  .hero-text .dash-d{ display:flex; margin-bottom:34px; }
+  .ribbon{ font-size:1.1rem; }
+  .title{ font-size:clamp(3.6rem, 1.2rem + 3.6vw, 4.8rem); }
+  html[lang="ar"] .title{ font-size:clamp(2.4rem, 1.2rem + 2.2vw, 3.4rem); }
+  .scr, html[dir="rtl"] .scr{ padding:96px 120px; }
+  .small{ font-size:1.35rem; }
+  .qa b{ font-size:1.45rem; }
+  .qa span{ font-size:1.2rem; }
+  .prog{ inset-inline-end:28px; }
+  .watch-art{ height:clamp(320px, 50vh, 560px); }
+  .watch .in, .foot{ max-width:var(--col); padding-inline:0; }
+  .wcta{ font-size:1.45rem; }
 }
-@media (max-height:620px){ .pic{ height:22vh; } .big{ font-size:clamp(1.6rem, 1rem + 2.4vw, 2.6rem); } .small{ margin-top:12px; } }
-.nodata{ min-height:100vh; display:grid; place-items:center; padding:40px; text-align:center; }
-</style>
-</head>
+.hero-text .dash-d{ display:none; }
+.nodata{ min-height:60vh; display:grid; place-items:center; padding:40px; text-align:center; }
+@media (prefers-reduced-motion:reduce){ .prog a i, .sources summary svg{ transition:none; } }
+</style></head>
 <body>
-<header class="topbar">
-  <a class="logo-link" href="../index.html" id="homeLink"><span class="logo-crop"><img src="../assets/logo-blue.png" alt="Addani Labs" width="1080" height="751"></span><img class="logo-ar" src="../assets/logo-ar-blue.png" alt="مختبرات عداني" width="978" height="210"></a>
-  <a class="back-link" href="../index.html#episodes" id="backLink"><span class="arr" aria-hidden="true">&larr;</span><span id="backTxt">Episodes</span></a>
-  <div class="top-title" id="topTitle"></div>
+<div class="wm" aria-hidden="true"><i></i></div>
+<header class="bar">
+  <a class="brand" href="../index.html" id="homeLink"><span class="logo-en"><img src="../assets/logo-blue.png" alt="Addani Labs" width="1080" height="751"></span><img class="logo-ar" src="../assets/logo-ar-blue.png" alt="مختبرات عداني" width="978" height="210"></a>
+  <a class="back" href="../index.html#episodes" id="backLink"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-u="episodes"></span></a>
+  <button type="button" class="icon-btn" id="share"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="lbl" data-u="share"></span></button>
   <div class="lang" role="group" id="langSwitch" aria-label="Language">
     <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
     <button type="button" data-lang="ar" lang="ar" aria-pressed="false">ع</button>
   </div>
 </header>
-<main id="story" tabindex="-1"></main>
-<button type="button" class="next" id="next"></button>
-<noscript><div class="nodata">This story needs JavaScript. The full episode is on the Addani Labs YouTube channel.</div></noscript>
-<!-- Episode data (text, colours, pictures). The engine below never changes per episode. -->
+
+<main>
+  <section class="hero" id="top">
+    <div class="hero-art">
+      <img id="heroArt" alt="" width="1280" height="720" fetchpriority="high">
+      <div class="top on-art" data-n="1"></div>
+    </div>
+    <div class="hero-text">
+      <div class="top dash-d" data-n="1" data-nolabel="1"></div>
+      <p class="ribbon" id="ribbon"></p>
+      <h1 class="title" id="hook"></h1>
+      <a class="start" href="#s1"><span data-u="start"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+  </section>
+
+  <div id="story"></div>
+
+  <section class="watch" id="watch">
+    <div class="wm2" aria-hidden="true"><i></i></div>
+    <div class="watch-art">
+      <img id="watchArt" alt="" width="1280" height="720" loading="lazy">
+      <div class="top on-art" id="watchTop"></div>
+    </div>
+    <div class="in">
+      <h2 class="big" data-u="wbig"></h2>
+      <p class="wcta" data-u="wcta"></p>
+      <div class="yt" id="yt"></div>
+      <a class="chan" href="https://www.youtube.com/@addanilabs" target="_blank" rel="noopener" data-u="chan"></a>
+      <details class="sources" id="sources">
+        <summary><span data-u="sources"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></summary>
+        <p class="note" data-u="srcNote"></p>
+        <ol id="srcList"></ol>
+      </details>
+    </div>
+    <footer class="foot">
+      <div class="foot-row">
+        <a href="../index.html" class="foot-home"><img class="logo-en-w" src="../assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="../assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210"></a>
+        <a class="site" href="../index.html">addanilabs.org</a>
+      </div>
+      <p class="tag" data-u="foot"></p>
+    </footer>
+  </section>
+</main>
+
+<canvas id="helix" aria-hidden="true"></canvas>
+<nav class="prog off" id="prog" aria-label="Story progress"></nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<noscript><p style="padding:100px 20px;text-align:center">This story needs JavaScript. The full episode is on the Addani Labs YouTube channel.</p></noscript>
+
+<!-- Episode data (text, pictures, YouTube links). The engine below never changes per episode. -->
 <script src="episode-01-crispr-story.js"></script>
 <script>
 (function(){
-  'use strict';
-  var S = window.STORY, doc = document, html = doc.documentElement;
-  var story = doc.getElementById('story'), nextBtn = doc.getElementById('next');
-  var UI = {
-    en: { episodes:'Episodes', episode:'Episode', next:'Next', of:'of', source:'Source', backAll:'Back to all episodes',
-          endBig:'Want the full story?', endSmall:'Watch the episode on YouTube.', soon:'Coming soon', newTab:'opens in a new tab',
-          noData:'This episode story could not be loaded.' },
-    ar: { episodes:'الحلقات', episode:'الحلقة', next:'التالي', of:'من', source:'المصدر', backAll:'العودة إلى كل الحلقات',
-          endBig:'تريد القصة كاملة؟', endSmall:'شاهد الحلقة على يوتيوب.', soon:'قريبًا', newTab:'يفتح في نافذة جديدة',
-          noData:'تعذّر تحميل قصة هذه الحلقة.' }
-  };
-  var lang = initialLang(), secs = [], cur = -1;
-  if (!S || !S.scenes || !S.scenes.length){ story.innerHTML = '<div class="nodata">' + UI[lang].noData + '</div>'; return; }
+'use strict';
+var S = window.STORY, doc = document, html = doc.documentElement, W = window;
+var UI = {
+  en:{ episodes:'Episodes', share:'Share', start:'Start reading', episode:'Episode',
+       wbig:'Want the full story?', wcta:'Watch the full episode on YouTube', soon:'Coming soon', chan:'Addani Labs on YouTube',
+       sources:'Sources', srcNote:'Every line on this page was checked against these sources.',
+       foot:'Addani Labs. Science explained from the paper.', source:'Source', newTab:'opens in a new tab',
+       copied:'Link copied', of:'of', progress:'Story progress', noData:'This episode story could not be loaded.' },
+  ar:{ episodes:'الحلقات', share:'مشاركة', start:'ابدأ القراءة', episode:'الحلقة',
+       wbig:'تريد القصة كاملة؟', wcta:'شاهد الحلقة كاملة على يوتيوب', soon:'قريبًا', chan:'مختبرات عداني على يوتيوب',
+       sources:'المصادر', srcNote:'كل سطر في هذه الصفحة رُوجع على هذه المصادر.',
+       foot:'مختبرات عداني. العلم كما ورد في الأبحاث.', source:'المصدر', newTab:'يفتح في نافذة جديدة',
+       copied:'تم نسخ الرابط', of:'من', progress:'التقدّم في القصة', noData:'تعذّر تحميل قصة هذه الحلقة.' }
+};
+var reduce = W.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var lang = (function(){ var v = null; try{ v = localStorage.getItem('al-lang'); }catch(e){}
+  if (v === 'en' || v === 'ar') return v; return String(navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en'; })();
+var storyEl = doc.getElementById('story'), prog = doc.getElementById('prog');
+if (!S || !S.scenes || !S.scenes.length){ storyEl.innerHTML = '<div class="nodata">' + UI[lang].noData + '</div>'; return; }
 
-  function initialLang(){
-    var v = null; try { v = localStorage.getItem('al-lang'); } catch(e){}
-    if (v === 'en' || v === 'ar') return v;
-    return String(navigator.language || '').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
-  }
-  function t(o){ if (o == null) return ''; if (typeof o !== 'object') return String(o); return o[lang] != null ? o[lang] : (o.en || ''); }
-  function u(k){ var ov = (S.ui || {})[lang] || {}; return ov[k] != null ? ov[k] : UI[lang][k]; }
-  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function t(o){ if (o == null) return ''; if (typeof o !== 'object') return String(o); return o[lang] != null ? o[lang] : (o.en || ''); }
+function u(k){ return UI[lang][k]; }
+function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+var N = S.scenes.length, NSCR = N + 2; /* hero + screens + watch */
 
-  var th = S.theme || {};
-  ['bg','card','ink','ink2','accent'].forEach(function(k){ if (th[k]) html.style.setProperty('--' + k, th[k]); });
+/* sources fold (English, as published) and the art */
+doc.getElementById('srcList').innerHTML = (S.sources || []).map(function(s){ return '<li>' + s + '</li>'; }).join('');
+['heroArt','watchArt'].forEach(function(id){ var im = doc.getElementById(id); im.src = S.art.src; if (S.art.small) im.srcset = S.art.small + ' 960w, ' + S.art.src + ' ' + S.art.w + 'w'; im.sizes = '(min-width:900px) 60vw, 100vw'; });
+doc.getElementById('watchTop').setAttribute('data-n', NSCR);
 
-  var YT = '<svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="5" fill="#FF0000"/><path d="M12 6l8 4.5-8 4.5z" fill="#fff"/></svg>';
-  var DOWN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+function screensHTML(){
+  return S.scenes.map(function(sc, i){
+    var h = '<section class="scr" id="' + esc(sc.id) + '"><div class="in"><div class="top" data-n="' + (i + 2) + '"></div>';
+    if (sc.image) h += '<div class="pic' + (sc.small_pic ? ' sm' : '') + '"><img src="' + esc(sc.image) + '" width="' + (sc.w || '') + '" height="' + (sc.h || '') + '" alt="' + esc(t(sc.alt)) + '" loading="lazy"></div>';
+    h += '<h2 class="big">' + esc(t(sc.big)) + '</h2>';
+    if (sc.small) h += '<p class="small">' + esc(t(sc.small)) + '</p>';
+    if (sc.lines) h += '<ul class="qa">' + sc.lines.map(function(l){ return '<li><b>' + esc(t(l.q)) + '</b><span>' + esc(t(l.a)) + '</span></li>'; }).join('') + '</ul>';
+    if (sc.source && sc.source.doi) h += '<a class="src" href="https://doi.org/' + esc(sc.source.doi) + '" target="_blank" rel="noopener" aria-label="' + esc(u('source') + ': ' + t(sc.source.label) + ' (' + u('newTab') + ')') + '">' + u('source') + ': ' + esc(t(sc.source.label)) + ' ↗</a>';
+    return h + '</div></section>';
+  }).join('');
+}
 
-  function slideHTML(sc, i, n){
-    var h = '<div class="inner">';
-    h += '<p class="step fade">' + (i + 1) + ' ' + u('of') + ' ' + n + '</p>';
-    if (i === 0) h += '<p class="series fade">' + esc(t(S.series)) + ' · ' + u('episode') + ' ' + S.number + ': ' + esc(t(S.title)) + '</p>';
-    if (sc.image) h += '<div class="pic fade" style="--d:1"><img src="' + esc(sc.image) + '" alt="' + esc(t(sc.imageAlt)) + '"></div>';
-    h += '<h2 class="big fade" style="--d:2">' + t(sc.big) + '</h2>';
-    if (sc.small) h += '<p class="small fade" style="--d:3">' + t(sc.small) + '</p>';
-    if (sc.source && sc.source.doi) h += '<a class="src fade" style="--d:4" href="https://doi.org/' + esc(sc.source.doi) + '" target="_blank" rel="noopener" aria-label="' + esc(u('source') + ': ' + t(sc.source.label) + ' (' + u('newTab') + ')') + '">' + u('source') + ': ' + esc(t(sc.source.label)) + ' ↗</a>';
-    return h + '</div>';
-  }
-  function endHTML(){
-    var y = S.youtube || {}, logo = '<span class="logo-crop"><img src="../assets/logo-blue.png" alt="Addani Labs" width="1080" height="751"></span><img class="logo-ar" src="../assets/logo-ar-blue-stacked.png" alt="مختبرات عداني">';
-    function pill(k, label){
-      return y[k] ? '<a class="yt-pill" lang="' + k + '" href="' + esc(y[k]) + '" target="_blank" rel="noopener">' + YT + label + '</a>'
-                  : '<span class="yt-pill soon" lang="' + k + '" aria-disabled="true">' + YT + label + ' <em lang="' + lang + '">· ' + u('soon') + '</em></span>';
-    }
-    return '<div class="inner"><div class="end-logo fade">' + logo + '</div>' +
-      '<h2 class="big fade" style="--d:1">' + (S.ui && S.ui[lang] && S.ui[lang].endBig || u('endBig')) + '</h2>' +
-      '<p class="small fade" style="--d:2">' + u('endSmall') + '</p>' +
-      '<div class="yt-bar fade" style="--d:3">' + pill('en', 'English') + pill('ar', 'العربية') + '</div>' +
-      '<a class="back-all fade" style="--d:4" href="../index.html#episodes">' + u('backAll') + '</a></div>';
-  }
-  function render(){
-    var n = S.scenes.length, out = '';
-    S.scenes.forEach(function(sc, i){ out += '<section class="slide" id="' + esc(sc.id) + '" aria-label="' + (i + 1) + ' ' + u('of') + ' ' + n + '">' + slideHTML(sc, i, n) + '</section>'; });
-    out += '<section class="slide" id="end">' + endHTML() + '</section>';
-    story.innerHTML = out;
-    secs = [].slice.call(story.querySelectorAll('.slide'));
-    if (cur >= 0) secs[cur].classList.add('on');
-  }
-  function setLang(l, fromStorage){
-    lang = l; html.lang = l; html.dir = l === 'ar' ? 'rtl' : 'ltr';
-    if (!fromStorage){ try { localStorage.setItem('al-lang', l); } catch(e){} }
-    [].forEach.call(doc.querySelectorAll('#langSwitch button'), function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
-    doc.getElementById('backTxt').textContent = u('episodes');
-    doc.getElementById('topTitle').textContent = u('episode') + ' ' + S.number + ' · ' + t(S.title);
-    doc.title = t(S.title) + ' · ' + t(S.series) + ' · ' + (l === 'ar' ? 'مختبرات عداني' : 'Addani Labs');
-    nextBtn.innerHTML = u('next') + DOWN;
-    var keep = cur; render(); cur = keep;
-    if (cur >= 0) story.scrollTop = secs[cur].offsetTop;
-  }
-  function update(){
-    var mid = story.scrollTop + story.clientHeight / 2, idx = 0;
-    secs.forEach(function(s, i){ if (s.offsetTop <= mid) idx = i; });
-    if (idx !== cur){ if (cur >= 0 && secs[cur]) secs[cur].classList.remove('on'); cur = idx; secs[cur].classList.add('on'); }
-    nextBtn.classList.toggle('away', cur === secs.length - 1);
-  }
-  story.addEventListener('scroll', function(){ requestAnimationFrame(update); }, { passive:true });
-  window.addEventListener('resize', function(){ if (cur >= 0) story.scrollTop = secs[cur].offsetTop; });
-  nextBtn.addEventListener('click', function(){ if (cur < secs.length - 1) secs[cur + 1].scrollIntoView({ behavior:'smooth' }); });
-  doc.getElementById('langSwitch').addEventListener('click', function(e){ var b = e.target.closest('button'); if (b && b.dataset.lang !== lang) setLang(b.dataset.lang); });
-  window.addEventListener('storage', function(e){ if (e.key === 'al-lang' && (e.newValue === 'en' || e.newValue === 'ar')) setLang(e.newValue, true); });
+/* the static dash row at the top of each screen (as on each carousel slide) */
+function tops(){
+  var label = u('episode') + ' ' + S.number + ': ' + t(S.title);
+  [].forEach.call(doc.querySelectorAll('.top[data-n]'), function(el){
+    var n = +el.getAttribute('data-n'), h = '<div class="dash" aria-hidden="true">';
+    for (var i = 1; i <= NSCR; i++) h += '<b class="' + (i < n ? 'on' : i === n ? 'now' : '') + '"></b>';
+    h += '</div>';
+    if (!el.hasAttribute('data-nolabel')) h += '<span class="eplabel">' + esc(label) + '</span>';
+    el.innerHTML = h;
+  });
+}
 
-  setLang(lang, true);
-  var start = 0;
-  if (location.hash){ var h = decodeURIComponent(location.hash.slice(1)); secs.forEach(function(s, i){ if (s.id === h) start = i; }); }
-  story.scrollTop = secs[start].offsetTop;
-  try { story.focus({ preventScroll:true }); } catch(e){}
-  requestAnimationFrame(function(){ requestAnimationFrame(update); });
+var YTSVG = '<svg viewBox="0 0 36 26" aria-hidden="true"><rect width="36" height="26" rx="7" fill="#FF0000"/><path d="M14.5 7.5l9 5.5-9 5.5z" fill="#fff"/></svg>';
+function ytHTML(){
+  var y = S.youtube || {};
+  function pill(k, label){
+    return y[k] ? '<a class="yt-pill" lang="' + k + '" href="' + esc(y[k]) + '" target="_blank" rel="noopener">' + YTSVG + label + '</a>'
+      : '<span class="yt-pill soon" lang="' + k + '" aria-disabled="true">' + YTSVG + label + ' <em lang="' + lang + '">' + u('soon') + '</em></span>';
+  }
+  return pill('en', 'English') + pill('ar', 'العربية');
+}
+
+var screens = [], dots = [];
+function setLang(l, fromStorage){
+  lang = l; html.lang = l; html.dir = l === 'ar' ? 'rtl' : 'ltr';
+  if (!fromStorage){ try{ localStorage.setItem('al-lang', l); }catch(e){} }
+  [].forEach.call(doc.querySelectorAll('[data-u]'), function(el){ el.textContent = u(el.getAttribute('data-u')); });
+  [].forEach.call(doc.querySelectorAll('#langSwitch button'), function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === l)); });
+  doc.getElementById('share').setAttribute('aria-label', u('share'));
+  doc.getElementById('ribbon').textContent = t(S.ribbon);
+  doc.getElementById('hook').textContent = t(S.hook);
+  doc.getElementById('heroArt').alt = t(S.art.alt);
+  doc.getElementById('yt').innerHTML = ytHTML();
+  storyEl.innerHTML = screensHTML();
+  screens = [].slice.call(storyEl.querySelectorAll('.scr'));
+  prog.innerHTML = ''; prog.setAttribute('aria-label', u('progress'));
+  dots = screens.map(function(s, i){ var a = doc.createElement('a'); a.href = '#' + s.id; a.innerHTML = '<i></i>';
+    a.setAttribute('aria-label', (i + 1) + ' ' + u('of') + ' ' + N + ': ' + t(S.scenes[i].nav)); a.title = t(S.scenes[i].nav); prog.appendChild(a); return a; });
+  tops();
+  doc.title = t(S.hook) + (l === 'ar' ? ' · مختبرات عداني' : ' · Addani Labs');
+  layout(); update();
+}
+
+/* ---------- the side helix ----------
+   Drawn on a canvas beside the text (left in English, right in Arabic) and anchored to the page, so it turns as you
+   scroll. One letter sits on the helix at mid-screen: navy G, tomato-red A at the mutation screen, navy G again at the
+   edit screen (STORY.letter). Letters are illustrative, not a real sequence. */
+var cv = doc.getElementById('helix'), cx = cv.getContext('2d'), dpr = 1;
+var railX = 0, railW = 34, wide = false, storyTop = 0, storyBot = 0, bigM = 0, bigE = 0;
+function docTop(el){ return el.getBoundingClientRect().top + W.scrollY; }
+function layout(){
+  if (!screens.length) return;
+  wide = W.innerWidth >= 900;
+  railW = wide ? 72 : 34;
+  var rtl = html.dir === 'rtl', col = screens[0].querySelector('.in').getBoundingClientRect();
+  if (wide){ railX = rtl ? Math.min(W.innerWidth - railW - 16, col.right + 64) : Math.max(16, col.left - 64 - railW); }
+  else { railX = rtl ? W.innerWidth - railW - 8 : 8; }
+  dpr = Math.min(W.devicePixelRatio || 1, 2);
+  cv.style.left = railX + 'px'; cv.style.width = railW + 'px'; cv.style.height = W.innerHeight + 'px';
+  cv.width = Math.round(railW * dpr); cv.height = Math.round(W.innerHeight * dpr);
+  storyTop = docTop(storyEl); storyBot = storyTop + storyEl.offsetHeight;
+  function mid(id){ var el = id && doc.querySelector('#' + id + ' .big'); if (!el) return 1e9; var r = el.getBoundingClientRect(); return r.top + W.scrollY + r.height/2; }
+  var L = S.letter || {}; bigM = mid(L.mutation); bigE = mid(L.edit);
+}
+/* 0 → 1 as a heading moves from 90% to 62% of the screen height */
+function pAt(y){ var v = y - W.scrollY, vh = W.innerHeight; var p = Math.max(0, Math.min(1, (vh*0.90 - v) / (vh*0.28))); return reduce ? (p > .5 ? 1 : 0) : p; }
+function mix(a, b, k){ return 'rgb(' + [0,1,2].map(function(i){ return Math.round(a[i] + (b[i]-a[i])*k); }).join(',') + ')'; }
+var NAVY=[21,41,74], RED=[228,87,46];
+function drawHelix(){
+  var vh = W.innerHeight, sy = W.scrollY, c = cx;
+  c.setTransform(dpr,0,0,dpr,0,0); c.clearRect(0,0,railW,vh);
+  var y0 = Math.max(0, storyTop - sy), y1 = Math.min(vh, storyBot - sy);
+  if (y1 <= y0) return;
+  var mid = railW/2, A = railW*0.36, lam = wide ? 58 : 44, rot = reduce ? 0 : sy/260, step = wide ? 26 : 22;
+  c.save(); c.beginPath(); c.rect(0, y0, railW, y1-y0); c.clip();
+  var first = Math.ceil((y0 + sy)/step)*step;
+  for (var dy = first; dy - sy <= y1; dy += step){
+    var y = dy - sy, ph = dy/lam + rot, s = Math.sin(ph);
+    c.strokeStyle = 'rgba(21,41,74,' + (0.08 + 0.16*Math.abs(Math.cos(ph))) + ')';
+    c.lineWidth = wide ? 2 : 1.6; c.beginPath(); c.moveTo(mid + A*s, y); c.lineTo(mid - A*s, y); c.stroke();
+  }
+  [1,-1].forEach(function(sign){
+    c.beginPath();
+    for (var y = y0; y <= y1; y += 3){ var x = mid + sign*A*Math.sin((y + sy)/lam + rot); if (y===y0) c.moveTo(x,y); else c.lineTo(x,y); }
+    c.strokeStyle = 'rgba(21,41,74,.62)'; c.lineWidth = wide ? 2.6 : 2.1; c.stroke();
+  });
+  var ly = vh * 0.5;
+  if (ly > y0 + 16 && ly < y1 - 16){
+    var pm = pAt(bigM), pe = pAt(bigE), col, letter;
+    if (pe > 0){ col = mix(RED, NAVY, pe); letter = pe < .5 ? 'A' : 'G'; }
+    else { col = mix(NAVY, RED, pm); letter = pm < .5 ? 'G' : 'A'; }
+    var r = wide ? 17 : 13;
+    c.fillStyle = 'rgba(241,231,210,.96)'; c.beginPath(); c.arc(mid, ly, r + 3, 0, Math.PI*2); c.fill();
+    c.fillStyle = col; c.beginPath(); c.arc(mid, ly, r, 0, Math.PI*2); c.fill();
+    c.fillStyle = '#fff'; c.font = '800 ' + (wide ? 19 : 14) + 'px "Archivo", Arial, sans-serif';
+    c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(letter, mid, ly + 1);
+  }
+  c.restore();
+}
+
+/* ---------- scroll-linked updates (no pop-ins: every word is already on the page) ---------- */
+function update(){
+  if (!screens.length) return;
+  var midY = W.scrollY + W.innerHeight*0.5, idx = -1;
+  screens.forEach(function(s, i){ if (docTop(s) <= midY) idx = i; });
+  prog.classList.toggle('off', !(midY >= storyTop && midY < storyBot));
+  dots.forEach(function(a, i){
+    a.classList.toggle('done', i < idx); a.classList.toggle('now', i === idx);
+    if (i === idx) a.setAttribute('aria-current', 'step'); else a.removeAttribute('aria-current');
+  });
+  drawHelix();
+}
+var ticking = false;
+W.addEventListener('scroll', function(){ if (!ticking){ ticking = true; requestAnimationFrame(function(){ ticking = false; update(); }); } }, { passive:true });
+W.addEventListener('resize', function(){ layout(); update(); });
+W.addEventListener('load', function(){ layout(); update(); });
+if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(function(){ layout(); update(); });
+
+doc.getElementById('langSwitch').addEventListener('click', function(e){ var b = e.target.closest('button'); if (b && b.dataset.lang !== lang) setLang(b.dataset.lang); });
+W.addEventListener('storage', function(e){ if (e.key === 'al-lang' && (e.newValue === 'en' || e.newValue === 'ar')) setLang(e.newValue, true); });
+
+var toast = doc.getElementById('toast'), tt;
+doc.getElementById('share').addEventListener('click', function(){
+  var sh = S.share || {}, url = sh.url || location.href, data = { title: t(S.hook), text: t(sh.text), url: url };
+  if (navigator.share){ navigator.share(data).catch(function(){}); return; }
+  var done = function(){ toast.textContent = u('copied'); toast.classList.add('on'); clearTimeout(tt); tt = setTimeout(function(){ toast.classList.remove('on'); }, 1800); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done); else done();
+});
+
+setLang(lang, true);
+/* a link like episode-01-crispr.html#s3 opens on that screen once the screens exist */
+if (location.hash){ var target = doc.getElementById(decodeURIComponent(location.hash.slice(1))); if (target) target.scrollIntoView(); }
 })();
 </script>
 </body>
