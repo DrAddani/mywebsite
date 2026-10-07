@@ -82,6 +82,8 @@ html[dir="rtl"] .back svg{ transform:scaleX(-1); }
 
 /* ---------- progress dashes at the top of every screen (as on each carousel slide) ---------- */
 .top{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+/* Mo 10-06-2026: no per-screen dashes or "Episode 1: CRISPR" label on the website; the side progress dots already show where you are (the carousel keeps them) */
+.top, .hero-text .dash-d{ display:none !important; }
 .dash{ display:flex; gap:5px; }
 .dash b{ width:18px; height:5px; border-radius:3px; background:rgba(21,41,74,.16); }
 .dash b.on{ background:var(--navy); }
