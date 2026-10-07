@@ -85,7 +85,7 @@ window.STORY = {
     'Conversations in Science with Dan Rather &amp; Jennifer Doudna: CRISPR. Wonder Collaborative, 2017 (embryos, sperm or eggs; future generations).'
   ],
 
-  share: { url: "https://www.addanilabs.org/episodes/episode-01-crispr.html",
+  share: { url: "https://www.addanilabs.com/episodes/episode-01-crispr.html",
            text: { en: "One mutated letter in your DNA can change your life. CRISPR in five short screens.",
                    ar: "طفرة في حرف واحد من جيناتك قد تغيّر حياتك. كريسبر في خمس شاشات قصيرة." } }
 };
