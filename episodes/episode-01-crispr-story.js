@@ -17,7 +17,7 @@ window.STORY = {
   slug: "episode-01-crispr",
   number: 1,
   title:  { en: "CRISPR", ar: "كريسبر" },
-  hook:   { en: "One Mutated Letter in Your DNA Can Change Your Life", ar: "طفرة في حرف واحد من جيناتك قد تغيّر حياتك" },
+  hook:   { en: "Genome Engineering", ar: "تعديل وهندسة الجينات الوراثية" },
   ribbon: { en: "Discoveries, Episode 1", ar: "اكتشافات علمية، الحلقة الأولى" },
   youtube: { en: "https://www.youtube.com/watch?v=N160YGAzgHM", ar: "https://www.youtube.com/watch?v=Z2E_5fjI0hg" },
 
@@ -86,6 +86,6 @@ window.STORY = {
   ],
 
   share: { url: "https://www.addanilabs.com/episodes/episode-01-crispr.html",
-           text: { en: "One mutated letter in your DNA can change your life. CRISPR in five short screens.",
-                   ar: "طفرة في حرف واحد من جيناتك قد تغيّر حياتك. كريسبر في خمس شاشات قصيرة." } }
+           text: { en: "Genome engineering: CRISPR in five short screens.",
+                   ar: "تعديل وهندسة الجينات الوراثية: كريسبر في خمس شاشات قصيرة." } }
 };
