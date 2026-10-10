@@ -224,14 +224,11 @@ html[dir="rtl"] .ep:hover .go svg{transform:scaleX(-1) translateX(3px)}
 .ep-card{width:100%;max-width:560px;border-radius:var(--radius);overflow:hidden;
   background:#0F1730;border:1px solid rgba(255,255,255,.10);
   box-shadow:0 24px 60px -30px rgba(0,0,0,.85);transition:transform .18s,box-shadow .18s}
-.ep-card:hover{transform:translateY(-3px);box-shadow:0 32px 70px -30px rgba(0,0,0,.95)}
-.ep-thumb{display:block;text-decoration:none}
-.ep-thumb:focus-visible{outline-offset:-4px}
+.ep-thumb{display:block}
 .ep-card .yt-bar{padding:2px 18px 18px;flex-wrap:nowrap}
 .ep-card .yt-pill{flex:1 1 0;justify-content:center;min-height:48px;padding:0 14px}
 .ep-pic{display:block;aspect-ratio:16/9;overflow:hidden;background:#0A0F1E}
 .ep-pic img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.ep-thumb:hover .ep-pic img{transform:scale(1.02)}
 .pic-ar{display:none}
 html[lang="ar"] .pic-en{display:none}
 html[lang="ar"] .pic-ar{display:block}
@@ -421,10 +418,11 @@ html[lang="ar"] .hero h1{line-height:1.05}
         <div class="ep-col">
           <!-- Card = the approved Episode 1 YouTube thumbnail, exactly as on YouTube (EN / AR), with a slim strip:
                logo + episode number + name (Mo, 10-05-2026). Replaces the big paper card with title, teaser and helix. -->
-          <!-- Thumbnails only (Mo, 10-10-2026): no scroll-story link or "Click to read" button. The thumbnail opens the
-               YouTube video in the site language (href swapped by data-i18n-attr; English is the no-script default). -->
+          <!-- Thumbnails only (Mo, 10-10-2026): no scroll-story link or "Click to read" button. The thumbnail is a plain
+               picture, not a link (Mo: "Clicking on the thumbnail itself should not take you anywhere"); only the two
+               YouTube buttons open the videos. -->
           <div class="ep-card">
-          <a class="ep-thumb" href="https://youtu.be/N160YGAzgHM" target="_blank" rel="noopener" aria-label="Episode 1: CRISPR, watch on YouTube" data-i18n-attr="href:ep1.video,aria-label:ep1.aria">
+          <div class="ep-thumb">
             <span class="ep-pic">
               <img class="pic-en" src="episodes/assets/ep01/thumb-en-960.webp" srcset="episodes/assets/ep01/thumb-en-960.webp 960w, episodes/assets/ep01/thumb-en.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="We can now edit human DNA">
               <img class="pic-ar" src="episodes/assets/ep01/thumb-ar-960.webp" srcset="episodes/assets/ep01/thumb-ar-960.webp 960w, episodes/assets/ep01/thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="مقصّ الجينات" loading="lazy">
@@ -434,7 +432,7 @@ html[lang="ar"] .hero h1{line-height:1.05}
               <span class="ep-no" data-i18n="ep1.no">Episode 1</span>
               <span class="ep-name" data-i18n="ep1.name">CRISPR</span>
             </span>
-          </a>
+          </div>
           <!-- YouTube buttons sit INSIDE the card where "Click to read" was (Mo, 10-10-2026: "No more reading. They could go to youtube to watch") -->
           <!-- Compact YouTube bar: English / العربية, same in either site language (Mo, 10-05-2026). Since 10-06-2026 both
                languages live on ONE channel, Addani Labs (@addanilabs); @addanilabsarabic is parked. Swap the hrefs to the
@@ -547,8 +545,6 @@ html[lang="ar"] .hero h1{line-height:1.05}
       'ep1.soon': 'Coming soon',
       'ep1.name': 'CRISPR',
       'ep1.teaser': 'What if doctors could fix the mutation you were born with?',
-      'ep1.video': 'https://youtu.be/N160YGAzgHM',
-      'ep1.aria': 'Episode 1: CRISPR, watch on YouTube',
       'about.kicker': 'Your host',
       'about.title': 'About Mohamed',
       'about.photoAlt': 'Portrait of Mohamed Addani in a white lab coat',
@@ -585,8 +581,6 @@ html[lang="ar"] .hero h1{line-height:1.05}
       'ep1.soon': 'قريبًا',
       'ep1.name': 'كريسبر',
       'ep1.teaser': 'ماذا لو استطاع الأطباء إصلاح الطفرة التي وُلدتَ بها؟',
-      'ep1.video': 'https://youtu.be/Z2E_5fjI0hg',
-      'ep1.aria': 'الحلقة 1: كريسبر، شاهد على يوتيوب',
       'about.kicker': 'مقدّم السلسلة',
       'about.title': 'عن محمد عداني',
       'about.photoAlt': 'صورة محمد عداني بمعطف المختبر الأبيض',
