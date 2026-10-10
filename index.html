@@ -220,11 +220,15 @@ html[dir="rtl"] .ep .go svg{transform:scaleX(-1)}
 html[dir="rtl"] .ep:hover .go svg{transform:scaleX(-1) translateX(3px)}
 .ep .helix{width:clamp(88px,11vw,128px);height:auto;align-self:center}
 /* Compact thumbnail card (Mo, 10-05-2026) */
-.ep-thumb{display:block;width:100%;max-width:560px;border-radius:var(--radius);overflow:hidden;text-decoration:none;
+/* Card box (Mo, 10-10-2026): thumbnail + strip + the two YouTube buttons in place of "Click to read" */
+.ep-card{width:100%;max-width:560px;border-radius:var(--radius);overflow:hidden;
   background:#0F1730;border:1px solid rgba(255,255,255,.10);
   box-shadow:0 24px 60px -30px rgba(0,0,0,.85);transition:transform .18s,box-shadow .18s}
-.ep-thumb:hover{transform:translateY(-3px);box-shadow:0 32px 70px -30px rgba(0,0,0,.95)}
-.ep-thumb:focus-visible{outline-offset:5px}
+.ep-card:hover{transform:translateY(-3px);box-shadow:0 32px 70px -30px rgba(0,0,0,.95)}
+.ep-thumb{display:block;text-decoration:none}
+.ep-thumb:focus-visible{outline-offset:-4px}
+.ep-card .yt-bar{padding:2px 18px 18px;flex-wrap:nowrap}
+.ep-card .yt-pill{flex:1 1 0;justify-content:center;min-height:48px;padding:0 14px}
 .ep-pic{display:block;aspect-ratio:16/9;overflow:hidden;background:#0A0F1E}
 .ep-pic img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .ep-thumb:hover .ep-pic img{transform:scale(1.02)}
@@ -237,13 +241,6 @@ html[lang="ar"] .pic-ar{display:block}
 html[lang="ar"] .ep-strip .logo-en{display:none}
 html[lang="ar"] .ep-strip .logo-ar{display:block;height:24px}
 .ep-strip .ep-no{color:rgba(244,238,223,.7)}
-.ep-click{margin-inline-start:auto;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;
-  background:var(--verm,#E4572E);color:#fff;font-family:var(--f-display);font-weight:700;font-size:.92rem;white-space:nowrap}
-.ep-click svg{width:16px;height:16px;transition:transform .15s}
-.ep-thumb:hover .ep-click svg{transform:translateX(3px)}
-html[dir="rtl"] .ep-click svg{transform:scaleX(-1)}
-html[dir="rtl"] .ep-thumb:hover .ep-click svg{transform:scaleX(-1) translateX(3px)}
-@media (max-width:480px){.ep-strip{flex-wrap:wrap}.ep-click{width:100%;justify-content:center;margin-inline-start:0}}
 .ep-strip .ep-name{font-family:var(--f-display);font-weight:800;font-size:1.05rem;letter-spacing:.02em}
 html[lang="ar"] .ep-strip .ep-name{letter-spacing:0}
 
@@ -310,6 +307,31 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
 }
 @media (max-width:380px){
   .follow{grid-template-columns:1fr}
+}
+/* Smaller "Discoveries" top so the episode shows on the first screen (Mo, 10-10-2026: "This also needs to be reduced
+   a little. I want the episode to be visible") */
+.hero{padding-block:clamp(28px,3.5vw,48px) clamp(32px,4vw,56px)}
+.hero h1{font-size:clamp(3.3rem,7.5vw,6.2rem);margin-block:16px 18px}
+html[lang="ar"] .hero h1{font-size:clamp(2.8rem,5vw,4.4rem);white-space:nowrap}
+.paper-wrap{max-width:260px}
+#episodes{padding-top:clamp(32px,3.5vw,48px)}
+#episodes h2{font-size:clamp(2.2rem,4vw,3.2rem);margin-bottom:clamp(18px,2.5vw,28px)}
+html[lang="ar"] .hero .pitch{line-height:1.45}
+html[lang="ar"] .hero h1{line-height:1.05}
+@media (max-width:640px){
+  .hero{padding-block:14px 18px}
+  .eyebrow{font-size:.88rem}
+  .hero h1{font-size:2.7rem;margin-block:8px 8px}
+  html[lang="ar"] .hero h1{font-size:2.3rem;line-height:1.15}
+  .pitch{font-size:1.12rem}
+  html[lang="ar"] .pitch{line-height:1.4;font-size:1.05rem}
+  .host{margin-block:10px 0;font-size:.95rem}
+  .host .av{width:40px;height:40px}
+  #episodes{padding-top:18px}
+  #episodes .kicker{margin-bottom:6px}
+  #episodes h2{font-size:1.8rem;margin-bottom:12px}
+  html[lang="ar"] #episodes h2{line-height:1.2}
+  html[lang="ar"] .eyebrow{font-size:.85rem}
 }
 </style>
 </head>
@@ -397,10 +419,12 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
       <h2 id="ep-h" data-i18n="ep.title">Episodes</h2>
       <div class="eps">
         <div class="ep-col">
-          <!-- Linked 10-05-2026 (Mo): the scroll story goes live first, the full YouTube episode follows. -->
           <!-- Card = the approved Episode 1 YouTube thumbnail, exactly as on YouTube (EN / AR), with a slim strip:
                logo + episode number + name (Mo, 10-05-2026). Replaces the big paper card with title, teaser and helix. -->
-          <a class="ep-thumb" href="episodes/episode-01-crispr.html" aria-label="Episode 1: CRISPR">
+          <!-- Thumbnails only (Mo, 10-10-2026): no scroll-story link or "Click to read" button. The thumbnail opens the
+               YouTube video in the site language (href swapped by data-i18n-attr; English is the no-script default). -->
+          <div class="ep-card">
+          <a class="ep-thumb" href="https://youtu.be/N160YGAzgHM" target="_blank" rel="noopener" aria-label="Episode 1: CRISPR, watch on YouTube" data-i18n-attr="href:ep1.video,aria-label:ep1.aria">
             <span class="ep-pic">
               <img class="pic-en" src="episodes/assets/ep01/thumb-en-960.webp" srcset="episodes/assets/ep01/thumb-en-960.webp 960w, episodes/assets/ep01/thumb-en.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="We can now edit human DNA">
               <img class="pic-ar" src="episodes/assets/ep01/thumb-ar-960.webp" srcset="episodes/assets/ep01/thumb-ar-960.webp 960w, episodes/assets/ep01/thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="مقصّ الجينات" loading="lazy">
@@ -409,17 +433,16 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
               <img class="logo-en" src="assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
               <span class="ep-no" data-i18n="ep1.no">Episode 1</span>
               <span class="ep-name" data-i18n="ep1.name">CRISPR</span>
-              <!-- "Click" cue so people know the card opens the story (Mo, 10-05-2026) -->
-              <span class="ep-click"><span data-i18n="ep1.click">Click to read</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </span>
           </a>
-          <!-- YouTube sits right under the episode (Mo, 10-02-2026) -->
+          <!-- YouTube buttons sit INSIDE the card where "Click to read" was (Mo, 10-10-2026: "No more reading. They could go to youtube to watch") -->
           <!-- Compact YouTube bar: English / العربية, same in either site language (Mo, 10-05-2026). Since 10-06-2026 both
                languages live on ONE channel, Addani Labs (@addanilabs); @addanilabsarabic is parked. Swap the hrefs to the
                episode's English and Arabic video links once the videos are live. -->
           <div class="yt-bar" dir="ltr" role="group" aria-label="Watch on YouTube">
             <a class="yt-pill" href="https://www.youtube.com/watch?v=N160YGAzgHM" target="_blank" rel="noopener" lang="en" aria-label="Watch in English on YouTube"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>English</a>
             <a class="yt-pill" href="https://www.youtube.com/watch?v=Z2E_5fjI0hg" target="_blank" rel="noopener" lang="ar" aria-label="شاهد بالعربية على يوتيوب"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>العربية</a>
+          </div>
           </div>
         </div>
       </div>
@@ -524,8 +547,8 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
       'ep1.soon': 'Coming soon',
       'ep1.name': 'CRISPR',
       'ep1.teaser': 'What if doctors could fix the mutation you were born with?',
-      'ep1.cta': 'Read the short story',
-      'ep1.click': 'Click to read',
+      'ep1.video': 'https://youtu.be/N160YGAzgHM',
+      'ep1.aria': 'Episode 1: CRISPR, watch on YouTube',
       'about.kicker': 'Your host',
       'about.title': 'About Mohamed',
       'about.photoAlt': 'Portrait of Mohamed Addani in a white lab coat',
@@ -562,8 +585,8 @@ footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text
       'ep1.soon': 'قريبًا',
       'ep1.name': 'كريسبر',
       'ep1.teaser': 'ماذا لو استطاع الأطباء إصلاح الطفرة التي وُلدتَ بها؟',
-      'ep1.cta': 'اقرأ القصة باختصار',
-      'ep1.click': 'اضغط للقراءة',
+      'ep1.video': 'https://youtu.be/Z2E_5fjI0hg',
+      'ep1.aria': 'الحلقة 1: كريسبر، شاهد على يوتيوب',
       'about.kicker': 'مقدّم السلسلة',
       'about.title': 'عن محمد عداني',
       'about.photoAlt': 'صورة محمد عداني بمعطف المختبر الأبيض',
