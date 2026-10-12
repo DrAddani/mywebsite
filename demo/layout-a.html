@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demo A · Discoveries | Addani Labs</title>
+<meta name="description" content="Discoveries: recent scientific breakthroughs, explained from the paper. A science series in English and Arabic with Mohamed Addani, PhD.">
+<meta name="theme-color" content="#070C1A">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Addani Labs">
+<meta property="og:url" content="https://www.addanilabs.com/">
+<meta property="og:title" content="Discoveries | Addani Labs">
+<meta property="og:description" content="Recent scientific breakthroughs, explained from the paper. With Mohamed Addani, PhD.">
+<meta property="og:image" content="https://www.addanilabs.com/assets/logo-blue.png">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="751">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ar_AR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Discoveries | Addani Labs">
+<meta name="twitter:description" content="Recent scientific breakthroughs, explained from the paper.">
+<meta name="twitter:image" content="https://www.addanilabs.com/assets/logo-blue.png">
+<link rel="icon" type="image/png" href="../assets/logo-blue.png">
+<link rel="apple-touch-icon" href="../assets/logo-blue.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Addani Labs","alternateName":"مختبرات عداني","url":"https://www.addanilabs.com/","logo":"https://www.addanilabs.com/assets/logo-blue.png","email":"addanilabs@gmail.com","sameAs":["https://www.youtube.com/@addanilabs","https://www.instagram.com/addanilabs","https://www.tiktok.com/@addanilabs","https://x.com/AddaniLabs"],"founder":{"@type":"Person","name":"Mohamed Addani","honorificSuffix":"M.S., Ph.D.","sameAs":["https://orcid.org/0000-0003-0813-2078","https://www.linkedin.com/in/mohamed-addani-phd-268676189"]}}
+</script>
+<script>
+/* Language is decided before first paint so the page never flashes the wrong direction.
+   The site always opens in Arabic (Mo, 10-11-2026); the EN | ع switch changes it for this visit.
+   Shared contract with the episode pages: localStorage "al-lang" = "en" | "ar". */
+(function(){
+  var lang = 'ar';
+  var h = document.documentElement;
+  h.lang = lang; h.dir = lang === 'ar' ? 'rtl' : 'ltr';
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#070C1A;
+  --bg-2:#0B1428;
+  --bg-3:#101C38;
+  --text:#F2F5FD;
+  --text-2:#AEBBDA;      /* 10.1:1 on --bg */
+  --text-3:#8E9CC0;      /* 7.1:1 on --bg */
+  --line:rgba(150,180,255,.14);
+  --brand:#015DAC;
+  --brand-hi:#4F9BFF;
+  --warm:#FFB84D;        /* the one warm accent */
+  --paper:#EEE8DA;       /* Episode 1 */
+  --ink:#1E1A16;
+  --ink-2:#5A5148;
+  --verm:#E4572E;
+  --verm-deep:#A8361A;
+
+  --f-display:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible","Verdana",system-ui,sans-serif;
+  --wrap:1160px;
+  --gut:clamp(20px,5vw,56px);
+  --bar-h:72px;
+  --radius:22px;
+}
+html[lang="ar"]{
+  --f-display:"Cairo","Geeza Pro",system-ui,sans-serif;
+  --f-body:"Cairo","Geeza Pro",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--bar-h) + 12px)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:1.0625rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden}
+html[lang="ar"] body{line-height:1.8}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);margin:0;font-weight:800;line-height:1.02;letter-spacing:-.025em}
+html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3{letter-spacing:0;line-height:1.3}
+p{margin:0}
+.wrap{width:min(var(--wrap),100% - 2*var(--gut));margin-inline:auto}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+:focus-visible{outline:3px solid var(--warm);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;z-index:100;background:var(--warm);color:var(--bg);
+  padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+
+/* ---------- Top bar ---------- */
+.bar{position:sticky;top:0;z-index:50;background:rgba(7,12,26,.86);
+  -webkit-backdrop-filter:saturate(140%) blur(14px);backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid var(--line)}
+.bar-in{display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"logo nav lang";align-items:center;
+  gap:20px;min-height:var(--bar-h)}
+.logo{grid-area:logo;display:flex;align-items:center;border-radius:8px}
+.logo img{height:36px;width:auto}
+/* Arabic pages show the Arabic logo, مختبرات عداني (Mo, 10-05-2026) */
+.logo-ar{display:none}
+html[lang="ar"] .logo-en{display:none}
+html[lang="ar"] .logo-ar{display:block}
+.nav{grid-area:nav;display:flex;justify-content:flex-end;gap:6px}
+.nav a{font-family:var(--f-display);font-weight:600;font-size:1rem;text-decoration:none;color:var(--text-2);
+  padding:10px 14px;border-radius:999px;transition:color .15s,background-color .15s}
+.nav a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+.lang{grid-area:lang;display:inline-flex;align-items:center;padding:4px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04)}
+.lang button{all:unset;cursor:pointer;min-width:44px;height:36px;display:grid;place-items:center;border-radius:999px;
+  font-weight:700;font-size:.95rem;color:var(--text-2);transition:background-color .15s,color .15s}
+.lang button[lang="en"]{font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:.04em}
+.lang button[lang="ar"]{font-family:"Cairo",system-ui,sans-serif;font-size:1.15rem;line-height:1}
+.lang button:hover{color:var(--text)}
+.lang button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+.lang .sep{width:1px;height:18px;background:rgba(255,255,255,.22);margin-inline:2px}
+.lang button[aria-pressed="true"] + .sep,.lang .sep:has(+ button[aria-pressed="true"]){opacity:0}
+.lang button:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+
+@media (max-width:640px){
+  :root{--bar-h:112px}
+  .bar-in{grid-template-columns:1fr auto;grid-template-areas:"logo lang" "nav nav";gap:0 12px;padding-block:10px 4px}
+  .logo img{height:30px}
+  .nav{justify-content:center;gap:2px;border-top:1px solid var(--line);margin-top:10px;padding-top:4px}
+  .nav a{padding:10px 14px;font-size:.98rem}
+}
+
+/* ---------- Hero ---------- */
+/* "Discoveries" first, then Episodes with YouTube right under them (Mo, 10-02-2026) */
+.hero{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(56px,9vw,120px) clamp(72px,10vw,140px)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(60% 70% at 85% 10%,rgba(1,93,172,.42),transparent 70%),
+    radial-gradient(40% 50% at 8% 95%,rgba(1,93,172,.18),transparent 70%),
+    radial-gradient(rgba(150,180,255,.10) 1px,transparent 1.4px) 0 0/26px 26px;
+  -webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+html[dir="rtl"] .hero::before{transform:scaleX(-1)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:clamp(32px,6vw,88px);align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:600;font-size:.95rem;
+  color:var(--text-2);letter-spacing:.01em}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--warm);border-radius:2px}
+.hero h1{font-size:clamp(3.3rem,10.5vw,8.6rem);letter-spacing:-.035em;line-height:.92;margin-block:22px 28px;
+  font-variation-settings:"opsz" 96}
+.hero h1 .dot{color:var(--warm)}
+html[lang="ar"] .hero h1{font-size:clamp(3rem,9vw,7rem);letter-spacing:0;line-height:1.15;font-weight:900}
+.pitch{font-family:var(--f-display);font-weight:500;font-size:clamp(1.35rem,2.4vw,1.95rem);line-height:1.3;
+  letter-spacing:-.01em;max-width:24ch;color:var(--text)}
+html[lang="ar"] .pitch{letter-spacing:0;line-height:1.6;font-weight:600;max-width:26ch}
+.host{display:flex;align-items:center;gap:12px;margin-block:26px 0;color:var(--text-2);font-size:1.02rem}
+.host .av{width:52px;height:52px;border-radius:50%;overflow:hidden;flex:none;border:2px solid rgba(255,255,255,.18);background:#d8dbe6}
+.host .av img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
+.host b{color:var(--text);font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:56px;padding:0 26px 0 20px;border-radius:999px;
+  background:#fff;color:var(--bg);text-decoration:none;font-family:var(--f-display);font-weight:700;font-size:1.08rem;
+  box-shadow:0 10px 30px -10px rgba(0,0,0,.6);transition:transform .15s,box-shadow .15s,background-color .15s}
+html[dir="rtl"] .btn{padding:0 20px 0 26px}
+.btn:hover{transform:translateY(-1px);background:#F3F6FF;box-shadow:0 14px 34px -12px rgba(0,0,0,.7)}
+.btn svg{width:30px;height:21px;flex:none}
+.yt-bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.yt-pill{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 18px 0 14px;border-radius:999px;background:#fff;
+  color:var(--bg);text-decoration:none;font-family:"Bricolage Grotesque","Avenir Next",system-ui,sans-serif;font-weight:700;font-size:.98rem;
+  box-shadow:0 10px 30px -10px rgba(0,0,0,.6);transition:transform .15s,background-color .15s}
+.yt-pill[lang="ar"]{font-family:"Cairo",system-ui,sans-serif;font-size:1.02rem}
+.yt-pill svg{width:26px;height:18px;flex:none}
+.yt-pill:hover{transform:translateY(-1px);background:#F3F6FF}
+.yt-pill:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+
+/* the paper: "explained from the paper" */
+.paper-wrap{position:relative;max-width:420px;justify-self:center;width:100%}
+.paper-stack{position:relative;aspect-ratio:420/520}
+.paper-stack .back{position:absolute;inset:0;border-radius:14px;background:var(--bg-3);border:1px solid var(--line);
+  transform:rotate(6deg) translate(14px,8px)}
+.paper-stack svg.page{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-3deg);
+  filter:drop-shadow(0 30px 40px rgba(0,0,0,.55))}
+html[dir="rtl"] .paper-stack .back{transform:rotate(-6deg) translate(-14px,8px)}
+html[dir="rtl"] .paper-stack svg.page{transform:rotate(3deg) scaleX(-1)}
+.callout{position:absolute;top:36%;inset-inline-end:-6%;display:flex;align-items:center;gap:8px;
+  background:var(--warm);color:#1A1204;font-family:var(--f-display);font-weight:700;font-size:.98rem;
+  padding:9px 16px;border-radius:999px;box-shadow:0 12px 26px -10px rgba(0,0,0,.6);white-space:nowrap}
+.callout svg{width:18px;height:18px}
+html[dir="rtl"] .callout svg{transform:scaleX(-1)}
+
+/* ---------- Sections ---------- */
+section.block{padding-block:clamp(72px,10vw,132px);border-top:1px solid var(--line)}
+.kicker{font-family:var(--f-display);font-weight:700;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);margin-bottom:14px}
+html[lang="ar"] .kicker{letter-spacing:0;font-size:1rem}
+.block h2{font-size:clamp(2.4rem,5.6vw,4.2rem);margin-bottom:clamp(32px,5vw,56px)}
+.lead{color:var(--text-2);font-size:clamp(1.08rem,1.6vw,1.25rem);margin-top:-28px;margin-bottom:clamp(32px,5vw,52px)}
+
+/* ---------- Episodes ---------- */
+.eps{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:22px;align-items:start}
+.eps>.ep-col{grid-column:1}  /* one column: each new episode card goes under the previous one, same size (Mo, 10-08-2026) */
+.eps{row-gap:clamp(40px,5vw,56px)}  /* clear space between episodes, so each card keeps its own buttons */
+/* "More discoveries on the way" placeholder removed (Mo, 10-02-2026) */
+.ep-col{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.ep-col .ep{width:100%}
+.ep{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 28px;align-items:end;
+  background:var(--paper);color:var(--ink);border-radius:var(--radius);padding:clamp(24px,3.4vw,40px);
+  text-decoration:none;min-height:340px;overflow:hidden;
+  box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 24px 60px -30px rgba(0,0,0,.8);
+  transition:transform .18s,box-shadow .18s}
+.ep::after{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:8px;background:var(--verm)}
+.ep:not(.is-soon):hover{transform:translateY(-3px);box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 32px 70px -30px rgba(0,0,0,.9)}
+.ep:focus-visible{outline-offset:5px;border-radius:var(--radius)}
+.ep-top{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;align-self:start}
+.ep-no{font-family:var(--f-display);font-weight:700;font-size:.95rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2)}
+html[lang="ar"] .ep-no{letter-spacing:0;font-size:1.05rem}
+.soon{display:inline-flex;align-items:center;gap:8px;background:var(--verm);color:var(--ink);font-family:var(--f-display);
+  font-weight:800;font-size:.95rem;padding:7px 14px;border-radius:999px;letter-spacing:.02em}
+html[lang="ar"] .soon{letter-spacing:0}
+.soon::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.ep h3{font-size:clamp(3rem,6.6vw,5.4rem);letter-spacing:-.04em;line-height:.95;margin-bottom:14px}
+html[lang="ar"] .ep h3{letter-spacing:0;line-height:1.25;font-weight:900}
+.ep .teaser{font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.45;max-width:30ch;color:var(--ink)}
+.ep .go{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-family:var(--f-display);font-weight:700;
+  color:var(--verm-deep);font-size:1.02rem;border-bottom:2px solid currentColor;padding-bottom:2px}
+.ep .go svg{width:18px;height:18px;transition:transform .15s}
+.ep:hover .go svg{transform:translateX(3px)}
+html[dir="rtl"] .ep .go svg{transform:scaleX(-1)}
+html[dir="rtl"] .ep:hover .go svg{transform:scaleX(-1) translateX(3px)}
+.ep .helix{width:clamp(88px,11vw,128px);height:auto;align-self:center}
+/* Compact thumbnail card (Mo, 10-05-2026) */
+/* Card box (Mo, 10-10-2026): thumbnail + strip + the two YouTube buttons in place of "Click to read" */
+.ep-card{width:100%;max-width:560px;border-radius:var(--radius);overflow:hidden;
+  background:#0F1730;border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 24px 60px -30px rgba(0,0,0,.85);transition:transform .18s,box-shadow .18s}
+.ep-thumb{display:block}
+.ep-card .yt-bar{padding:2px 18px 18px;flex-wrap:nowrap}
+.ep-card .yt-pill{flex:1 1 0;justify-content:center;min-height:48px;padding:0 14px}
+/* Before an episode is public its two YouTube buttons say "Coming soon" and go nowhere (Mo, 10-12-2026: "The youtube click should say coming soon") */
+.yt-pill .pill-txt{display:flex;flex-direction:column;align-items:center;line-height:1.15}
+.yt-pill .pill-soon{font-size:.72em;font-weight:700;color:#D93E1B;letter-spacing:.02em}
+.yt-pill .pill-soon[lang="ar"]{letter-spacing:0;font-family:"Cairo",system-ui,sans-serif}
+.ep-pic{display:block;aspect-ratio:16/9;overflow:hidden;background:#0A0F1E}
+.ep-pic img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.pic-ar{display:none}
+html[lang="ar"] .pic-en{display:none}
+html[lang="ar"] .pic-ar{display:block}
+.ep-strip{display:flex;align-items:center;gap:14px;padding:12px 18px;color:#F4EEDF}
+.ep-strip img{height:26px;width:auto}
+.ep-strip .logo-ar{display:none}
+html[lang="ar"] .ep-strip .logo-en{display:none}
+html[lang="ar"] .ep-strip .logo-ar{display:block;height:24px}
+.ep-strip .ep-no{color:rgba(244,238,223,.7)}
+.ep-strip .ep-name{font-family:var(--f-display);font-weight:800;font-size:1.05rem;letter-spacing:.02em}
+/* "Coming soon" badge never leaves the card on phones (EP2.1, 10-12-2026): the strip's words stay on one line each and the badge drops below if needed */
+.ep-strip{flex-wrap:wrap;row-gap:8px}
+.ep-strip .ep-no,.ep-strip .ep-name,.ep-strip .soon{white-space:nowrap}
+@media (max-width:640px){.ep-strip{gap:10px;padding:12px 14px}.ep-strip .soon{font-size:.85rem;padding:6px 12px}}
+html[lang="ar"] .ep-strip .ep-name{letter-spacing:0}
+
+/* ---------- About ---------- */
+.about{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:clamp(32px,6vw,80px);align-items:center}
+.portrait{position:relative}
+.portrait::before{content:"";position:absolute;inset:0;border-radius:var(--radius);border:2px solid var(--warm);
+  transform:translate(14px,14px)}
+html[dir="rtl"] .portrait::before{transform:translate(-14px,14px)}
+.photo{position:relative;aspect-ratio:544/820;border-radius:var(--radius);overflow:hidden;background:#d9dce6}
+/* crop off the light frame baked into the photo file */
+.photo img{position:absolute;max-width:none;width:113.6%;height:134.15%;left:-6.62%;top:-17.8%}
+.about h3{font-size:clamp(1.6rem,3.6vw,2.7rem);letter-spacing:-.02em;margin-bottom:8px}
+.role{color:var(--warm);font-family:var(--f-display);font-weight:600;font-size:1.1rem;margin-bottom:22px}
+.bio{color:var(--text-2);font-size:clamp(1.08rem,1.4vw,1.2rem);max-width:56ch}
+.bio + .bio{margin-top:14px}
+.bio strong{color:var(--text);font-weight:700}
+.ids{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:30px}
+/* ORCID = the green iD logo only, no number (Mo, 10-05-2026) */
+.orcid{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.orcid:hover{transform:translateY(-1px);box-shadow:0 10px 24px -12px rgba(0,0,0,.7)}
+.orcid svg{width:52px;height:52px;display:block}
+.icon-link{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,.22);
+  color:var(--text);transition:background-color .15s,border-color .15s}
+.icon-link:hover{background:#0A66C2;border-color:#0A66C2}
+.icon-link svg{width:22px;height:22px}
+
+/* ---------- Follow ---------- */
+.follow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.soc{display:flex;flex-direction:column;gap:18px;padding:24px;border-radius:18px;background:var(--bg-2);border:1px solid var(--line);
+  text-decoration:none;min-height:168px;transition:border-color .15s,background-color .15s,transform .15s}
+.soc:hover{border-color:rgba(255,255,255,.35);background:var(--bg-3);transform:translateY(-2px)}
+.soc .ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(255,255,255,.07)}
+.soc .ic svg{width:26px;height:26px}
+.soc .name{font-family:var(--f-display);font-weight:700;font-size:1.15rem;line-height:1.25}
+.soc .handle{color:var(--text-3);font-size:.98rem;margin-top:4px;display:block}
+html[dir="rtl"] .soc .handle{text-align:right}
+.soc .bottom{margin-top:auto}
+
+footer{border-top:1px solid var(--line);padding-block:36px 44px;color:var(--text-3);font-size:.98rem}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px}
+.foot img{height:28px;width:auto;opacity:.9}
+.foot a{color:var(--text-2);text-decoration-color:rgba(174,187,218,.4);text-underline-offset:3px}
+.foot a:hover{color:var(--text)}
+
+/* ---------- Responsive ---------- */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr}
+  .paper-wrap{max-width:300px;justify-self:start;margin-inline-start:8px}
+  .follow{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .eps{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .portrait{max-width:250px}
+}
+@media (max-width:640px){
+  .paper-wrap{display:none}
+  .ep{grid-template-columns:1fr;min-height:0}
+  .ep .helix{display:none}
+  .soc{min-height:0;padding:18px;gap:14px}
+  .follow{gap:12px}
+  .host{margin-block:22px 0}
+}
+@media (max-width:380px){
+  .follow{grid-template-columns:1fr}
+}
+/* Smaller "Discoveries" top so the episode shows on the first screen (Mo, 10-10-2026: "This also needs to be reduced
+   a little. I want the episode to be visible") */
+.hero{padding-block:clamp(28px,3.5vw,48px) clamp(32px,4vw,56px)}
+.hero h1{font-size:clamp(3.3rem,7.5vw,6.2rem);margin-block:16px 18px}
+html[lang="ar"] .hero h1{font-size:clamp(2.8rem,5vw,4.4rem);white-space:nowrap}
+.paper-wrap{max-width:260px}
+#episodes{padding-top:clamp(32px,3.5vw,48px)}
+#episodes h2{font-size:clamp(2.2rem,4vw,3.2rem);margin-bottom:clamp(18px,2.5vw,28px)}
+html[lang="ar"] .hero .pitch{line-height:1.45}
+html[lang="ar"] .hero h1{line-height:1.05}
+@media (max-width:640px){
+  .hero{padding-block:14px 18px}
+  .eyebrow{font-size:.88rem}
+  .hero h1{font-size:2.7rem;margin-block:8px 8px}
+  html[lang="ar"] .hero h1{font-size:2.3rem;line-height:1.15}
+  .pitch{font-size:1.12rem}
+  html[lang="ar"] .pitch{line-height:1.4;font-size:1.05rem}
+  .host{margin-block:10px 0;font-size:.95rem}
+  .host .av{width:40px;height:40px}
+  #episodes{padding-top:18px}
+  #episodes .kicker{margin-bottom:6px}
+  #episodes h2{font-size:1.8rem;margin-bottom:12px}
+  html[lang="ar"] #episodes h2{line-height:1.2}
+  html[lang="ar"] .eyebrow{font-size:.85rem}
+}
+/* Arabic as compact as English (Mo, 10-12-2026: "the eng v is more compact than Arabic. Make sure they are the same") */
+html[lang="ar"] header,html[lang="ar"] .hero,html[lang="ar"] #episodes{line-height:1.6}
+html[lang="ar"] #episodes .kicker{font-size:.85rem;line-height:1.6}
+html[lang="ar"] #episodes h2{line-height:1.02}
+html[lang="ar"] .hero h1{line-height:1.08}
+/* Episodes side by side, swipe sideways on a phone (Mo, 10-12-2026: "the episode should be scrollable by side"); the next card peeks in */
+.eps{display:flex;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:12px;scrollbar-width:thin}
+.eps>.ep-col{flex:0 0 min(540px,86%);scroll-snap-align:start}
+.eps .ep-card{max-width:none}
+/* phone: every card's strip and buttons stay on one line at the swipe width */
+.yt-pill .pill-soon{white-space:nowrap}
+@media (max-width:640px){.eps>.ep-col{flex-basis:88%}.ep-strip{gap:8px;padding:10px 12px}.ep-strip img{height:20px}html[lang="ar"] .ep-strip .logo-ar{height:18px}.ep-strip .ep-no{font-size:.82rem}.ep-strip .ep-name{font-size:.92rem}.ep-card .yt-bar{padding:2px 12px 14px;gap:8px}.ep-card .yt-pill{padding:0 8px;gap:6px;font-size:.95rem}.ep-card .yt-pill svg{width:22px;height:15px}}
+
+/* ===== Demo A · Swipe: the live swipe row, newest first, + dots under the row ===== */
+.dots{display:flex;justify-content:center;gap:2px;margin-top:4px}
+.dots button{all:unset;cursor:pointer;width:28px;height:28px;display:grid;place-items:center}
+.dots button::before{content:"";width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.3);transition:width .2s,background-color .2s}
+.dots button[aria-current="true"]::before{width:24px;background:var(--warm)}
+.dots button:focus-visible{outline:3px solid var(--warm);outline-offset:-2px;border-radius:999px}
+
+/* demo marker (not on the live site) */
+.demo-note{position:fixed;z-index:60;inset-inline-start:10px;bottom:calc(10px + env(safe-area-inset-bottom));
+  background:rgba(255,184,77,.95);color:#1A1204;font-family:var(--f-display);font-weight:700;font-size:.78rem;line-height:1.2;
+  padding:7px 12px;border-radius:999px;text-decoration:none;box-shadow:0 8px 20px -8px rgba(0,0,0,.7)}
+html[lang="ar"] .demo-note{font-size:.82rem}
+</style>
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
+<header class="bar">
+  <div class="wrap bar-in">
+    <a class="logo" href="#top" aria-label="Addani Labs" data-i18n-attr="aria-label:brand">
+      <img class="logo-en" src="../assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="../assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
+    </a>
+    <nav class="nav" aria-label="Main" data-i18n-attr="aria-label:nav.label">
+      <a href="#episodes" data-i18n="nav.episodes">Episodes</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#follow" data-i18n="nav.follow">Follow</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language / اللغة">
+      <button type="button" lang="en" data-set-lang="en" aria-pressed="true" aria-label="English">EN</button>
+      <span class="sep" aria-hidden="true"></span>
+      <button type="button" lang="ar" data-set-lang="ar" aria-pressed="false" aria-label="العربية">ع</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="top" aria-labelledby="hero-h">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow" data-i18n="hero.eyebrow">A science series by Addani Labs</p>
+        <h1 id="hero-h"><span data-i18n="hero.title">Discoveries</span><span class="dot" aria-hidden="true">.</span></h1>
+        <p class="pitch" data-i18n="hero.pitch">Recent scientific breakthroughs, explained from the paper.</p>
+        <p class="host">
+          <span class="av"><img src="../assets/mohamed-addani-avatar.jpg" alt="" width="300" height="300"></span>
+          <span><span data-i18n="hero.with">with</span> <b data-i18n="hero.name">Mohamed Addani, PhD</b></span>
+        </p>
+      </div>
+
+      <div class="paper-wrap" aria-hidden="true">
+        <div class="paper-stack">
+          <div class="back"></div>
+          <svg class="page" viewBox="0 0 420 520">
+            <rect x="0" y="0" width="420" height="520" rx="14" fill="#F4F0E6"/>
+            <rect x="36" y="38" width="72" height="9" rx="2" fill="#015DAC"/>
+            <rect x="300" y="38" width="84" height="9" rx="2" fill="#C9C1B0"/>
+            <rect x="36" y="58" width="348" height="1.5" fill="#D6CEBD"/>
+            <rect x="36" y="80" width="320" height="16" rx="3" fill="#1F2433"/>
+            <rect x="36" y="104" width="236" height="16" rx="3" fill="#1F2433"/>
+            <rect x="36" y="134" width="190" height="7" rx="2" fill="#9A917F"/>
+            <rect x="36" y="164" width="58" height="8" rx="2" fill="#015DAC"/>
+            <rect x="36" y="184" width="348" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="32" y="197" width="356" height="17" rx="3" fill="#FFB84D" opacity=".9"/>
+            <rect x="36" y="202" width="312" height="7" rx="2" fill="#5A4A2A"/>
+            <rect x="36" y="220" width="340" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="36" y="238" width="300" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="36" y="270" width="160" height="128" rx="6" fill="none" stroke="#C9C1B0" stroke-width="1.5"/>
+            <rect x="56" y="350" width="22" height="34" rx="2" fill="#9A917F"/>
+            <rect x="88" y="322" width="22" height="62" rx="2" fill="#9A917F"/>
+            <rect x="120" y="296" width="22" height="88" rx="2" fill="#015DAC"/>
+            <rect x="152" y="336" width="22" height="48" rx="2" fill="#9A917F"/>
+            <rect x="214" y="274" width="170" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="214" y="292" width="150" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="214" y="310" width="166" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="214" y="328" width="120" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="214" y="346" width="160" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="214" y="364" width="140" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="36" y="420" width="348" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="36" y="438" width="326" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="36" y="456" width="270" height="7" rx="2" fill="#BDB4A2"/>
+            <rect x="36" y="486" width="110" height="7" rx="2" fill="#015DAC" opacity=".55"/>
+          </svg>
+        </div>
+        <div class="callout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+          <span data-i18n="hero.callout">What it really shows</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EPISODES ========== -->
+  <section class="block" id="episodes" aria-labelledby="ep-h">
+    <div class="wrap">
+      <p class="kicker" data-i18n="ep.kicker">Season 1</p>
+      <h2 id="ep-h" data-i18n="ep.title">Episodes</h2>
+      <div class="eps" id="eps-row">
+        <div class="ep-col">
+          <div class="ep-card">
+          <div class="ep-thumb">
+            <span class="ep-pic">
+              <img class="pic-en" src="assets/ep02p2-thumb-en-960.webp" srcset="assets/ep02p2-thumb-en-960.webp 960w, assets/ep02p2-thumb-en.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="Stem Cells: Can a Cell Go Back in Time?">
+              <img class="pic-ar" src="assets/ep02p2-thumb-ar-960.webp" srcset="assets/ep02p2-thumb-ar-960.webp 960w, assets/ep02p2-thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="الخلايا الجذعية: هل تعود الخلية إلى الوراء؟" loading="lazy">
+            </span>
+            <span class="ep-strip">
+              <img class="logo-en" src="../assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="../assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
+              <span class="ep-no" data-i18n="d.ep22.no">Episode 2 · Part 2</span>
+              <span class="ep-name" data-i18n="d.ep22.name">Stem Cells</span>
+            </span>
+          </div>
+          <div class="yt-bar" dir="ltr" role="group" aria-label="Watch on YouTube">
+            <a class="yt-pill" href="#episodes" target="_blank" rel="noopener" lang="en" aria-label="English: Coming soon" aria-disabled="true" tabindex="-1" style="pointer-events:none;cursor:default"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg><span class="pill-txt">English<span class="pill-soon" lang="en">Coming soon</span></span></a>
+            <a class="yt-pill" href="#episodes" target="_blank" rel="noopener" lang="ar" aria-label="العربية: قريبًا" aria-disabled="true" tabindex="-1" style="pointer-events:none;cursor:default"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg><span class="pill-txt">العربية<span class="pill-soon" lang="ar">قريبًا</span></span></a>
+          </div>
+          </div>
+        </div>
+        <div class="ep-col">
+          <div class="ep-card">
+          <div class="ep-thumb">
+            <span class="ep-pic">
+              <img class="pic-en" src="../episodes/assets/ep02/thumb-en-960.webp" srcset="../episodes/assets/ep02/thumb-en-960.webp 960w, ../episodes/assets/ep02/thumb-en.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="Stem Cells: Can Our Cells Repair Us?" loading="lazy">
+              <img class="pic-ar" src="../episodes/assets/ep02/thumb-ar-960.webp" srcset="../episodes/assets/ep02/thumb-ar-960.webp 960w, ../episodes/assets/ep02/thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="الخلايا الجذعية: هل تستطيع خلايانا إصلاحنا؟" loading="lazy">
+            </span>
+            <span class="ep-strip">
+              <img class="logo-en" src="../assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="../assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
+              <span class="ep-no" data-i18n="d.ep21.no">Episode 2 · Part 1</span>
+              <span class="ep-name" data-i18n="d.ep21.name">Stem Cells</span>
+            </span>
+          </div>
+          <div class="yt-bar" dir="ltr" role="group" aria-label="Watch on YouTube">
+            <a class="yt-pill" href="#episodes" target="_blank" rel="noopener" lang="en" aria-label="English: Coming soon" aria-disabled="true" tabindex="-1" style="pointer-events:none;cursor:default"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg><span class="pill-txt">English<span class="pill-soon" lang="en">Coming soon</span></span></a>
+            <a class="yt-pill" href="#episodes" target="_blank" rel="noopener" lang="ar" aria-label="العربية: قريبًا" aria-disabled="true" tabindex="-1" style="pointer-events:none;cursor:default"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg><span class="pill-txt">العربية<span class="pill-soon" lang="ar">قريبًا</span></span></a>
+          </div>
+          </div>
+        </div>
+        <div class="ep-col">
+          <div class="ep-card">
+          <div class="ep-thumb">
+            <span class="ep-pic">
+              <img class="pic-en" src="../episodes/assets/ep01/thumb-en-960.webp" srcset="../episodes/assets/ep01/thumb-en-960.webp 960w, ../episodes/assets/ep01/thumb-en.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="We can now edit human DNA" loading="lazy">
+              <img class="pic-ar" src="../episodes/assets/ep01/thumb-ar-960.webp" srcset="../episodes/assets/ep01/thumb-ar-960.webp 960w, ../episodes/assets/ep01/thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="مقصّ الجينات" loading="lazy">
+            </span>
+            <span class="ep-strip">
+              <img class="logo-en" src="../assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="../assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
+              <span class="ep-no" data-i18n="d.ep1.no">Episode 1</span>
+              <span class="ep-name" data-i18n="d.ep1.name">CRISPR</span>
+            </span>
+          </div>
+          <div class="yt-bar" dir="ltr" role="group" aria-label="Watch on YouTube">
+            <a class="yt-pill" href="https://www.youtube.com/watch?v=N160YGAzgHM" target="_blank" rel="noopener" lang="en" aria-label="Watch in English on YouTube"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>English</a>
+            <a class="yt-pill" href="https://www.youtube.com/watch?v=Z2E_5fjI0hg" target="_blank" rel="noopener" lang="ar" aria-label="شاهد بالعربية على يوتيوب"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>العربية</a>
+          </div>
+          </div>
+        </div>
+      </div>
+      <div class="dots" role="group" aria-label="Choose an episode" data-i18n-attr="aria-label:d.dots">
+        <button type="button" data-i18n-attr="aria-label:d.ep22.no" aria-label="Episode 2 · Part 2" aria-current="true"></button>
+        <button type="button" data-i18n-attr="aria-label:d.ep21.no" aria-label="Episode 2 · Part 1"></button>
+        <button type="button" data-i18n-attr="aria-label:d.ep1.no" aria-label="Episode 1"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="block" id="about" aria-labelledby="ab-h">
+    <div class="wrap">
+      <p class="kicker" data-i18n="about.kicker">Your host</p>
+      <h2 id="ab-h" data-i18n="about.title">About Mohamed</h2>
+      <div class="about">
+        <div class="portrait">
+          <div class="photo">
+            <img src="../assets/mohamed-addani.jpg" width="618" height="1100" loading="lazy"
+                 alt="Portrait of Mohamed Addani in a white lab coat" data-i18n-attr="alt:about.photoAlt">
+          </div>
+        </div>
+        <div>
+          <h3 data-i18n="about.name">Mohamed Addani, M.S., Ph.D.</h3>
+          <p class="role" data-i18n="about.role">Biomedical scientist and AI researcher</p>
+          <p class="bio" data-i18n="about.bio">Over a decade of biomedical research, from molecular biology to predictive modeling. His work spans kidney disease, pancreatic cancer, AI in healthcare and health equity.</p>
+          <p class="bio" data-i18n-html="about.host">He hosts <strong>Discoveries</strong>, reading new papers and explaining what they really show.</p>
+          <div class="ids">
+            <a class="orcid" href="https://orcid.org/0000-0003-0813-2078" target="_blank" rel="noopener"
+               aria-label="ORCID iD 0000-0003-0813-2078 (opens in a new tab)" data-i18n-attr="aria-label:orcid.aria">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"/></svg>
+            </a>
+            <a class="icon-link" href="https://www.linkedin.com/in/mohamed-addani-phd-268676189" target="_blank" rel="noopener"
+               aria-label="LinkedIn (opens in a new tab)" data-i18n-attr="aria-label:linkedin.aria">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOLLOW ========== -->
+  <section class="block" id="follow" aria-labelledby="fo-h">
+    <div class="wrap">
+      <p class="kicker" data-i18n="follow.kicker">Follow</p>
+      <h2 id="fo-h" data-i18n="follow.title">Never miss a discovery</h2>
+      <p class="lead" data-i18n="follow.lead">New episodes in English and Arabic.</p>
+      <div class="follow">
+        <a class="soc" href="https://www.youtube.com/@addanilabs" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg></span>
+          <span class="bottom"><span class="name" data-i18n="yt.en">YouTube</span><span class="handle ltr">@addanilabs</span></span>
+        </a>
+        <!-- Arabic YouTube card hidden until the Arabic videos exist (Mo, 10-01-2026). To restore: uncomment, set
+             .follow back to repeat(5,...). (Since 10-06-2026 there is one YouTube channel for both languages; keep this card hidden.)
+        <a class="soc" href="https://www.youtube.com/@addanilabsarabic" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg></span>
+          <span class="bottom"><span class="name" data-i18n="yt.ar">YouTube · العربية</span><span class="handle ltr">@addanilabsarabic</span></span>
+        </a>
+        -->
+        <a class="soc" href="https://www.instagram.com/addanilabs" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F2F5FD" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="#F2F5FD" stroke="none"/></svg></span>
+          <span class="bottom"><span class="name">Instagram</span><span class="handle ltr">@addanilabs</span></span>
+        </a>
+        <a class="soc" href="https://www.tiktok.com/@addanilabs" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="#F2F5FD" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/></svg></span>
+          <span class="bottom"><span class="name">TikTok</span><span class="handle ltr">@addanilabs</span></span>
+        </a>
+        <a class="soc" href="https://x.com/AddaniLabs" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="#F2F5FD" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+          <span class="bottom"><span class="name">X</span><span class="handle ltr">@AddaniLabs</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<a class="demo-note" href="index.html" data-i18n="d.noteA">Demo A · not the live site</a>
+
+<footer>
+  <div class="wrap foot">
+    <img class="logo-en" src="../assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="../assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
+    <p><span class="ltr">© 2026 Addani Labs</span> · <a class="ltr" href="mailto:addanilabs@gmail.com">addanilabs@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var STR = {
+    en: {
+      'meta.title': 'Discoveries | Addani Labs',
+      'brand': 'Addani Labs',
+      'skip': 'Skip to content',
+      'nav.label': 'Main',
+      'nav.episodes': 'Episodes',
+      'nav.about': 'About',
+      'nav.follow': 'Follow',
+      'hero.eyebrow': 'A science series by Addani Labs',
+      'hero.title': 'Discoveries',
+      'hero.pitch': 'Recent scientific breakthroughs, explained from the paper.',
+      'hero.with': 'with',
+      'hero.name': 'Mohamed Addani, PhD',
+      'hero.cta': 'Watch on YouTube',
+      'hero.callout': 'What it really shows',
+      'ep.kicker': 'Season 1',
+      'ep.title': 'Episodes',
+      'ep1.no': 'Episode 1',
+      'ep1.soon': 'Coming soon',
+      'ep1.name': 'CRISPR',
+      'ep1.teaser': 'What if doctors could fix the mutation you were born with?',
+      'ep2.no': 'Episode 2 · Part 1',
+      'ep2.soon': 'Coming soon',
+      'ep2.name': 'Stem Cells',
+      'd.ep22.no': 'Episode 2 · Part 2',
+      'd.ep22.name': 'Stem Cells',
+      'd.ep21.no': 'Episode 2 · Part 1',
+      'd.ep21.name': 'Stem Cells',
+      'd.ep1.no': 'Episode 1',
+      'd.ep1.name': 'CRISPR',
+      'd.latest': 'Latest',
+      'd.earlier': 'Earlier episodes',
+      'd.next': 'Swipe up for the next episode',
+      'd.dots': 'Choose an episode',
+      'd.noteA': 'Demo A · not the live site',
+      'd.noteB': 'Demo B · not the live site',
+      'd.noteC': 'Demo C · not the live site',
+      'meta.title': 'Demo A · Discoveries | Addani Labs',
+      'about.kicker': 'Your host',
+      'about.title': 'About Mohamed',
+      'about.photoAlt': 'Portrait of Mohamed Addani in a white lab coat',
+      'about.name': 'Mohamed Addani, M.S., Ph.D.',
+      'about.role': 'Biomedical scientist and AI researcher',
+      'about.bio': 'Over a decade of biomedical research, from molecular biology to predictive modeling. His work spans kidney disease, pancreatic cancer, AI in healthcare and health equity.',
+      'about.host': 'He hosts <strong>Discoveries</strong>, reading new papers and explaining what they really show.',
+      'orcid.aria': 'ORCID iD 0000-0003-0813-2078 (opens in a new tab)',
+      'linkedin.aria': 'LinkedIn (opens in a new tab)',
+      'follow.kicker': 'Follow',
+      'follow.title': 'Never miss a discovery',
+      'follow.lead': 'New episodes in English and Arabic.',
+      'yt.en': 'YouTube',
+      'yt.ar': 'YouTube · Arabic'
+    },
+    ar: {
+      'meta.title': 'اكتشافات علمية | مختبرات عداني',
+      'brand': 'مختبرات عداني (Addani Labs)',
+      'skip': 'انتقل إلى المحتوى',
+      'nav.label': 'القائمة الرئيسية',
+      'nav.episodes': 'الحلقات',
+      'nav.about': 'نبذة',
+      'nav.follow': 'تابعنا',
+      'hero.eyebrow': 'سلسلة علمية من مختبرات عداني',
+      'hero.title': 'اكتشافات علمية',
+      'hero.pitch': 'أحدث الاكتشافات العلمية، نشرحها من الورقة البحثية نفسها.',
+      'hero.with': 'مع',
+      'hero.name': 'د. محمد عداني',
+      'hero.cta': 'شاهد على يوتيوب',
+      'hero.callout': 'ما تكشفه فعلًا',
+      'ep.kicker': 'الموسم الأول',
+      'ep.title': 'الحلقات',
+      'ep1.no': 'الحلقة 1',
+      'ep1.soon': 'قريبًا',
+      'ep1.name': 'كريسبر',
+      'ep1.teaser': 'ماذا لو استطاع الأطباء إصلاح الطفرة التي وُلدتَ بها؟',
+      'ep2.no': 'الحلقة 2 · الجزء الأول',
+      'ep2.soon': 'قريبًا',
+      'ep2.name': 'الخلايا الجذعية',
+      'd.ep22.no': 'الحلقة 2 · الجزء الثاني',
+      'd.ep22.name': 'الخلايا الجذعية',
+      'd.ep21.no': 'الحلقة 2 · الجزء الأول',
+      'd.ep21.name': 'الخلايا الجذعية',
+      'd.ep1.no': 'الحلقة 1',
+      'd.ep1.name': 'كريسبر',
+      'd.latest': 'الأحدث',
+      'd.earlier': 'حلقات سابقة',
+      'd.next': 'اسحب للأعلى للحلقة التالية',
+      'd.dots': 'اختر حلقة',
+      'd.noteA': 'تجربة A · ليست الموقع الحالي',
+      'd.noteB': 'تجربة B · ليست الموقع الحالي',
+      'd.noteC': 'تجربة C · ليست الموقع الحالي',
+      'meta.title': 'تجربة A · اكتشافات علمية | مختبرات عداني',
+      'about.kicker': 'مقدّم السلسلة',
+      'about.title': 'عن محمد عداني',
+      'about.photoAlt': 'صورة محمد عداني بمعطف المختبر الأبيض',
+      'about.name': 'د. محمد عداني',
+      'about.role': 'باحث في العلوم الطبية الحيوية والذكاء الاصطناعي',
+      'about.bio': 'أكثر من عشر سنوات في البحث الطبي الحيوي، من البيولوجيا الجزيئية إلى النماذج التنبؤية. تشمل أبحاثه أمراض الكلى، وسرطان البنكرياس، والذكاء الاصطناعي في الرعاية الصحية، والعدالة الصحية.',
+      'about.host': 'يقدّم سلسلة <strong>اكتشافات علمية</strong>، يقرأ فيها الأوراق البحثية الجديدة ويشرح ما تكشفه فعلًا.',
+      'orcid.aria': 'معرّف ORCID رقم 0000-0003-0813-2078 (يفتح في نافذة جديدة)',
+      'linkedin.aria': 'لينكدإن (يفتح في نافذة جديدة)',
+      'follow.kicker': 'تابعنا',
+      'follow.title': 'لا يفوتك أي اكتشاف',
+      'follow.lead': 'حلقات جديدة بالعربية والإنجليزية.',
+      'yt.en': 'يوتيوب',
+      'yt.ar': 'يوتيوب · مختبرات عداني'
+    }
+  };
+
+  function apply(lang){
+    var d = STR[lang], h = document.documentElement;
+    h.lang = lang; h.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.title = d['meta.title'];
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var k = el.getAttribute('data-i18n'); if (d[k] != null) el.textContent = d[k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var k = el.getAttribute('data-i18n-html'); if (d[k] != null) el.innerHTML = d[k];
+    });
+    document.querySelectorAll('[data-i18n-attr]').forEach(function(el){
+      el.getAttribute('data-i18n-attr').split(',').forEach(function(pair){
+        var p = pair.split(':'); if (d[p[1]] != null) el.setAttribute(p[0], d[p[1]]);
+      });
+    });
+    document.querySelectorAll('[data-set-lang]').forEach(function(b){
+      b.setAttribute('aria-pressed', b.getAttribute('data-set-lang') === lang ? 'true' : 'false');
+    });
+  }
+
+  function setLang(lang){
+    try { localStorage.setItem('al-lang', lang); } catch(e) {}
+    apply(lang);
+  }
+
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.getAttribute('data-set-lang')); });
+  });
+
+  apply(document.documentElement.lang === 'ar' ? 'ar' : 'en');
+})();
+</script>
+
+<script>
+/* Demo A: dots follow the card you are on; tap a dot to jump to that card. Works in LTR and RTL. */
+(function(){
+  var row = document.getElementById('eps-row'); if (!row) return;
+  var cols = row.querySelectorAll('.ep-col'), dots = document.querySelectorAll('.dots button');
+  function current(){
+    var rtl = document.documentElement.dir === 'rtl', r = row.getBoundingClientRect(), best = 0, bd = 1e9;
+    cols.forEach(function(c, i){
+      var cr = c.getBoundingClientRect(), d = rtl ? Math.abs(r.right - cr.right) : Math.abs(cr.left - r.left);
+      if (d < bd){ bd = d; best = i; }
+    });
+    dots.forEach(function(d, i){ if (i === best) d.setAttribute('aria-current','true'); else d.removeAttribute('aria-current'); });
+  }
+  var t; row.addEventListener('scroll', function(){ cancelAnimationFrame(t); t = requestAnimationFrame(current); }, {passive:true});
+  window.addEventListener('resize', current);
+  dots.forEach(function(d, i){ d.addEventListener('click', function(){
+    var rtl = document.documentElement.dir === 'rtl', r = row.getBoundingClientRect(), cr = cols[i].getBoundingClientRect();
+    row.scrollBy({left: rtl ? (cr.right - r.right) : (cr.left - r.left), behavior:'smooth'});
+  }); });
+  /* language switch flips the direction: go back to the newest card */
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){ b.addEventListener('click', function(){
+    row.scrollLeft = 0; current(); }); });
+  current();
+})();
+</script>
+</body>
+</html>

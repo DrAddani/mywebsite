@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Episode layout demos · Addani Labs</title>
+<meta name="theme-color" content="#070C1A">
+<link rel="icon" type="image/png" href="../assets/logo-blue.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Atkinson+Hyperlegible:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#070C1A;--bg-2:#0B1428;--text:#F2F5FD;--text-2:#AEBBDA;--line:rgba(150,180,255,.14);--warm:#FFB84D}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.5;
+  -webkit-font-smoothing:antialiased;min-height:100vh;min-height:100svh;display:grid;place-items:center}
+main{width:min(560px,100% - 40px);padding:32px 0 40px}
+.top{display:flex;justify-content:center;margin-bottom:18px}
+.top img{height:34px;width:auto}
+h1{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:1.7rem;line-height:1.15;margin:0;text-align:center}
+.ar{font-family:"Cairo",system-ui,sans-serif;direction:rtl}
+h1.ar{font-size:1.5rem;margin-top:4px;line-height:1.4}
+.sub{color:var(--text-2);text-align:center;margin:8px 0 26px;font-size:1rem}
+.sub .ar{display:block}
+.opts{display:flex;flex-direction:column;gap:14px}
+.opt{display:block;text-decoration:none;color:var(--text);background:var(--bg-2);border:1px solid rgba(255,255,255,.16);border-radius:20px;
+  padding:18px 20px;transition:border-color .15s,background-color .15s}
+.opt:hover,.opt:active{border-color:var(--warm);background:#101C38}
+.opt b{display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:"Bricolage Grotesque",system-ui,sans-serif;
+  font-size:1.45rem;font-weight:800}
+.opt b span{font-size:1.4rem;color:var(--warm)}
+.opt p{margin:6px 0 0;color:var(--text-2);font-size:1rem}
+.opt p.ar{font-size:1.02rem;line-height:1.6;margin-top:2px}
+.live{display:block;text-align:center;margin-top:24px;color:var(--text-2);font-size:.95rem}
+</style>
+</head>
+<body>
+<main>
+  <div class="top"><img src="../assets/logo-white.png" alt="Addani Labs" width="480" height="151"></div>
+  <h1>How should the episodes look?</h1>
+  <h1 class="ar">كيف تظهر الحلقات؟</h1>
+  <p class="sub">Open each one on your phone and try it.<span class="ar">افتح كل واحدة على جوالك وجرّبها.</span></p>
+  <div class="opts">
+    <a class="opt" href="layout-a.html"><b>A · Swipe <span aria-hidden="true">→</span></b>
+      <p>Swipe sideways from one episode to the next. Newest first.</p>
+      <p class="ar">اسحب يمين ويسار من حلقة إلى حلقة. الأحدث أولًا.</p></a>
+    <a class="opt" href="layout-b.html"><b>B · Feed <span aria-hidden="true">→</span></b>
+      <p>One episode fills the screen. Scroll up for the next, like Shorts.</p>
+      <p class="ar">كل حلقة تملأ الشاشة. اسحب للأعلى للحلقة التالية، مثل الشورتس.</p></a>
+    <a class="opt" href="layout-c.html"><b>C · Latest + Earlier <span aria-hidden="true">→</span></b>
+      <p>The newest episode big on top, older ones in a short list below.</p>
+      <p class="ar">أحدث حلقة كبيرة في الأعلى، والحلقات السابقة في قائمة قصيرة تحتها.</p></a>
+  </div>
+  <a class="live" href="../">The live site · الموقع الحالي</a>
+</main>
+</body>
+</html>
