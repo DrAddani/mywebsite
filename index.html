@@ -188,7 +188,9 @@ html[lang="ar"] .kicker{letter-spacing:0;font-size:1rem}
 
 /* ---------- Episodes ---------- */
 .eps{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:22px;align-items:start}
-/* "More discoveries on the way" placeholder removed (Mo, 10-02-2026): the next episode card goes in the second column */
+.eps>.ep-col{grid-column:1}  /* one column: each new episode card goes under the previous one, same size (Mo, 10-08-2026) */
+.eps{row-gap:clamp(40px,5vw,56px)}  /* clear space between episodes, so each card keeps its own buttons */
+/* "More discoveries on the way" placeholder removed (Mo, 10-02-2026) */
 .ep-col{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
 .ep-col .ep{width:100%}
 .ep{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 28px;align-items:end;
@@ -224,6 +226,10 @@ html[dir="rtl"] .ep:hover .go svg{transform:scaleX(-1) translateX(3px)}
 .ep-thumb{display:block}
 .ep-card .yt-bar{padding:2px 18px 18px;flex-wrap:nowrap}
 .ep-card .yt-pill{flex:1 1 0;justify-content:center;min-height:48px;padding:0 14px}
+/* Before an episode is public its two YouTube buttons say "Coming soon" and go nowhere (Mo, 10-12-2026: "The youtube click should say coming soon") */
+.yt-pill .pill-txt{display:flex;flex-direction:column;align-items:center;line-height:1.15}
+.yt-pill .pill-soon{font-size:.72em;font-weight:700;color:#D93E1B;letter-spacing:.02em}
+.yt-pill .pill-soon[lang="ar"]{letter-spacing:0;font-family:"Cairo",system-ui,sans-serif}
 .ep-pic{display:block;aspect-ratio:16/9;overflow:hidden;background:#0A0F1E}
 .ep-pic img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .pic-ar{display:none}
@@ -236,6 +242,10 @@ html[lang="ar"] .ep-strip .logo-en{display:none}
 html[lang="ar"] .ep-strip .logo-ar{display:block;height:24px}
 .ep-strip .ep-no{color:rgba(244,238,223,.7)}
 .ep-strip .ep-name{font-family:var(--f-display);font-weight:800;font-size:1.05rem;letter-spacing:.02em}
+/* "Coming soon" badge never leaves the card on phones (EP2.1, 10-12-2026): the strip's words stay on one line each and the badge drops below if needed */
+.ep-strip{flex-wrap:wrap;row-gap:8px}
+.ep-strip .ep-no,.ep-strip .ep-name,.ep-strip .soon{white-space:nowrap}
+@media (max-width:640px){.ep-strip{gap:10px;padding:12px 14px}.ep-strip .soon{font-size:.85rem;padding:6px 12px}}
 html[lang="ar"] .ep-strip .ep-name{letter-spacing:0}
 
 /* ---------- About ---------- */
@@ -440,6 +450,33 @@ html[lang="ar"] .hero h1{line-height:1.05}
           </div>
           </div>
         </div>
+        <div class="ep-col">
+          <!-- Episode 2.1 card = EP2.1 (Mo, 10-12-2026: "It should say coming soon for 2.1") (10-12-2026, site_new_episode.py), a clone of Episode 1's: thumbnails only, no story page
+               (Mo, 10-10-2026: "No more reading. They could go to youtube to watch"). Under the previous episode, same
+               size (Mo, 10-08-2026). The thumbnail is a plain picture, not a link (Mo, 10-10-2026: "Clicking on the
+               thumbnail itself should not take you anywhere"); only the two YouTube buttons open the videos. Until the
+               videos are public both buttons open the channel and the "Coming soon" badge shows; on launch day
+               site_new_episode.py --links sets the two video links. -->
+          <div class="ep-card">
+          <div class="ep-thumb">
+            <span class="ep-pic">
+              <img class="pic-en" src="episodes/assets/ep02/thumb-en-960.webp" srcset="episodes/assets/ep02/thumb-en-960.webp 960w, episodes/assets/ep02/thumb-en.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="EP2.1 | Stem Cells: Can Our Cells Repair Us?" loading="lazy">
+              <img class="pic-ar" src="episodes/assets/ep02/thumb-ar-960.webp" srcset="episodes/assets/ep02/thumb-ar-960.webp 960w, episodes/assets/ep02/thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="الحلقة 2.1 | الخلايا الجذعية: هل تستطيع خلايانا إصلاحنا؟" loading="lazy">
+            </span>
+            <span class="ep-strip">
+              <img class="logo-en" src="assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
+              <span class="ep-no" data-i18n="ep2.no">Episode 2.1</span>
+              <span class="ep-name" data-i18n="ep2.name">Stem Cells</span>
+            </span>
+          </div>
+          <!-- YouTube buttons INSIDE the card, where "Click to read" was (Mo, 10-10-2026): English -> the English video,
+               العربية -> the Arabic video. Both on Addani Labs (@addanilabs). -->
+          <div class="yt-bar" dir="ltr" role="group" aria-label="Watch on YouTube">
+            <a class="yt-pill" href="#episodes" target="_blank" rel="noopener" lang="en" aria-label="English: Coming soon" aria-disabled="true" tabindex="-1" style="pointer-events:none;cursor:default"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg><span class="pill-txt">English<span class="pill-soon" lang="en">Coming soon</span></span></a>
+            <a class="yt-pill" href="#episodes" target="_blank" rel="noopener" lang="ar" aria-label="العربية: قريبًا" aria-disabled="true" tabindex="-1" style="pointer-events:none;cursor:default"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg><span class="pill-txt">العربية<span class="pill-soon" lang="ar">قريبًا</span></span></a>
+          </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -542,6 +579,9 @@ html[lang="ar"] .hero h1{line-height:1.05}
       'ep1.soon': 'Coming soon',
       'ep1.name': 'CRISPR',
       'ep1.teaser': 'What if doctors could fix the mutation you were born with?',
+      'ep2.no': 'Episode 2.1',
+      'ep2.soon': 'Coming soon',
+      'ep2.name': 'Stem Cells',
       'about.kicker': 'Your host',
       'about.title': 'About Mohamed',
       'about.photoAlt': 'Portrait of Mohamed Addani in a white lab coat',
@@ -578,6 +618,9 @@ html[lang="ar"] .hero h1{line-height:1.05}
       'ep1.soon': 'قريبًا',
       'ep1.name': 'كريسبر',
       'ep1.teaser': 'ماذا لو استطاع الأطباء إصلاح الطفرة التي وُلدتَ بها؟',
+      'ep2.no': 'الحلقة 2.1',
+      'ep2.soon': 'قريبًا',
+      'ep2.name': 'الخلايا الجذعية',
       'about.kicker': 'مقدّم السلسلة',
       'about.title': 'عن محمد عداني',
       'about.photoAlt': 'صورة محمد عداني بمعطف المختبر الأبيض',
