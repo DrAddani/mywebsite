@@ -348,7 +348,7 @@ html[lang="ar"] .hero h1{line-height:1.08}
 .eps .ep-card{max-width:none}
 /* phone: every card's strip and buttons stay on one line at the swipe width */
 .yt-pill .pill-soon{white-space:nowrap}
-@media (max-width:640px){.eps>.ep-col{flex-basis:88%}.ep-strip{gap:8px;padding:10px 12px}.ep-strip img{height:20px}html[lang="ar"] .ep-strip .logo-ar{height:18px}.ep-strip .ep-no{font-size:.82rem}.ep-strip .ep-name{font-size:.92rem}.ep-card .yt-bar{padding:2px 12px 14px;gap:8px}.ep-card .yt-pill{padding:0 8px;gap:6px;font-size:.95rem}.ep-card .yt-pill svg{width:22px;height:15px}}
+@media (max-width:640px){.eps>.ep-col{flex-basis:88%}.ep-strip{gap:8px;padding:10px 12px}.ep-strip img{height:20px}html[lang="ar"] .ep-strip .logo-ar{height:20px}.ep-strip .ep-no{font-size:.82rem}.ep-strip .ep-name{font-size:.92rem}.ep-card .yt-bar{padding:2px 12px 14px;gap:8px}.ep-card .yt-pill{padding:0 8px;gap:6px;font-size:.95rem}.ep-card .yt-pill svg{width:22px;height:15px}}
 
 /* ===== Layout C · Latest + Earlier: the newest episode big on top, older ones as a compact list (scales to 20+) ===== */
 .latest{max-width:560px}
@@ -373,6 +373,11 @@ html[lang="ar"] .row-txt .ep-no{letter-spacing:0;font-size:.85rem}
 .row-bar .yt-pill svg{width:20px;height:14px}
 .row-bar .pill-soon{font-size:.7em}
 @media (min-width:641px){.ep-row{grid-template-columns:168px minmax(0,1fr)}}
+/* Arabic strip = the English strip's size and spacing (Mo, 10-12-2026: "To crowded. The Eng v looks little better … make the Arabic similar to eng in terms of size logo etc and size and spacing of words") */
+html[lang="ar"] .ep-strip .logo-ar{height:20px}
+html[lang="ar"] .ep-strip .ep-no{font-size:.9rem;font-weight:600}
+html[lang="ar"] .ep-strip .ep-name{font-size:1.02rem}
+@media (max-width:640px){html[lang="ar"] .ep-strip .logo-ar{height:16px}html[lang="ar"] .ep-strip .ep-no{font-size:.8rem}html[lang="ar"] .ep-strip .ep-name{font-size:.9rem}}
 </style>
 </head>
 <body>
