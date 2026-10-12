@@ -337,6 +337,18 @@ html[lang="ar"] .hero h1{line-height:1.05}
   html[lang="ar"] #episodes h2{line-height:1.2}
   html[lang="ar"] .eyebrow{font-size:.85rem}
 }
+/* Arabic as compact as English (Mo, 10-12-2026: "the eng v is more compact than Arabic. Make sure they are the same") */
+html[lang="ar"] header,html[lang="ar"] .hero,html[lang="ar"] #episodes{line-height:1.6}
+html[lang="ar"] #episodes .kicker{font-size:.85rem;line-height:1.6}
+html[lang="ar"] #episodes h2{line-height:1.02}
+html[lang="ar"] .hero h1{line-height:1.08}
+/* Episodes side by side, swipe sideways on a phone (Mo, 10-12-2026: "the episode should be scrollable by side"); the next card peeks in */
+.eps{display:flex;gap:16px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:12px;scrollbar-width:thin}
+.eps>.ep-col{flex:0 0 min(540px,86%);scroll-snap-align:start}
+.eps .ep-card{max-width:none}
+/* phone: every card's strip and buttons stay on one line at the swipe width */
+.yt-pill .pill-soon{white-space:nowrap}
+@media (max-width:640px){.eps>.ep-col{flex-basis:88%}.ep-strip{gap:8px;padding:10px 12px}.ep-strip img{height:20px}html[lang="ar"] .ep-strip .logo-ar{height:18px}.ep-strip .ep-no{font-size:.82rem}.ep-strip .ep-name{font-size:.92rem}.ep-card .yt-bar{padding:2px 12px 14px;gap:8px}.ep-card .yt-pill{padding:0 8px;gap:6px;font-size:.95rem}.ep-card .yt-pill svg{width:22px;height:15px}}
 </style>
 </head>
 <body>
