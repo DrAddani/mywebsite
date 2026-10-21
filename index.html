@@ -273,7 +273,7 @@ html[dir="rtl"] .portrait::before{transform:translate(-14px,14px)}
 .icon-link svg{width:22px;height:22px}
 
 /* ---------- Follow ---------- */
-.follow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.follow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 .soc{display:flex;flex-direction:column;gap:18px;padding:24px;border-radius:18px;background:var(--bg-2);border:1px solid var(--line);
   text-decoration:none;min-height:168px;transition:border-color .15s,background-color .15s,transform .15s}
 .soc:hover{border-color:rgba(255,255,255,.35);background:var(--bg-3);transform:translateY(-2px)}
@@ -504,7 +504,7 @@ html[lang="ar"] .ep-strip .ep-name{font-size:1.02rem}
           </span>
           <span class="row-txt"><span class="ep-no" data-i18n="ep1.no">Episode 1</span><span class="ep-name" data-i18n="ep1.name">CRISPR</span></span>
           <div class="yt-bar row-bar" dir="ltr" role="group" aria-label="Watch on YouTube">
-            <a class="yt-pill" href="https://www.youtube.com/watch?v=N160YGAzgHM" target="_blank" rel="noopener" lang="en" aria-label="Watch in English on YouTube"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>English</a>
+            <a class="yt-pill" href="https://www.youtube.com/watch?v=RyvY_FIXKrg" target="_blank" rel="noopener" lang="en" aria-label="Watch in English on YouTube"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>English</a>
             <a class="yt-pill" href="https://www.youtube.com/watch?v=Z2E_5fjI0hg" target="_blank" rel="noopener" lang="ar" aria-label="شاهد بالعربية على يوتيوب"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg>العربية</a>
           </div>
         </li>
@@ -551,17 +551,15 @@ html[lang="ar"] .ep-strip .ep-name{font-size:1.02rem}
       <h2 id="fo-h" data-i18n="follow.title">Never miss a discovery</h2>
       <p class="lead" data-i18n="follow.lead">New episodes in English and Arabic.</p>
       <div class="follow">
+        <!-- Two YouTube channels since 10-20-2026 (rule S9.5): English @addanilabs-eng, Arabic @addanilabs (Mo, 10-21-2026: "update the website youtube links") -->
+        <a class="soc" href="https://www.youtube.com/@addanilabs-eng" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg></span>
+          <span class="bottom"><span class="name" data-i18n="yt.en">YouTube · English</span><span class="handle ltr">@addanilabs-eng</span></span>
+        </a>
         <a class="soc" href="https://www.youtube.com/@addanilabs" target="_blank" rel="noopener">
           <span class="ic"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg></span>
-          <span class="bottom"><span class="name" data-i18n="yt.en">YouTube</span><span class="handle ltr">@addanilabs</span></span>
+          <span class="bottom"><span class="name" data-i18n="yt.ar">YouTube · العربية</span><span class="handle ltr">@addanilabs</span></span>
         </a>
-        <!-- Arabic YouTube card hidden until the Arabic videos exist (Mo, 10-01-2026). To restore: uncomment, set
-             .follow back to repeat(5,...). (Since 10-06-2026 there is one YouTube channel for both languages; keep this card hidden.)
-        <a class="soc" href="https://www.youtube.com/@addanilabsarabic" target="_blank" rel="noopener">
-          <span class="ic"><svg viewBox="0 0 30 21" aria-hidden="true"><rect width="30" height="21" rx="6" fill="#FF0033"/><path d="M12 6v9l8-4.5z" fill="#fff"/></svg></span>
-          <span class="bottom"><span class="name" data-i18n="yt.ar">YouTube · العربية</span><span class="handle ltr">@addanilabsarabic</span></span>
-        </a>
-        -->
         <a class="soc" href="https://www.instagram.com/addanilabs" target="_blank" rel="noopener">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#F2F5FD" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="#F2F5FD" stroke="none"/></svg></span>
           <span class="bottom"><span class="name">Instagram</span><span class="handle ltr">@addanilabs</span></span>
@@ -630,7 +628,7 @@ html[lang="ar"] .ep-strip .ep-name{font-size:1.02rem}
       'follow.kicker': 'Follow',
       'follow.title': 'Never miss a discovery',
       'follow.lead': 'New episodes in English and Arabic.',
-      'yt.en': 'YouTube',
+      'yt.en': 'YouTube · English',
       'yt.ar': 'YouTube · Arabic'
     },
     ar: {
@@ -674,8 +672,8 @@ html[lang="ar"] .ep-strip .ep-name{font-size:1.02rem}
       'follow.kicker': 'تابعنا',
       'follow.title': 'لا يفوتك أي اكتشاف',
       'follow.lead': 'حلقات جديدة بالعربية والإنجليزية.',
-      'yt.en': 'يوتيوب',
-      'yt.ar': 'يوتيوب · مختبرات عداني'
+      'yt.en': 'يوتيوب · الإنجليزية',
+      'yt.ar': 'يوتيوب · العربية'
     }
   };
 

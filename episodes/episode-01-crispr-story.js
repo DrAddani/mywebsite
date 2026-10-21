@@ -19,7 +19,7 @@ window.STORY = {
   title:  { en: "CRISPR", ar: "كريسبر" },
   hook:   { en: "Genome Engineering", ar: "تعديل وهندسة الجينات الوراثية" },
   ribbon: { en: "Discoveries, Episode 1", ar: "اكتشافات علمية، الحلقة الأولى" },
-  youtube: { en: "https://www.youtube.com/watch?v=N160YGAzgHM", ar: "https://www.youtube.com/watch?v=Z2E_5fjI0hg" },
+  youtube: { en: "https://www.youtube.com/watch?v=RyvY_FIXKrg", ar: "https://www.youtube.com/watch?v=Z2E_5fjI0hg" },
 
   /* the thumbnail's painted art (no lettering): hero (left part, the cartoon) and watch screen (right part, the sky) */
   art: { src: "assets/ep01/art-plate.webp", small: "assets/ep01/art-plate-960.webp", w: 1280, h: 720,
