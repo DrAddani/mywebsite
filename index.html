@@ -378,6 +378,35 @@ html[lang="ar"] .ep-strip .logo-ar{height:20px}
 html[lang="ar"] .ep-strip .ep-no{font-size:.9rem;font-weight:600}
 html[lang="ar"] .ep-strip .ep-name{font-size:1.02rem}
 @media (max-width:640px){html[lang="ar"] .ep-strip .logo-ar{height:16px}html[lang="ar"] .ep-strip .ep-no{font-size:.8rem}html[lang="ar"] .ep-strip .ep-name{font-size:.9rem}}
+
+/* Earlier episodes = picture cards (Mo, 10-25-2026: "the images and section are little too small … shorter the youtube pannels"):
+   each earlier episode = its full-width thumbnail on top + one slim row (Episode · name, two small YouTube buttons).
+   Phone: one card per line, full width. Tablet: 2 per row. Desktop: 3 per row across the page. */
+.ep-list{max-width:none;display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+@media (min-width:641px){.ep-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}}
+@media (min-width:1000px){.ep-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}}
+.ep-row,.ep-row:last-child{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"pic pic" "txt bar";column-gap:10px;row-gap:0;
+  padding:0;border:1px solid rgba(255,255,255,.10);border-radius:18px;overflow:hidden;background:#0F1730;
+  box-shadow:0 24px 60px -34px rgba(0,0,0,.85);transition:transform .18s,box-shadow .18s}
+@media (min-width:641px){.ep-row{grid-template-columns:minmax(0,1fr) auto}}
+.ep-row:hover{transform:translateY(-3px);box-shadow:0 30px 70px -34px rgba(0,0,0,.95)}
+.ep-row:hover .ep-pic img{transform:scale(1.03)}
+.row-pic{border-radius:0}
+.row-txt{flex-direction:column;align-items:flex-start;gap:0;padding-block:10px 11px;padding-inline-start:14px;align-self:center;min-width:0}
+.row-txt .ep-no{font-size:.78rem;font-weight:600;color:var(--text-2);white-space:nowrap}
+.row-txt .ep-name{font-size:1.02rem;line-height:1.2}
+html[lang="ar"] .row-txt .ep-no{font-size:.78rem}
+.row-bar{align-self:center;gap:6px;padding-inline-end:12px}
+.row-bar .yt-pill{flex:0 0 auto;min-height:32px;padding:0 10px 0 8px;gap:5px;font-size:.8rem;border-radius:999px;
+  background:rgba(255,255,255,.06);color:#F4EEDF;border:1px solid rgba(255,255,255,.18)}
+.row-bar .yt-pill[lang="ar"]{font-size:.84rem}
+.row-bar .yt-pill svg{width:18px;height:13px}
+.row-bar .yt-pill:hover{background:#fff;color:var(--bg);border-color:#fff}
+/* desktop: the Latest card grows with the wider grid below it */
+/* the buttons row is always dir=ltr: keep its outer padding on the card edge in Arabic too */
+html[dir="rtl"] .row-bar{padding-inline-end:0;padding-inline-start:12px}
+/* desktop: the Latest card spans 2 of the 3 earlier columns, so both line up */
+@media (min-width:1000px){.latest{max-width:calc((100% - 48px)/3*2 + 24px)}.latest .ep-card{max-width:none}}
 </style>
 </head>
 <body>
@@ -467,8 +496,8 @@ html[lang="ar"] .ep-strip .ep-name{font-size:1.02rem}
         <div class="ep-card">
           <div class="ep-thumb">
             <span class="ep-pic">
-              <img class="pic-en" src="episodes/assets/ep03/thumb-en-960.webp" srcset="episodes/assets/ep03/thumb-en-960.webp 960w, episodes/assets/ep03/thumb-en.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="Where's the cancer? Episode 3: Can Your Immune System Fight Cancer?" loading="lazy">
-              <img class="pic-ar" src="episodes/assets/ep03/thumb-ar-960.webp" srcset="episodes/assets/ep03/thumb-ar-960.webp 960w, episodes/assets/ep03/thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 560px" width="1280" height="720" alt="أين السرطان؟ الحلقة 3: هل يهزم العلاج المناعي السرطان؟" loading="lazy">
+              <img class="pic-en" src="episodes/assets/ep03/thumb-en-960.webp" srcset="episodes/assets/ep03/thumb-en-960.webp 960w, episodes/assets/ep03/thumb-en.webp 1280w" sizes="(max-width:640px) 92vw, 760px" width="1280" height="720" alt="Where's the cancer? Episode 3: Can Your Immune System Fight Cancer?" loading="lazy">
+              <img class="pic-ar" src="episodes/assets/ep03/thumb-ar-960.webp" srcset="episodes/assets/ep03/thumb-ar-960.webp 960w, episodes/assets/ep03/thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 760px" width="1280" height="720" alt="أين السرطان؟ الحلقة 3: هل يهزم العلاج المناعي السرطان؟" loading="lazy">
             </span>
             <span class="ep-strip">
               <img class="logo-en" src="assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
@@ -488,8 +517,8 @@ html[lang="ar"] .ep-strip .ep-name{font-size:1.02rem}
       <ul class="ep-list">
         <li class="ep-row">
           <span class="row-pic ep-pic">
-              <img class="pic-en" src="episodes/assets/ep02/part2/thumb-en-960.webp" srcset="episodes/assets/ep02/part2/thumb-en-960.webp 960w, episodes/assets/ep02/part2/thumb-en.webp 1280w" sizes="160px" width="1280" height="720" alt="EP2 Pt.2 | What Can Stem Cells Do?">
-              <img class="pic-ar" src="episodes/assets/ep02/part2/thumb-ar-960.webp" srcset="episodes/assets/ep02/part2/thumb-ar-960.webp 960w, episodes/assets/ep02/part2/thumb-ar.webp 1280w" sizes="160px" width="1280" height="720" alt="الحلقة 2 · الجزء 2 | هل يمكن تجديد الخلايا؟" loading="lazy">
+              <img class="pic-en" src="episodes/assets/ep02/part2/thumb-en-960.webp" srcset="episodes/assets/ep02/part2/thumb-en-960.webp 960w, episodes/assets/ep02/part2/thumb-en.webp 1280w" sizes="(max-width:640px) 92vw, 370px" width="1280" height="720" alt="EP2 Pt.2 | What Can Stem Cells Do?">
+              <img class="pic-ar" src="episodes/assets/ep02/part2/thumb-ar-960.webp" srcset="episodes/assets/ep02/part2/thumb-ar-960.webp 960w, episodes/assets/ep02/part2/thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 370px" width="1280" height="720" alt="الحلقة 2 · الجزء 2 | هل يمكن تجديد الخلايا؟" loading="lazy">
           </span>
           <span class="row-txt"><span class="ep-no" data-i18n="ep22.no">Episode 2 · Part 2</span><span class="ep-name" data-i18n="ep22.name">Stem Cells</span></span>
           <div class="yt-bar row-bar" dir="ltr" role="group" aria-label="Watch on YouTube">
@@ -499,8 +528,8 @@ html[lang="ar"] .ep-strip .ep-name{font-size:1.02rem}
         </li>
         <li class="ep-row">
           <span class="row-pic ep-pic">
-              <img class="pic-en" src="episodes/assets/ep02/thumb-en-960.webp" srcset="episodes/assets/ep02/thumb-en-960.webp 960w, episodes/assets/ep02/thumb-en.webp 1280w" sizes="160px" width="1280" height="720" alt="EP2 Pt.1 | Can Stem Cells Treat Diabetes?">
-              <img class="pic-ar" src="episodes/assets/ep02/thumb-ar-960.webp" srcset="episodes/assets/ep02/thumb-ar-960.webp 960w, episodes/assets/ep02/thumb-ar.webp 1280w" sizes="160px" width="1280" height="720" alt="الحلقة 2 · الجزء 1 | هل الخلايا الجذعية تعالج السكري؟" loading="lazy">
+              <img class="pic-en" src="episodes/assets/ep02/thumb-en-960.webp" srcset="episodes/assets/ep02/thumb-en-960.webp 960w, episodes/assets/ep02/thumb-en.webp 1280w" sizes="(max-width:640px) 92vw, 370px" width="1280" height="720" alt="EP2 Pt.1 | Can Stem Cells Treat Diabetes?">
+              <img class="pic-ar" src="episodes/assets/ep02/thumb-ar-960.webp" srcset="episodes/assets/ep02/thumb-ar-960.webp 960w, episodes/assets/ep02/thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 370px" width="1280" height="720" alt="الحلقة 2 · الجزء 1 | هل الخلايا الجذعية تعالج السكري؟" loading="lazy">
           </span>
           <span class="row-txt"><span class="ep-no" data-i18n="ep2.no">Episode 2 · Part 1</span><span class="ep-name" data-i18n="ep2.name">Stem Cells</span></span>
           <div class="yt-bar row-bar" dir="ltr" role="group" aria-label="Watch on YouTube">
@@ -510,8 +539,8 @@ html[lang="ar"] .ep-strip .ep-name{font-size:1.02rem}
         </li>
         <li class="ep-row">
           <span class="row-pic ep-pic">
-              <img class="pic-en" src="episodes/assets/ep01/thumb-en-960.webp?v=1021" srcset="episodes/assets/ep01/thumb-en-960.webp?v=1021 960w, episodes/assets/ep01/thumb-en.webp?v=1021 1280w" sizes="160px" width="1280" height="720" alt="Gene Scissors">
-              <img class="pic-ar" src="episodes/assets/ep01/thumb-ar-960.webp" srcset="episodes/assets/ep01/thumb-ar-960.webp 960w, episodes/assets/ep01/thumb-ar.webp 1280w" sizes="160px" width="1280" height="720" alt="مقصّ الجينات" loading="lazy">
+              <img class="pic-en" src="episodes/assets/ep01/thumb-en-960.webp?v=1021" srcset="episodes/assets/ep01/thumb-en-960.webp?v=1021 960w, episodes/assets/ep01/thumb-en.webp?v=1021 1280w" sizes="(max-width:640px) 92vw, 370px" width="1280" height="720" alt="Gene Scissors">
+              <img class="pic-ar" src="episodes/assets/ep01/thumb-ar-960.webp" srcset="episodes/assets/ep01/thumb-ar-960.webp 960w, episodes/assets/ep01/thumb-ar.webp 1280w" sizes="(max-width:640px) 92vw, 370px" width="1280" height="720" alt="مقصّ الجينات" loading="lazy">
           </span>
           <span class="row-txt"><span class="ep-no" data-i18n="ep1.no">Episode 1</span><span class="ep-name" data-i18n="ep1.name">CRISPR</span></span>
           <div class="yt-bar row-bar" dir="ltr" role="group" aria-label="Watch on YouTube">
