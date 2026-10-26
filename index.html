@@ -423,11 +423,11 @@ html[lang="ar"] #episodes .latest-tag{letter-spacing:0}
 .cred-sub{font-family:var(--f-display);font-weight:700;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);margin:clamp(28px,4vw,44px) 0 10px}
 html[lang="ar"] .cred-sub{letter-spacing:0;font-size:1rem}
 .rlist{list-style:none;margin:0;padding:0;max-width:820px}
-.rlist li{padding:10px 0;border-bottom:1px solid var(--line);text-align:left;font-size:1rem;line-height:1.45}
-.rlist a{color:var(--text);text-decoration:none;font-weight:700}
+.rlist li{padding:10px 0;border-bottom:1px solid var(--line);text-align:left;font-family:var(--f-body);font-size:clamp(1.02rem,1.3vw,1.12rem);line-height:1.5}
+.rlist a{color:var(--text);text-decoration:none;font-weight:400}
 .rlist a:hover{text-decoration:underline;text-underline-offset:3px}
 .rlist .ext{color:var(--brand-hi)}
-.r-y{color:var(--text-3);font-size:.88rem;white-space:nowrap;margin-inline-start:4px}
+.r-y{color:var(--text-3);font-size:.88rem;font-weight:700;white-space:nowrap;margin-inline-start:4px}
 /* the timeline: a faint track, and a glowing line that draws down as you scroll (--p = 0..1, set by the script) */
 .tl{position:relative;max-width:820px;padding-inline-start:44px;padding-bottom:6px}
 .tl-track,.tl-fill{position:absolute;inset-inline-start:11px;top:18px;width:2px;border-radius:2px}
@@ -448,11 +448,11 @@ html[dir="rtl"] .tl-it>p{transform:translateX(-8px)}
 .tl-dot{position:absolute;inset-inline-start:-38px;top:15px;width:12px;height:12px;border-radius:50%;background:var(--bg);
   border:2px solid rgba(150,180,255,.3);box-sizing:border-box;transition:background-color .35s,border-color .35s,box-shadow .35s}
 .tl-it.on .tl-dot{background:var(--c);border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 22%,transparent)}
-.tl-f{display:flex;align-items:baseline;gap:10px;font-family:var(--f-display);font-weight:700;font-size:.78rem;letter-spacing:.12em;
+.tl-f{display:flex;align-items:baseline;gap:10px;font-family:var(--f-body);font-weight:700;font-size:.78rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--c)}
 html[lang="ar"] .tl-f{letter-spacing:0;font-size:.92rem}
-.tl-d{color:var(--text-3);font-weight:600;letter-spacing:.04em;font-size:.78rem}
-.tl-t{margin-top:3px;font-size:1.06rem;line-height:1.42;font-weight:600;color:var(--text);text-align:left}
+.tl-d{color:var(--text-3);font-weight:700;letter-spacing:.04em;font-size:.78rem}
+.tl-t{margin-top:3px;font-family:var(--f-body);font-size:clamp(1.02rem,1.3vw,1.12rem);line-height:1.5;font-weight:400;color:var(--text);text-align:left}
 html[dir="rtl"] .tl-t{text-align:right}
 @media (max-width:640px){.tl{padding-inline-start:36px}.tl-track,.tl-fill{inset-inline-start:9px}.tl-yr::before{inset-inline-start:-36px;width:20px;height:20px;margin-top:-10px}
   .tl-dot{inset-inline-start:-31px}.tl-t{font-size:1rem}}
