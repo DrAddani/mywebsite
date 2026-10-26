@@ -423,7 +423,7 @@ html[lang="ar"] #episodes .latest-tag{letter-spacing:0}
 .cred-sub{font-family:var(--f-display);font-weight:700;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);margin:clamp(28px,4vw,44px) 0 10px}
 html[lang="ar"] .cred-sub{letter-spacing:0;font-size:1rem}
 .rlist{list-style:none;margin:0;padding:0;max-width:820px}
-.rlist li{padding:10px 0;border-bottom:1px solid var(--line);text-align:left;font-family:var(--f-body);font-size:clamp(1.02rem,1.3vw,1.12rem);line-height:1.5}
+.rlist li{padding:10px 0;border-bottom:1px solid var(--line);text-align:start;font-family:var(--f-body);font-size:clamp(1.02rem,1.3vw,1.12rem);line-height:1.5}
 .rlist a{color:var(--text);text-decoration:none;font-weight:400}
 .rlist a:hover{text-decoration:underline;text-underline-offset:3px}
 .rlist .ext{color:var(--brand-hi)}
@@ -452,8 +452,11 @@ html[dir="rtl"] .tl-it>p{transform:translateX(-8px)}
   text-transform:uppercase;color:var(--c)}
 html[lang="ar"] .tl-f{letter-spacing:0;font-size:1.05rem}
 .tl-d{color:var(--text-3);font-weight:700;letter-spacing:.04em;font-size:.86rem}
-.tl-t{margin-top:3px;font-family:var(--f-body);font-size:clamp(1.02rem,1.3vw,1.12rem);line-height:1.5;font-weight:400;color:var(--text);text-align:left}
-html[dir="rtl"] .tl-t{text-align:right}
+.tl-t{margin-top:3px;font-family:var(--f-body);font-size:clamp(1.02rem,1.3vw,1.12rem);line-height:1.5;font-weight:400;color:var(--text);text-align:start}
+.t-ar{display:none}
+html[lang="ar"] .t-en{display:none}
+html[lang="ar"] .t-ar{display:inline}
+html[lang="ar"] .tl-t,html[lang="ar"] .rlist li{line-height:1.75}
 @media (max-width:640px){.tl{padding-inline-start:36px}.tl-track,.tl-fill{inset-inline-start:9px}.tl-yr::before{inset-inline-start:-36px;width:20px;height:20px;margin-top:-10px}
   .tl-dot{inset-inline-start:-31px}.tl-t{font-size:1rem}}
 @media (prefers-reduced-motion:reduce){.tl-fill{height:calc(100% - 36px)}.tl-it>p{opacity:1;transform:none;transition:none}}
@@ -671,10 +674,10 @@ html[dir="rtl"] .tl-t{text-align:right}
         <h3 class="cred-h" id="cred-h" data-i18n="cred.title">The science behind Addani Labs</h3>
         <h4 class="cred-sub" data-i18n="cred.pubs">Publications</h4>
         <ul class="rlist" role="list">
-          <li dir="ltr" lang="en"><a href="https://doi.org/10.1177/23259671261458577" target="_blank" rel="noopener">Health Disparities in Orthobiologics: Factors Influencing Access to Platelet-Rich Plasma for Knee Osteoarthritis<span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2026</span></li>
-          <li dir="ltr" lang="en"><a href="https://doi.org/10.1080/17460751.2025.2521963" target="_blank" rel="noopener">Toward Equitable Regenerative Medicine: A Health Equity Research Framework for Emerging Regenerative Treatments<span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2025</span></li>
-          <li dir="ltr" lang="en"><a href="https://doi.org/10.1016/j.stemcr.2025.102510" target="_blank" rel="noopener">An Analysis of Stem Cell Training Programs for Physicians in the US: A Mirage of Credibility<span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2025</span></li>
-          <li dir="ltr" lang="en"><a href="https://doi.org/10.1017/cts.2022.408" target="_blank" rel="noopener">Changing the Face of Academic Medicine: An Equity Action Plan for Institutions<span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2022</span></li>
+          <li><a href="https://doi.org/10.1177/23259671261458577" target="_blank" rel="noopener"><span class="t-en" lang="en" dir="ltr">Health Disparities in Orthobiologics: Factors Influencing Access to Platelet-Rich Plasma for Knee Osteoarthritis</span><span class="t-ar" lang="ar" dir="rtl">الفوارق الصحية في العلاجات البيولوجية في طب العظام: العوامل المؤثرة في الحصول على البلازما الغنية بالصفائح الدموية لعلاج خشونة الركبة</span><span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2026</span></li>
+          <li><a href="https://doi.org/10.1080/17460751.2025.2521963" target="_blank" rel="noopener"><span class="t-en" lang="en" dir="ltr">Toward Equitable Regenerative Medicine: A Health Equity Research Framework for Emerging Regenerative Treatments</span><span class="t-ar" lang="ar" dir="rtl">نحو طب تجديدي عادل: إطار بحثي للعدالة الصحية في العلاجات التجديدية الناشئة</span><span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2025</span></li>
+          <li><a href="https://doi.org/10.1016/j.stemcr.2025.102510" target="_blank" rel="noopener"><span class="t-en" lang="en" dir="ltr">An Analysis of Stem Cell Training Programs for Physicians in the US: A Mirage of Credibility</span><span class="t-ar" lang="ar" dir="rtl">تحليل برامج تدريب الأطباء على الخلايا الجذعية في الولايات المتحدة: سراب المصداقية</span><span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2025</span></li>
+          <li><a href="https://doi.org/10.1017/cts.2022.408" target="_blank" rel="noopener"><span class="t-en" lang="en" dir="ltr">Changing the Face of Academic Medicine: An Equity Action Plan for Institutions</span><span class="t-ar" lang="ar" dir="rtl">تغيير وجه الطب الأكاديمي: خطة عمل للمؤسسات لتحقيق العدالة</span><span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2022</span></li>
         </ul>
         <h4 class="cred-sub" data-i18n="cred.abs">Abstracts</h4>
         <div class="tl" id="tl">
@@ -682,74 +685,74 @@ html[dir="rtl"] .tl-t{text-align:right}
           <div class="tl-yr"><span>2027</span></div>
           <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Machine Learning to Predict Major Adverse Kidney Events 90 Days After Hospital Discharge</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Machine Learning to Predict Major Adverse Kidney Events 90 Days After Hospital Discharge</span><span class="t-ar" lang="ar" dir="rtl">التعلّم الآلي للتنبؤ بالأحداث الكلوية الضارة الكبرى خلال 90 يومًا من الخروج من المستشفى</span></p></div>
           <div class="tl-yr"><span>2026</span></div>
           <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Novel Approaches Reveal Collagen Changes in Early-Stage ADPKD in Zebrafish and Mouse Models</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Novel Approaches Reveal Collagen Changes in Early-Stage ADPKD in Zebrafish and Mouse Models</span><span class="t-ar" lang="ar" dir="rtl">أساليب جديدة تكشف تغيّرات الكولاجين في المرحلة المبكرة من داء الكلى المتعدد الكيسات الصبغي الجسدي السائد (ADPKD) في نماذج أسماك الزرد والفئران</span></p></div>
           <div class="tl-yr"><span>2025</span></div>
           <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Physicians&#x27; Views on Orthobiologics</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Physicians&#x27; Views on Orthobiologics</span><span class="t-ar" lang="ar" dir="rtl">آراء الأطباء في العلاجات البيولوجية في طب العظام</span></p></div>
           <div class="tl-yr"><span>2024</span></div>
           <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Labeling of Denatured Collagen in ADPKD and Comparison to Fibrotic Area</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Labeling of Denatured Collagen in ADPKD and Comparison to Fibrotic Area</span><span class="t-ar" lang="ar" dir="rtl">وسم الكولاجين المتمسّخ في داء الكلى المتعدد الكيسات الصبغي الجسدي السائد (ADPKD) ومقارنته بمساحة التليّف</span></p></div>
           <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Inducing Business or Improving Practice? An Analysis of Existing Stem Cell Training Programs for Physicians</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Inducing Business or Improving Practice? An Analysis of Existing Stem Cell Training Programs for Physicians</span><span class="t-ar" lang="ar" dir="rtl">جذب الزبائن أم تحسين الممارسة؟ تحليل البرامج الحالية لتدريب الأطباء على الخلايا الجذعية</span></p></div>
           <div class="tl-yr"><span>2023</span></div>
           <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Patients&#x27; Perspective on Regenerative Medicine PRP Orthobiologics</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Patients&#x27; Perspective on Regenerative Medicine PRP Orthobiologics</span><span class="t-ar" lang="ar" dir="rtl">وجهة نظر المرضى في العلاجات البيولوجية في طب العظام بالبلازما الغنية بالصفائح الدموية (PRP) ضمن الطب التجديدي</span></p></div>
           <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Machine Learning Models Illuminate Health Disparities in Regenerative Medicine Platelet-Rich Plasma Treatment for Knee Osteoarthritis</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Machine Learning Models Illuminate Health Disparities in Regenerative Medicine Platelet-Rich Plasma Treatment for Knee Osteoarthritis</span><span class="t-ar" lang="ar" dir="rtl">نماذج التعلّم الآلي تكشف الفوارق الصحية في العلاج التجديدي لخشونة الركبة بالبلازما الغنية بالصفائح الدموية</span></p></div>
           <div class="tl-yr"><span>2022</span></div>
           <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Exploring Demographic, Clinical, and Health Determinants of Health for PRP Regenerative Medicine</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Exploring Demographic, Clinical, and Health Determinants of Health for PRP Regenerative Medicine</span><span class="t-ar" lang="ar" dir="rtl">استكشاف محددات الصحة الديموغرافية والسريرية والصحية في العلاج بالبلازما الغنية بالصفائح الدموية (PRP) ضمن الطب التجديدي</span></p></div>
           <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Towards Equitable Regenerative Medicine: A Call for Health Equity Research in Emerging Regenerative Treatments</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Towards Equitable Regenerative Medicine: A Call for Health Equity Research in Emerging Regenerative Treatments</span><span class="t-ar" lang="ar" dir="rtl">نحو طب تجديدي عادل: دعوة إلى أبحاث العدالة الصحية في العلاجات التجديدية الناشئة</span></p></div>
           <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Developing Strategies to Address Health Disparities for First Generation Regenerative Medicine Treatments</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Developing Strategies to Address Health Disparities for First Generation Regenerative Medicine Treatments</span><span class="t-ar" lang="ar" dir="rtl">وضع استراتيجيات لمعالجة الفوارق الصحية في الجيل الأول من علاجات الطب التجديدي</span></p></div>
           <div class="tl-yr"><span>2021</span></div>
           <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Developing Strategies to Address Health Disparities in Regenerative Medicine Treatments</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Developing Strategies to Address Health Disparities in Regenerative Medicine Treatments</span><span class="t-ar" lang="ar" dir="rtl">وضع استراتيجيات لمعالجة الفوارق الصحية في علاجات الطب التجديدي</span></p></div>
           <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Health Disparities in PRP Regenerative Medicine Care</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Health Disparities in PRP Regenerative Medicine Care</span><span class="t-ar" lang="ar" dir="rtl">الفوارق الصحية في العلاج بالبلازما الغنية بالصفائح الدموية (PRP) ضمن الطب التجديدي</span></p></div>
           <div class="tl-yr"><span>2020</span></div>
           <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Collagen Changes Suggestive of a Primary Defect in pkd2+/- Adult Zebrafish Kidney</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Collagen Changes Suggestive of a Primary Defect in pkd2+/- Adult Zebrafish Kidney</span><span class="t-ar" lang="ar" dir="rtl">تغيّرات في الكولاجين تشير إلى خلل أوّلي في كلى أسماك الزرد البالغة الحاملة لنسخة طافرة واحدة من جين (pkd2)</span></p></div>
           <div class="tl-yr"><span>2019</span></div>
           <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Kidney Regeneration in pkd2 Mutant Zebrafish</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Kidney Regeneration in pkd2 Mutant Zebrafish</span><span class="t-ar" lang="ar" dir="rtl">تجدّد الكلى في أسماك الزرد الحاملة لطفرة في جين (pkd2)</span></p></div>
           <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Development of a Transgenic Mouse for Phosphodiesterase 1A Overexpression in the Kidney</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Development of a Transgenic Mouse for Phosphodiesterase 1A Overexpression in the Kidney</span><span class="t-ar" lang="ar" dir="rtl">تطوير فأر معدّل وراثيًا لفرط التعبير عن إنزيم الفوسفودايستراز (PDE1A) في الكلى</span></p></div>
           <div class="tl-yr"><span>2018</span></div>
           <div class="tl-it" style="--c:#C77DFF"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.cancer">Cancer</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Elucidating the Binding of the TGF-β/SMAD Pathway in PANC1 and HEK Cell Lines</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Elucidating the Binding of the TGF-β/SMAD Pathway in PANC1 and HEK Cell Lines</span><span class="t-ar" lang="ar" dir="rtl">توضيح الارتباط في مسار عامل النمو المحوِّل بيتا (TGF-β/SMAD) في سلالتي خلايا البنكرياس (PANC1) والكلى (HEK)</span></p></div>
           <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Elevated Lead Blood-Level in Children and Understanding Hazards, Exposures and Health Outcomes</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Elevated Lead Blood-Level in Children and Understanding Hazards, Exposures and Health Outcomes</span><span class="t-ar" lang="ar" dir="rtl">ارتفاع مستوى الرصاص في دم الأطفال: فهم المخاطر والتعرّض والنتائج الصحية</span></p></div>
           <div class="tl-it" style="--c:#4F9BFF"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.mb">Molecular Biology</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Increases in Globular Adiponectin Will Cause the Overexpression of miRNA-155 and the Subsequent Reduction of Angiotensin Type 1 Receptors Resulting in HLHS</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Increases in Globular Adiponectin Will Cause the Overexpression of miRNA-155 and the Subsequent Reduction of Angiotensin Type 1 Receptors Resulting in HLHS</span><span class="t-ar" lang="ar" dir="rtl">زيادة الأديبونكتين الكروي تؤدي إلى فرط التعبير عن الرنا الميكروي (miRNA-155) ثم نقص مستقبلات الأنجيوتنسين من النوع الأول، ما يسبب متلازمة نقص تنسّج القلب الأيسر</span></p></div>
           <div class="tl-yr"><span>2017</span></div>
           <div class="tl-it" style="--c:#FFD166"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.chem">Chemistry</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Investigating Mechanism: A Computational Approach to HP-RNase</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Investigating Mechanism: A Computational Approach to HP-RNase</span><span class="t-ar" lang="ar" dir="rtl">دراسة الآلية: نهج حاسوبي لإنزيم الريبونوكلياز (HP-RNase)</span></p></div>
           <div class="tl-it" style="--c:#C77DFF"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.cancer">Cancer</span></p>
-            <p class="tl-t" lang="en" dir="ltr">Effect of High Fat Diet on TGF-beta Leads to Type 2 Diabetes &amp; Pancreatic Cancer</p></div>
+            <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Effect of High Fat Diet on TGF-beta Leads to Type 2 Diabetes &amp; Pancreatic Cancer</span><span class="t-ar" lang="ar" dir="rtl">تأثير النظام الغذائي الغني بالدهون في عامل النمو المحوِّل بيتا (TGF-β) يؤدي إلى السكري من النوع الثاني وسرطان البنكرياس</span></p></div>
         </div>
       </div>
       <!-- CRED:END -->
