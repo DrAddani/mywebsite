@@ -35,6 +35,9 @@
   var h = document.documentElement;
   h.lang = lang; h.dir = lang === 'ar' ? 'rtl' : 'ltr';
 })();
+/* THEME:FIRSTPAINT  light / dark chosen before first paint; dark is the default; the visitor's choice is remembered ("al-theme") */
+(function(){ try { if (localStorage.getItem('al-theme') === 'light') document.documentElement.setAttribute('data-theme','light'); } catch(e) {} })();
+/* THEME:FIRSTPAINT-END */
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -461,6 +464,55 @@ html[lang="ar"] .tl-t,html[lang="ar"] .rlist li{line-height:1.75}
   .tl-dot{inset-inline-start:-31px}.tl-t{font-size:1rem}}
 @media (prefers-reduced-motion:reduce){.tl-fill{height:calc(100% - 36px)}.tl-it>p{opacity:1;transform:none;transition:none}}
 /* CRED:CSS-END */
+/* THEME:CSS  light mode (Mo 10-26-2026); dark stays the default. Episode cards keep the navy look (thumbnail + navy strip, rule S7.22) */
+.tools{grid-area:lang;display:flex;align-items:center;gap:8px}
+.theme-btn{all:unset;box-sizing:border-box;cursor:pointer;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;
+  border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.04);color:var(--text-2);transition:background-color .15s,color .15s}
+.theme-btn:hover{color:var(--text);background:rgba(255,255,255,.1)}
+.theme-btn:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+.theme-btn svg{width:20px;height:20px}
+.theme-btn .i-moon{display:none}
+html[data-theme="light"] .theme-btn .i-sun{display:none}
+html[data-theme="light"] .theme-btn .i-moon{display:block}
+@media (max-width:640px){.theme-btn{width:40px;height:40px}}
+html[data-theme="light"]{color-scheme:light;
+  --bg:#F6F7FB;--bg-2:#FFFFFF;--bg-3:#EEF1F8;--text:#0B1428;--text-2:#3B4763;--text-3:#5A6680;
+  --line:rgba(11,20,40,.12);--warm:#B45309;--brand-hi:#1D5FD6}
+html[data-theme="light"] .bar{background:rgba(246,247,251,.88)}
+html[data-theme="light"] .nav a:hover{background:rgba(11,20,40,.06)}
+html[data-theme="light"] .lang,html[data-theme="light"] .theme-btn,html[data-theme="light"] .icon-link{border-color:rgba(11,20,40,.2);background:rgba(11,20,40,.03)}
+html[data-theme="light"] .lang .sep{background:rgba(11,20,40,.2)}
+html[data-theme="light"] .lang button[aria-pressed="true"]{background:#0B1428;color:#fff}
+html[data-theme="light"] .theme-btn:hover{background:rgba(11,20,40,.08)}
+html[data-theme="light"] .host .av{border-color:rgba(11,20,40,.15)}
+html[data-theme="light"] .icon-link:hover{color:#fff}
+html[data-theme="light"] .soc{border-color:rgba(11,20,40,.1);box-shadow:0 10px 30px -22px rgba(11,20,40,.35)}
+html[data-theme="light"] .soc:hover{border-color:rgba(11,20,40,.25)}
+html[data-theme="light"] .soc .ic{background:rgba(11,20,40,.06)}
+html[data-theme="light"] .soc [fill="#F2F5FD"]{fill:#0B1428}
+html[data-theme="light"] .soc [stroke="#F2F5FD"]{stroke:#0B1428}
+/* logos: blue on light */
+.logo-blue{display:none!important}
+html[data-theme="light"] .bar .logo-en,html[data-theme="light"] .bar .logo-ar,html[data-theme="light"] .foot .logo-en,html[data-theme="light"] .foot .logo-ar{display:none!important}
+html[data-theme="light"][lang="en"] .bar .logo-blue.en,html[data-theme="light"][lang="en"] .foot .logo-blue.en{display:block!important}
+html[data-theme="light"][lang="ar"] .bar .logo-blue.ar,html[data-theme="light"][lang="ar"] .foot .logo-blue.ar{display:block!important}
+/* episode cards stay navy: the dark palette, scoped to the card */
+html[data-theme="light"] .ep-card,html[data-theme="light"] .ep-row{--bg:#070C1A;--text:#F2F5FD;--text-2:#AEBBDA;--text-3:#8E9CC0;--line:rgba(150,180,255,.14);
+  box-shadow:0 24px 50px -30px rgba(11,20,40,.45)}
+/* research timeline on light: the Abstract Collection PDF's darker field colours */
+html[data-theme="light"] .tl-track{background:rgba(11,20,40,.12)}
+html[data-theme="light"] .tl-dot,html[data-theme="light"] .tl-yr::before{border-color:rgba(11,20,40,.22)}
+html[data-theme="light"] .tl-yr.on::before{box-shadow:0 0 0 5px rgba(180,83,9,.15),0 0 14px rgba(180,83,9,.35)}
+html[data-theme="light"] .tl-fill{box-shadow:0 0 10px rgba(180,83,9,.3)}
+html[data-theme="light"] .tl-it>p{opacity:.45}
+html[data-theme="light"] .tl-it.on>p{opacity:1}
+html[data-theme="light"] .f-neph{--c:#C2410C!important}
+html[data-theme="light"] .f-cancer{--c:#7E22CE!important}
+html[data-theme="light"] .f-ph{--c:#047857!important}
+html[data-theme="light"] .f-regen{--c:#0E7490!important}
+html[data-theme="light"] .f-mb{--c:#1D4ED8!important}
+html[data-theme="light"] .f-chem{--c:#A16207!important}
+/* THEME:CSS-END */
 </style>
 </head>
 <body>
@@ -469,18 +521,23 @@ html[lang="ar"] .tl-t,html[lang="ar"] .rlist li{line-height:1.75}
 <header class="bar">
   <div class="wrap bar-in">
     <a class="logo" href="#top" aria-label="Addani Labs" data-i18n-attr="aria-label:brand">
-      <img class="logo-en" src="assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
+      <img class="logo-en" src="assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210"><img class="logo-blue en" src="assets/logo-en-blue.png" alt="Addani Labs" width="480" height="151"><img class="logo-blue ar" src="assets/logo-ar-blue.png" alt="مختبرات عداني" width="978" height="210">
     </a>
     <nav class="nav" aria-label="Main" data-i18n-attr="aria-label:nav.label">
       <a href="#episodes" data-i18n="nav.episodes">Episodes</a>
       <a href="#follow" data-i18n="nav.follow">Follow</a>
       <a href="#about" data-i18n="nav.about">About</a>
     </nav>
+<!-- THEME:BTN -->
+    <div class="tools">
+    <button type="button" class="theme-btn" data-theme-toggle aria-label="Light mode" data-i18n-attr="aria-label:theme.toLight"><svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg><svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg></button>
     <div class="lang" role="group" aria-label="Language / اللغة">
       <button type="button" lang="en" data-set-lang="en" aria-pressed="true" aria-label="English">EN</button>
       <span class="sep" aria-hidden="true"></span>
       <button type="button" lang="ar" data-set-lang="ar" aria-pressed="false" aria-label="العربية">ع</button>
     </div>
+    </div>
+<!-- THEME:BTN-END -->
   </div>
 </header>
 
@@ -684,74 +741,74 @@ html[lang="ar"] .tl-t,html[lang="ar"] .rlist li{line-height:1.75}
         <div class="tl" id="tl">
           <span class="tl-track" aria-hidden="true"></span><span class="tl-fill" aria-hidden="true"></span>
           <div class="tl-yr"><span>2027</span></div>
-          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-neph" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Machine Learning to Predict Major Adverse Kidney Events 90 Days After Hospital Discharge</span><span class="t-ar" lang="ar" dir="rtl">التعلّم الآلي للتنبؤ بالأحداث الكلوية الضارة الكبرى خلال 90 يومًا من الخروج من المستشفى</span></p></div>
           <div class="tl-yr"><span>2026</span></div>
-          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-neph" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Novel Approaches Reveal Collagen Changes in Early-Stage ADPKD in Zebrafish and Mouse Models</span><span class="t-ar" lang="ar" dir="rtl">أساليب جديدة تكشف تغيّرات الكولاجين في المرحلة المبكرة من داء الكلى المتعدد الكيسات الصبغي الجسدي السائد (ADPKD) في نماذج أسماك الزرد والفئران</span></p></div>
           <div class="tl-yr"><span>2025</span></div>
-          <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-regen" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Physicians&#x27; Views on Orthobiologics</span><span class="t-ar" lang="ar" dir="rtl">آراء الأطباء في العلاجات البيولوجية في طب العظام</span></p></div>
           <div class="tl-yr"><span>2024</span></div>
-          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-neph" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Labeling of Denatured Collagen in ADPKD and Comparison to Fibrotic Area</span><span class="t-ar" lang="ar" dir="rtl">وسم الكولاجين المتمسّخ في داء الكلى المتعدد الكيسات الصبغي الجسدي السائد (ADPKD) ومقارنته بمساحة التليّف</span></p></div>
-          <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-regen" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Inducing Business or Improving Practice? An Analysis of Existing Stem Cell Training Programs for Physicians</span><span class="t-ar" lang="ar" dir="rtl">جذب الزبائن أم تحسين الممارسة؟ تحليل البرامج الحالية لتدريب الأطباء على الخلايا الجذعية</span></p></div>
           <div class="tl-yr"><span>2023</span></div>
-          <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-regen" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Patients&#x27; Perspective on Regenerative Medicine PRP Orthobiologics</span><span class="t-ar" lang="ar" dir="rtl">وجهة نظر المرضى في العلاجات البيولوجية في طب العظام بالبلازما الغنية بالصفائح الدموية (PRP) ضمن الطب التجديدي</span></p></div>
-          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-ph" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Machine Learning Models Illuminate Health Disparities in Regenerative Medicine Platelet-Rich Plasma Treatment for Knee Osteoarthritis</span><span class="t-ar" lang="ar" dir="rtl">نماذج التعلّم الآلي تكشف الفوارق الصحية في العلاج التجديدي لخشونة الركبة بالبلازما الغنية بالصفائح الدموية</span></p></div>
           <div class="tl-yr"><span>2022</span></div>
-          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-ph" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Exploring Demographic, Clinical, and Health Determinants of Health for PRP Regenerative Medicine</span><span class="t-ar" lang="ar" dir="rtl">استكشاف محددات الصحة الديموغرافية والسريرية والصحية في العلاج بالبلازما الغنية بالصفائح الدموية (PRP) ضمن الطب التجديدي</span></p></div>
-          <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-regen" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Towards Equitable Regenerative Medicine: A Call for Health Equity Research in Emerging Regenerative Treatments</span><span class="t-ar" lang="ar" dir="rtl">نحو طب تجديدي عادل: دعوة إلى أبحاث العدالة الصحية في العلاجات التجديدية الناشئة</span></p></div>
-          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-ph" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Developing Strategies to Address Health Disparities for First Generation Regenerative Medicine Treatments</span><span class="t-ar" lang="ar" dir="rtl">وضع استراتيجيات لمعالجة الفوارق الصحية في الجيل الأول من علاجات الطب التجديدي</span></p></div>
           <div class="tl-yr"><span>2021</span></div>
-          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-ph" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Developing Strategies to Address Health Disparities in Regenerative Medicine Treatments</span><span class="t-ar" lang="ar" dir="rtl">وضع استراتيجيات لمعالجة الفوارق الصحية في علاجات الطب التجديدي</span></p></div>
-          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-ph" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Health Disparities in PRP Regenerative Medicine Care</span><span class="t-ar" lang="ar" dir="rtl">الفوارق الصحية في العلاج بالبلازما الغنية بالصفائح الدموية (PRP) ضمن الطب التجديدي</span></p></div>
           <div class="tl-yr"><span>2020</span></div>
-          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-neph" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Collagen Changes Suggestive of a Primary Defect in pkd2+/- Adult Zebrafish Kidney</span><span class="t-ar" lang="ar" dir="rtl">تغيّرات في الكولاجين تشير إلى خلل أوّلي في كلى أسماك الزرد البالغة الحاملة لنسخة طافرة واحدة من جين (pkd2)</span></p></div>
           <div class="tl-yr"><span>2019</span></div>
-          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-neph" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Kidney Regeneration in pkd2 Mutant Zebrafish</span><span class="t-ar" lang="ar" dir="rtl">تجدّد الكلى في أسماك الزرد الحاملة لطفرة في جين (pkd2)</span></p></div>
-          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-neph" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Development of a Transgenic Mouse for Phosphodiesterase 1A Overexpression in the Kidney</span><span class="t-ar" lang="ar" dir="rtl">تطوير فأر معدّل وراثيًا لفرط التعبير عن إنزيم الفوسفودايستراز (PDE1A) في الكلى</span></p></div>
           <div class="tl-yr"><span>2018</span></div>
-          <div class="tl-it" style="--c:#C77DFF"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-cancer" style="--c:#C77DFF"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.cancer">Cancer</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Elucidating the Binding of the TGF-β/SMAD Pathway in PANC1 and HEK Cell Lines</span><span class="t-ar" lang="ar" dir="rtl">توضيح الارتباط في مسار عامل النمو المحوِّل بيتا (TGF-β/SMAD) في سلالتي خلايا البنكرياس (PANC1) والكلى (HEK)</span></p></div>
-          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-ph" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Elevated Lead Blood-Level in Children and Understanding Hazards, Exposures and Health Outcomes</span><span class="t-ar" lang="ar" dir="rtl">ارتفاع مستوى الرصاص في دم الأطفال: فهم المخاطر والتعرّض والنتائج الصحية</span></p></div>
-          <div class="tl-it" style="--c:#4F9BFF"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-mb" style="--c:#4F9BFF"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.mb">Molecular Biology</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Increases in Globular Adiponectin Will Cause the Overexpression of miRNA-155 and the Subsequent Reduction of Angiotensin Type 1 Receptors Resulting in HLHS</span><span class="t-ar" lang="ar" dir="rtl">زيادة الأديبونكتين الكروي تؤدي إلى فرط التعبير عن الرنا الميكروي (miRNA-155) ثم نقص مستقبلات الأنجيوتنسين من النوع الأول، ما يسبب متلازمة نقص تنسّج القلب الأيسر</span></p></div>
           <div class="tl-yr"><span>2017</span></div>
-          <div class="tl-it" style="--c:#FFD166"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-chem" style="--c:#FFD166"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.chem">Chemistry</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Investigating Mechanism: A Computational Approach to HP-RNase</span><span class="t-ar" lang="ar" dir="rtl">دراسة الآلية: نهج حاسوبي لإنزيم الريبونوكلياز (HP-RNase)</span></p></div>
-          <div class="tl-it" style="--c:#C77DFF"><span class="tl-dot" aria-hidden="true"></span>
+          <div class="tl-it f-cancer" style="--c:#C77DFF"><span class="tl-dot" aria-hidden="true"></span>
             <p class="tl-f"><span data-i18n="cred.g.cancer">Cancer</span></p>
             <p class="tl-t"><span class="t-en" lang="en" dir="ltr">Effect of High Fat Diet on TGF-beta Leads to Type 2 Diabetes &amp; Pancreatic Cancer</span><span class="t-ar" lang="ar" dir="rtl">تأثير النظام الغذائي الغني بالدهون في عامل النمو المحوِّل بيتا (TGF-β) يؤدي إلى السكري من النوع الثاني وسرطان البنكرياس</span></p></div>
         </div>
@@ -763,7 +820,7 @@ html[lang="ar"] .tl-t,html[lang="ar"] .rlist li{line-height:1.75}
 
 <footer>
   <div class="wrap foot">
-    <img class="logo-en" src="assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210">
+    <img class="logo-en" src="assets/logo-white.png" alt="Addani Labs" width="480" height="151"><img class="logo-ar" src="assets/logo-ar-white.png" alt="مختبرات عداني" width="978" height="210"><img class="logo-blue en" src="assets/logo-en-blue.png" alt="Addani Labs" width="480" height="151"><img class="logo-blue ar" src="assets/logo-ar-blue.png" alt="مختبرات عداني" width="978" height="210">
     <p><span class="ltr">© 2026 Addani Labs</span> · <a class="ltr" href="mailto:addanilabs@gmail.com">addanilabs@gmail.com</a></p>
   </div>
 </footer>
@@ -817,6 +874,8 @@ html[lang="ar"] .tl-t,html[lang="ar"] .rlist li{line-height:1.75}
       'follow.lead': 'New episodes in English and Arabic.',
       'yt.en': 'YouTube · English',
       'yt.ar': 'YouTube · Arabic',
+      'theme.toLight': 'Light mode',
+      'theme.toDark': 'Dark mode',
       'cred.kicker': 'Research',
       'cred.title': 'Addani’s Research Experience',
       'cred.pubs': 'Publications',
@@ -874,6 +933,8 @@ html[lang="ar"] .tl-t,html[lang="ar"] .rlist li{line-height:1.75}
       'follow.lead': 'حلقات جديدة بالعربية والإنجليزية.',
       'yt.en': 'يوتيوب · الإنجليزية',
       'yt.ar': 'يوتيوب · العربية',
+      'theme.toLight': 'الوضع الفاتح',
+      'theme.toDark': 'الوضع الداكن',
       'cred.kicker': 'الأبحاث',
       'cred.title': 'خبرة د. عداني البحثية',
       'cred.pubs': 'المنشورات العلمية',
@@ -939,5 +1000,27 @@ html[lang="ar"] .tl-t,html[lang="ar"] .rlist li{line-height:1.75}
 })();
 </script>
 <!-- CRED:JS-END -->
+<script>
+/* THEME:JS  the sun / moon button flips light and dark and remembers the choice */
+(function(){
+  var b = document.querySelector('[data-theme-toggle]'); if (!b) return;
+  var h = document.documentElement, meta = document.querySelector('meta[name="theme-color"]');
+  function label(){
+    var light = h.getAttribute('data-theme') === 'light', ar = h.lang === 'ar';
+    b.setAttribute('aria-label', light ? (ar ? 'الوضع الداكن' : 'Dark mode') : (ar ? 'الوضع الفاتح' : 'Light mode'));
+    b.setAttribute('aria-pressed', light ? 'true' : 'false');
+    if (meta) meta.setAttribute('content', light ? '#F6F7FB' : '#070C1A');
+  }
+  b.addEventListener('click', function(){
+    var light = h.getAttribute('data-theme') !== 'light';
+    if (light) h.setAttribute('data-theme','light'); else h.removeAttribute('data-theme');
+    try { localStorage.setItem('al-theme', light ? 'light' : 'dark'); } catch(e) {}
+    label();
+  });
+  document.querySelectorAll('[data-set-lang]').forEach(function(x){ x.addEventListener('click', function(){ setTimeout(label, 0); }); });
+  label();
+})();
+</script>
+<!-- THEME:JS-END -->
 </body>
 </html>
