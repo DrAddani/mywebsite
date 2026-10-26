@@ -417,6 +417,47 @@ html[lang="ar"] #episodes .episode-heading .kicker{letter-spacing:0}
 #episodes .latest-tag::before{width:7px;height:7px;flex-shrink:0}
 #episodes .latest-tag::after{content:"";height:1px;background:var(--line);flex:1;margin-inline-start:4px}
 html[lang="ar"] #episodes .latest-tag{letter-spacing:0}
+/* CRED:CSS  research: papers + abstract timeline, styled after the Abstract Collection PDF (Mo 10-26-2026) */
+.cred{margin-top:clamp(56px,8vw,96px);padding-top:clamp(40px,6vw,64px);border-top:1px solid var(--line)}
+.cred-h{font-size:clamp(1.9rem,4vw,3rem);margin-bottom:clamp(20px,3vw,32px)}
+.cred-sub{font-family:var(--f-display);font-weight:700;font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);margin:clamp(28px,4vw,44px) 0 10px}
+html[lang="ar"] .cred-sub{letter-spacing:0;font-size:1rem}
+.rlist{list-style:none;margin:0;padding:0;max-width:820px}
+.rlist li{padding:10px 0;border-bottom:1px solid var(--line);text-align:left;font-size:1rem;line-height:1.45}
+.rlist a{color:var(--text);text-decoration:none;font-weight:700}
+.rlist a:hover{text-decoration:underline;text-underline-offset:3px}
+.rlist .ext{color:var(--brand-hi)}
+.r-y{color:var(--text-3);font-size:.88rem;white-space:nowrap;margin-inline-start:4px}
+/* the timeline: a faint track, and a glowing line that draws down as you scroll (--p = 0..1, set by the script) */
+.tl{position:relative;max-width:820px;padding-inline-start:44px;padding-bottom:6px}
+.tl-track,.tl-fill{position:absolute;inset-inline-start:11px;top:18px;width:2px;border-radius:2px}
+.tl-track{bottom:18px;background:rgba(150,180,255,.16)}
+.tl-fill{height:calc(var(--p,0) * (100% - 36px));background:linear-gradient(180deg,#FFB84D,#F07A5A 35%,#C77DFF 60%,#4F9BFF);
+  box-shadow:0 0 14px rgba(255,184,77,.45)}
+.tl-yr{position:relative;font-family:var(--f-display);font-weight:800;font-size:clamp(1.5rem,3vw,2rem);line-height:1;
+  margin:26px 0 6px;color:var(--text-3);transition:color .35s}
+.tl-yr:first-of-type{margin-top:6px}
+.tl-yr::before{content:"";position:absolute;inset-inline-start:-44px;top:50%;width:24px;height:24px;margin-top:-12px;border-radius:50%;
+  background:var(--bg);border:2px solid rgba(150,180,255,.28);box-sizing:border-box;transition:background-color .35s,border-color .35s,box-shadow .35s}
+.tl-yr.on{color:var(--text)}
+.tl-yr.on::before{background:var(--warm);border-color:var(--warm);box-shadow:0 0 0 5px rgba(255,184,77,.18),0 0 18px rgba(255,184,77,.5)}
+.tl-it{position:relative;padding:10px 0 12px}
+.tl-it>p{opacity:.38;transform:translateX(8px);transition:opacity .45s,transform .45s}
+html[dir="rtl"] .tl-it>p{transform:translateX(-8px)}
+.tl-it.on>p{opacity:1;transform:none}
+.tl-dot{position:absolute;inset-inline-start:-38px;top:15px;width:12px;height:12px;border-radius:50%;background:var(--bg);
+  border:2px solid rgba(150,180,255,.3);box-sizing:border-box;transition:background-color .35s,border-color .35s,box-shadow .35s}
+.tl-it.on .tl-dot{background:var(--c);border-color:var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 22%,transparent)}
+.tl-f{display:flex;align-items:baseline;gap:10px;font-family:var(--f-display);font-weight:700;font-size:.78rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--c)}
+html[lang="ar"] .tl-f{letter-spacing:0;font-size:.92rem}
+.tl-d{color:var(--text-3);font-weight:600;letter-spacing:.04em;font-size:.78rem}
+.tl-t{margin-top:3px;font-size:1.06rem;line-height:1.42;font-weight:600;color:var(--text);text-align:left}
+html[dir="rtl"] .tl-t{text-align:right}
+@media (max-width:640px){.tl{padding-inline-start:36px}.tl-track,.tl-fill{inset-inline-start:9px}.tl-yr::before{inset-inline-start:-36px;width:20px;height:20px;margin-top:-10px}
+  .tl-dot{inset-inline-start:-31px}.tl-t{font-size:1rem}}
+@media (prefers-reduced-motion:reduce){.tl-fill{height:calc(100% - 36px)}.tl-it>p{opacity:1;transform:none;transition:none}}
+/* CRED:CSS-END */
 </style>
 </head>
 <body>
@@ -429,8 +470,8 @@ html[lang="ar"] #episodes .latest-tag{letter-spacing:0}
     </a>
     <nav class="nav" aria-label="Main" data-i18n-attr="aria-label:nav.label">
       <a href="#episodes" data-i18n="nav.episodes">Episodes</a>
-      <a href="#about" data-i18n="nav.about">About</a>
       <a href="#follow" data-i18n="nav.follow">Follow</a>
+      <a href="#about" data-i18n="nav.about">About</a>
     </nav>
     <div class="lang" role="group" aria-label="Language / اللغة">
       <button type="button" lang="en" data-set-lang="en" aria-pressed="true" aria-label="English">EN</button>
@@ -564,38 +605,6 @@ html[lang="ar"] #episodes .latest-tag{letter-spacing:0}
     </div>
   </section>
 
-  <!-- ========== ABOUT ========== -->
-  <section class="block" id="about" aria-labelledby="ab-h">
-    <div class="wrap">
-      <p class="kicker" data-i18n="about.kicker">Your host</p>
-      <h2 id="ab-h" data-i18n="about.title">About Mohamed</h2>
-      <div class="about">
-        <div class="portrait">
-          <div class="photo">
-            <img src="assets/mohamed-addani.jpg" width="618" height="1100" loading="lazy"
-                 alt="Portrait of Mohamed Addani in a white lab coat" data-i18n-attr="alt:about.photoAlt">
-          </div>
-        </div>
-        <div>
-          <h3 data-i18n="about.name">Mohamed Addani, M.S., Ph.D.</h3>
-          <p class="role" data-i18n="about.role">Biomedical scientist and AI researcher</p>
-          <p class="bio" data-i18n="about.bio">Over a decade of biomedical research, from molecular biology to predictive modeling. His work spans kidney disease, pancreatic cancer, AI in healthcare and health equity.</p>
-          <p class="bio" data-i18n-html="about.host">He hosts <strong>Discoveries</strong>, reading new papers and explaining what they really show.</p>
-          <div class="ids">
-            <a class="orcid" href="https://orcid.org/0000-0003-0813-2078" target="_blank" rel="noopener"
-               aria-label="ORCID iD 0000-0003-0813-2078 (opens in a new tab)" data-i18n-attr="aria-label:orcid.aria">
-              <svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"/></svg>
-            </a>
-            <a class="icon-link" href="https://www.linkedin.com/in/mohamed-addani-phd-268676189" target="_blank" rel="noopener"
-               aria-label="LinkedIn (opens in a new tab)" data-i18n-attr="aria-label:linkedin.aria">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ========== FOLLOW ========== -->
   <section class="block" id="follow" aria-labelledby="fo-h">
     <div class="wrap">
@@ -625,6 +634,125 @@ html[lang="ar"] #episodes .latest-tag{letter-spacing:0}
           <span class="bottom"><span class="name">X</span><span class="handle ltr">@AddaniLabs</span></span>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section class="block" id="about" aria-labelledby="ab-h">
+    <div class="wrap">
+      <p class="kicker" data-i18n="about.kicker">Your host</p>
+      <h2 id="ab-h" data-i18n="about.title">About Mohamed</h2>
+      <div class="about">
+        <div class="portrait">
+          <div class="photo">
+            <img src="assets/mohamed-addani.jpg" width="618" height="1100" loading="lazy"
+                 alt="Portrait of Mohamed Addani in a white lab coat" data-i18n-attr="alt:about.photoAlt">
+          </div>
+        </div>
+        <div>
+          <h3 data-i18n="about.name">Mohamed Addani, M.S., Ph.D.</h3>
+          <p class="role" data-i18n="about.role">Biomedical scientist and AI researcher</p>
+          <p class="bio" data-i18n="about.bio">Over a decade of biomedical research, from molecular biology to predictive modeling. His work spans kidney disease, pancreatic cancer, AI in healthcare and health equity.</p>
+          <p class="bio" data-i18n-html="about.host">He hosts <strong>Discoveries</strong>, reading new papers and explaining what they really show.</p>
+          <div class="ids">
+            <a class="orcid" href="https://orcid.org/0000-0003-0813-2078" target="_blank" rel="noopener"
+               aria-label="ORCID iD 0000-0003-0813-2078 (opens in a new tab)" data-i18n-attr="aria-label:orcid.aria">
+              <svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="128" fill="#A6CE39"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"/></svg>
+            </a>
+            <a class="icon-link" href="https://www.linkedin.com/in/mohamed-addani-phd-268676189" target="_blank" rel="noopener"
+               aria-label="LinkedIn (opens in a new tab)" data-i18n-attr="aria-label:linkedin.aria">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- CRED:START  research: papers + abstract timeline (Mo 10-26-2026, rule S7.99) -->
+      <div class="cred" aria-labelledby="cred-h">
+        <h3 class="cred-h" id="cred-h" data-i18n="cred.title">The science behind Addani Labs</h3>
+        <h4 class="cred-sub" data-i18n="cred.pubs">Publications</h4>
+        <ul class="rlist" role="list">
+          <li dir="ltr" lang="en"><a href="https://doi.org/10.1177/23259671261458577" target="_blank" rel="noopener">Health Disparities in Orthobiologics: Factors Influencing Access to Platelet-Rich Plasma for Knee Osteoarthritis<span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2026</span></li>
+          <li dir="ltr" lang="en"><a href="https://doi.org/10.1080/17460751.2025.2521963" target="_blank" rel="noopener">Toward Equitable Regenerative Medicine: A Health Equity Research Framework for Emerging Regenerative Treatments<span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2025</span></li>
+          <li dir="ltr" lang="en"><a href="https://doi.org/10.1016/j.stemcr.2025.102510" target="_blank" rel="noopener">An Analysis of Stem Cell Training Programs for Physicians in the US: A Mirage of Credibility<span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2025</span></li>
+          <li dir="ltr" lang="en"><a href="https://doi.org/10.1017/cts.2022.408" target="_blank" rel="noopener">Changing the Face of Academic Medicine: An Equity Action Plan for Institutions<span class="ext" aria-hidden="true"> ↗</span></a> <span class="r-y">2022</span></li>
+        </ul>
+        <h4 class="cred-sub" data-i18n="cred.abs">Abstracts</h4>
+        <div class="tl" id="tl">
+          <span class="tl-track" aria-hidden="true"></span><span class="tl-fill" aria-hidden="true"></span>
+          <div class="tl-yr"><span>2027</span></div>
+          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span><span class="tl-d ltr">03-2027</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Machine Learning to Predict Major Adverse Kidney Events 90 Days After Hospital Discharge</p></div>
+          <div class="tl-yr"><span>2026</span></div>
+          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span><span class="tl-d ltr">10-2026</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Novel Approaches Reveal Collagen Changes in Early-Stage ADPKD in Zebrafish and Mouse Models</p></div>
+          <div class="tl-yr"><span>2025</span></div>
+          <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span><span class="tl-d ltr">05-2025</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Physicians&#x27; Views on Orthobiologics</p></div>
+          <div class="tl-yr"><span>2024</span></div>
+          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span><span class="tl-d ltr">10-2024</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Labeling of Denatured Collagen in ADPKD and Comparison to Fibrotic Area</p></div>
+          <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span><span class="tl-d ltr">2024</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Inducing Business or Improving Practice? An Analysis of Existing Stem Cell Training Programs for Physicians</p></div>
+          <div class="tl-yr"><span>2023</span></div>
+          <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span><span class="tl-d ltr">09-2023</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Patients&#x27; Perspective on Regenerative Medicine PRP Orthobiologics</p></div>
+          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span><span class="tl-d ltr">03-2023</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Machine Learning Models Illuminate Health Disparities in Regenerative Medicine Platelet-Rich Plasma Treatment for Knee Osteoarthritis</p></div>
+          <div class="tl-yr"><span>2022</span></div>
+          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span><span class="tl-d ltr">12-2022</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Exploring Demographic, Clinical, and Health Determinants of Health for PRP Regenerative Medicine</p></div>
+          <div class="tl-it" style="--c:#7FD6E8"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.regen">Regenerative Medicine</span><span class="tl-d ltr">08-2022</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Towards Equitable Regenerative Medicine: A Call for Health Equity Research in Emerging Regenerative Treatments</p></div>
+          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span><span class="tl-d ltr">2022</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Developing Strategies to Address Health Disparities for First Generation Regenerative Medicine Treatments</p></div>
+          <div class="tl-yr"><span>2021</span></div>
+          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span><span class="tl-d ltr">11-2021</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Developing Strategies to Address Health Disparities in Regenerative Medicine Treatments</p></div>
+          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span><span class="tl-d ltr">08-2021</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Health Disparities in PRP Regenerative Medicine Care</p></div>
+          <div class="tl-yr"><span>2020</span></div>
+          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span><span class="tl-d ltr">07-2020</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Collagen Changes Suggestive of a Primary Defect in pkd2+/- Adult Zebrafish Kidney</p></div>
+          <div class="tl-yr"><span>2019</span></div>
+          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span><span class="tl-d ltr">07-2019</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Kidney Regeneration in pkd2 Mutant Zebrafish</p></div>
+          <div class="tl-it" style="--c:#F07A5A"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.neph">Nephrology</span><span class="tl-d ltr">03-2019</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Development of a Transgenic Mouse for Phosphodiesterase 1A Overexpression in the Kidney</p></div>
+          <div class="tl-yr"><span>2018</span></div>
+          <div class="tl-it" style="--c:#C77DFF"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.cancer">Cancer</span><span class="tl-d ltr">12-2018</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Elucidating the Binding of the TGF-β/SMAD Pathway in PANC1 and HEK Cell Lines</p></div>
+          <div class="tl-it" style="--c:#5ED3A0"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.ph">Public Health</span><span class="tl-d ltr">12-2018</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Elevated Lead Blood-Level in Children and Understanding Hazards, Exposures and Health Outcomes</p></div>
+          <div class="tl-it" style="--c:#4F9BFF"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.mb">Molecular Biology</span><span class="tl-d ltr">03-2018</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Increases in Globular Adiponectin Will Cause the Overexpression of miRNA-155 and the Subsequent Reduction of Angiotensin Type 1 Receptors Resulting in HLHS</p></div>
+          <div class="tl-yr"><span>2017</span></div>
+          <div class="tl-it" style="--c:#FFD166"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.chem">Chemistry</span><span class="tl-d ltr">05-2017</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Investigating Mechanism: A Computational Approach to HP-RNase</p></div>
+          <div class="tl-it" style="--c:#C77DFF"><span class="tl-dot" aria-hidden="true"></span>
+            <p class="tl-f"><span data-i18n="cred.g.cancer">Cancer</span><span class="tl-d ltr">03-2017</span></p>
+            <p class="tl-t" lang="en" dir="ltr">Effect of High Fat Diet on TGF-beta Leads to Type 2 Diabetes &amp; Pancreatic Cancer</p></div>
+        </div>
+      </div>
+      <!-- CRED:END -->
     </div>
   </section>
 </main>
@@ -684,7 +812,16 @@ html[lang="ar"] #episodes .latest-tag{letter-spacing:0}
       'follow.title': 'Never miss a discovery',
       'follow.lead': 'New episodes in English and Arabic.',
       'yt.en': 'YouTube · English',
-      'yt.ar': 'YouTube · Arabic'
+      'yt.ar': 'YouTube · Arabic',
+      'cred.title': 'The science behind Addani Labs',
+      'cred.pubs': 'Publications',
+      'cred.abs': 'Abstracts',
+      'cred.g.neph': 'Nephrology',
+      'cred.g.cancer': 'Cancer',
+      'cred.g.ph': 'Public Health',
+      'cred.g.regen': 'Regenerative Medicine',
+      'cred.g.mb': 'Molecular Biology',
+      'cred.g.chem': 'Chemistry'
     },
     ar: {
       'meta.title': 'اكتشافات علمية | مختبرات عداني',
@@ -731,7 +868,16 @@ html[lang="ar"] #episodes .latest-tag{letter-spacing:0}
       'follow.title': 'لا يفوتك أي اكتشاف',
       'follow.lead': 'حلقات جديدة بالعربية والإنجليزية.',
       'yt.en': 'يوتيوب · الإنجليزية',
-      'yt.ar': 'يوتيوب · العربية'
+      'yt.ar': 'يوتيوب · العربية',
+      'cred.title': 'العلم وراء مختبرات عداني',
+      'cred.pubs': 'المنشورات العلمية',
+      'cred.abs': 'الملخصات العلمية',
+      'cred.g.neph': 'طب الكلى',
+      'cred.g.cancer': 'السرطان',
+      'cred.g.ph': 'الصحة العامة',
+      'cred.g.regen': 'الطب التجديدي',
+      'cred.g.mb': 'البيولوجيا الجزيئية',
+      'cred.g.chem': 'الكيمياء'
     }
   };
 
@@ -767,5 +913,25 @@ html[lang="ar"] #episodes .latest-tag{letter-spacing:0}
   apply(document.documentElement.lang === 'ar' ? 'ar' : 'en');
 })();
 </script>
+<script>
+/* CRED:JS  the timeline line draws down as you scroll; each year and abstract lights up when the line reaches it */
+(function(){
+  var tl = document.getElementById('tl'); if (!tl) return;
+  var marks = tl.querySelectorAll('.tl-yr,.tl-it');
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function update(){
+    var r = tl.getBoundingClientRect(), h = r.height;
+    var atEnd = innerHeight + scrollY >= document.documentElement.scrollHeight - 4;
+    var p = (still || atEnd) ? 1 : Math.min(1, Math.max(0, (innerHeight * 0.62 - r.top) / h));
+    tl.style.setProperty('--p', p.toFixed(4));
+    var reach = p * h;
+    marks.forEach(function(m){ m.classList.toggle('on', m.offsetTop + 16 <= reach + 18); });
+  }
+  var queued = 0;
+  function onScroll(){ if (!queued) queued = requestAnimationFrame(function(){ queued = 0; update(); }); }
+  addEventListener('scroll', onScroll, {passive:true}); addEventListener('resize', onScroll); update();
+})();
+</script>
+<!-- CRED:JS-END -->
 </body>
 </html>
