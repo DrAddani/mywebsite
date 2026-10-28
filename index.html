@@ -514,6 +514,35 @@ html[data-theme="light"] .f-mb{--c:#1D4ED8!important}
 html[data-theme="light"] .f-chem{--c:#A16207!important}
 /* THEME:CSS-END */
 </style>
+<style id="spacing">
+/* SPACING  more room between pieces, version B (Mo, 10-27-2026: "When scrolling down, I like the spced version B"); nothing else changes */
+@media (max-width:640px){
+  html .bar-in{padding-block:14px 8px}
+  html .nav{margin-top:12px;padding-top:8px}
+  html .hero{padding-block:40px 44px}
+  html .hero h1{margin-block:14px 14px}
+  html .host{margin-block:20px 0}
+  html #episodes{padding-top:44px}
+  html #episodes .episode-heading{margin-bottom:28px}
+  html #episodes .latest-tag{margin-bottom:16px}
+  html .earlier-h{margin:68px 0 20px}
+  html .ep-list{gap:38px}
+  html section.block{padding-block:104px}
+  html .follow{gap:16px}
+  html .soc{padding:22px}
+  html .rlist li{padding:16px 0}
+  html .tl-it{padding:16px 0 18px}
+}
+@media (min-width:641px){
+  html .hero{padding-block:76px 84px}
+  html #episodes{padding-top:76px}
+  html #episodes .episode-heading{margin-bottom:40px}
+  html #episodes .latest-tag{margin-bottom:18px}
+  html .earlier-h{margin:80px 0 24px}
+  html .ep-list{gap:36px}
+  html .follow{gap:22px}
+}
+</style>
 </head>
 <body>
 <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
@@ -1031,5 +1060,24 @@ html[data-theme="light"] .f-chem{--c:#A16207!important}
 })();
 </script>
 <!-- THEME:JS-END -->
+<script>
+/* FIRSTSCREEN  the first screen shows only the Latest episode; "Earlier episodes" starts just below it (Mo, 10-27-2026) */
+(function(){
+  var h = document.querySelector('.earlier-h'); if (!h) return;
+  var w = 0;
+  function fit(){
+    if (window.innerWidth === w) return; w = window.innerWidth;  /* width changes only: the phone toolbar hiding must not move the page */
+    h.style.marginTop = '';
+    var top = h.getBoundingClientRect().top + window.scrollY;
+    var need = window.innerHeight + 24 - top;
+    if (need > 0) h.style.marginTop = (parseFloat(getComputedStyle(h).marginTop) + need) + 'px';
+  }
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ w = 0; fit(); });
+  window.addEventListener('load', function(){ w = 0; fit(); });
+  window.addEventListener('resize', fit);
+  document.querySelectorAll('[data-set-lang]').forEach(function(b){ b.addEventListener('click', function(){ setTimeout(function(){ w = 0; fit(); }, 0); }); });
+})();
+</script>
 </body>
 </html>
