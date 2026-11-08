@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -28,10 +28,10 @@
 </script>
 <script>
 /* Language is decided before first paint so the page never flashes the wrong direction.
-   The site always opens in English (Mo, 10-21-2026; was Arabic since 10-11-2026); the EN | ع switch changes it for this visit.
+   The site always opens in Arabic (Mo, 11-07-2026: "Can the website defult to the Arabic plz?"; English 10-21 → 11-07, Arabic 10-11 → 10-21); the EN | ع switch changes it for this visit.
    Shared contract with the episode pages: localStorage "al-lang" = "en" | "ar". */
 (function(){
-  var lang = 'en';
+  var lang = 'ar';
   var h = document.documentElement;
   h.lang = lang; h.dir = lang === 'ar' ? 'rtl' : 'ltr';
 })();
